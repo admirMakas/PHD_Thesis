@@ -1,0 +1,1875 @@
+1
+
+   Abaqus 6.14-1                                  Date 06-Feb-2016   Time 20:17:37
+   For use by Supplied By SSQ under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Simulia Corp.
+                                 Rising Sun Mills
+                                 166 Valley Street
+                           Providence, RI 02909-2499, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine DESKTOP-5UE3P8V 
+                          you are authorized to run
+                          Abaqus/Foundation until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      http://www.3ds.com/products/simulia/locations/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                    Abaqus 6.14-1                        * 
+                *                                                         * 
+                *          BUILD ID: 2014_06_04-18.11.02 134264           * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using release 6.14 manuals    * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *Heading
+  *Node
+  *Element, type=S4R
+  *Nset, nset=ASSEMBLY_PART-1-1__PICKEDSET2
+  *Elset, elset=ASSEMBLY_PART-1-1__PICKEDSET2
+  *Nset, nset=ASSEMBLY_NSET_ALL
+  *Nset, nset=ASSEMBLY_NSET_LOAD
+  *Nset, nset=ASSEMBLY__PICKEDSET6
+  *Elset, elset=ASSEMBLY__PICKEDSET6
+  *material, name=MATERIAL-1
+  *density
+  *elastic
+  *shellsection, elset=ASSEMBLY_PART-1-1__PICKEDSET2, material=MATERIAL-1
+  *boundary
+  *shellsection, elset=ASSEMBLY_PART-1-1__PICKEDSET2, material=MATERIAL-1
+  *output, field
+  *output, field, frequency=1
+  *output, history, frequency=0
+  *output, field
+  *output, field, frequency=1
+  *output, history, frequency=0
+  *output, field
+  *output, field, frequency=1
+  *output, history, frequency=0
+  *psd-definition, name=PSD
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *output, field
+  *Step, name=Step-2, nlgeom=NO, perturbation
+  *output, field, frequency=1
+  *output, history, frequency=0
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *Step, name=Step-2, nlgeom=NO, perturbation
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *output, field
+  *nodeoutput, nset=ASSEMBLY_NSET_ALL, variable=PRESELECT
+  *contactoutput, nset=ASSEMBLY_NSET_ALL, variable=PRESELECT
+  *endstep
+  *Step, name=Step-2, nlgeom=NO, perturbation
+  *modaldamping, modal=DIRECT
+  *selecteigenmodes, generate
+  *output, field, frequency=1
+  *nodeoutput, nset=ASSEMBLY_NSET_ALL
+  *output, history, frequency=0
+  *endstep
+  *boundary
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *endstep
+  *Step, name=Step-2, nlgeom=NO, perturbation
+  *randomresponse
+  *modaldamping, modal=DIRECT
+
+ ***WARNING: MODE NUMBERS 1 500 ARE OUT OF RANGE
+  *selecteigenmodes, generate
+  *cload
+  *correlation, type=MOVINGNOISE
+  *endstep
+
+ ***WARNING: THE MODE NUMBER CANNOT BE GREATER THAN 20, THE HIGHEST MODE 
+             EXTRACTED IN THE PRECEDING *FREQUENCY STEP.
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                   100
+          NUMBER OF NODES IS                                      121
+          NUMBER OF NODES DEFINED BY THE USER                     121
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                  726
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =   0.0000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.10000    
+       WALLCLOCK TIME (SEC) =          0
+1
+
+   Abaqus 6.14-1                                  Date 06-Feb-2016   Time 20:17:41
+   For use by Supplied By SSQ under license from Dassault Systemes or its subsidiary.
+
+                                                                                               STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     C A L C U L A T I O N   O F   E I G E N V A L U E S
+
+                                            F O R   N A T U R A L   F R E Q U E N C I E S
+
+
+
+                                                                                          
+
+     THE LANCZOS EIGENSOLVER IS USED FOR THIS ANALYSIS
+     Abaqus WILL COMPUTE UNCOUPLED
+      STRUCTURAL AND ACOUSTIC MODES
+     NUMBER OF EIGENVALUES                     20
+     HIGHEST FREQUENCY OF INTEREST                  1.00000E+18
+     MAXIMUM NUMBER OF STEPS WITHIN RUN               35
+     BLOCK SIZE FOR LANCZOS PROCEDURE                  7
+     THE EIGENVECTORS ARE SCALED SO THAT 
+      THE LARGEST DISPLACEMENT ENTRY IN EACH VECTOR
+      IS UNITY
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+
+
+
+                    TOTAL MASS OF MODEL
+
+                       13.55500    
+
+
+                    LOCATION OF THE CENTER OF MASS OF THE MODEL
+
+                     -0.1125000          4.7095407E-17       0.000000    
+
+
+                    MOMENTS OF INERTIA ABOUT THE ORIGIN
+                           I(XX)               I(YY)               I(ZZ)
+
+                       1.152203           1.323759           2.475934    
+
+
+                    PRODUCTS OF INERTIA ABOUT THE ORIGIN
+                           I(XY)               I(XZ)               I(YZ)
+
+                     -1.8041124E-16       0.000000           0.000000    
+
+
+                    MOMENTS OF INERTIA ABOUT THE CENTER OF MASS
+                           I(XX)               I(YY)               I(ZZ)
+
+                       1.152203           1.152203           2.304378    
+
+
+                    PRODUCTS OF INERTIA ABOUT THE CENTER OF MASS
+                           I(XY)               I(XZ)               I(YZ)
+
+                     -2.5222880E-16       0.000000           0.000000    
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1         3.20E+006               19                 25
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                              E I G E N V A L U E    O U T P U T     
+
+ MODE NO      EIGENVALUE              FREQUENCY         GENERALIZED MASS   COMPOSITE MODAL DAMPING            
+                             (RAD/TIME)   (CYCLES/TIME)
+
+
+       1       80000.         282.84         45.016         2.1129         0.0000    
+       2      3.61951E+05     601.62         95.751         2.2656         0.0000    
+       3      3.61951E+05     601.62         95.751         2.2656         0.0000    
+       4      7.74645E+05     880.14         140.08         2.3135         0.0000    
+       5      1.37227E+06     1171.4         186.44         2.0518         0.0000    
+       6      1.38650E+06     1177.5         187.40         1.1611         0.0000    
+       7      1.99704E+06     1413.2         224.91         2.1693         0.0000    
+       8      1.99704E+06     1413.2         224.91         2.1693         0.0000    
+       9      3.55081E+06     1884.4         299.90         1.9788         0.0000    
+      10      4.45900E+06     2111.6         336.08         2.1233         0.0000    
+      11      4.45900E+06     2111.6         336.08         2.1233         0.0000    
+      12      5.30607E+06     2303.5         366.61         1.9160         0.0000    
+      13      5.36792E+06     2316.9         368.74         1.6399         0.0000    
+      14      7.31372E+06     2704.4         430.42         1.8146         0.0000    
+      15      7.31372E+06     2704.4         430.42         1.8146         0.0000    
+      16      1.16116E+07     3407.6         542.33         1.6941         0.0000    
+      17      1.32863E+07     3645.0         580.13         1.2318         0.0000    
+      18      1.33090E+07     3648.1         580.62        0.88246         0.0000    
+      19      1.44177E+07     3797.1         604.32         1.7695         0.0000    
+      20      1.44177E+07     3797.1         604.32         1.7695         0.0000    
+
+
+          P A R T I C I P A T I O N   F A C T O R S
+
+ MODE NO    X-COMPONENT    Y-COMPONENT    Z-COMPONENT    X-ROTATION     Y-ROTATION     Z-ROTATION 
+
+       1      1.67104E-17    5.57874E-17     1.7896        4.55308E-14    0.20132       -7.46571E-18
+       2     -1.20576E-16   -1.38338E-16   -6.98272E-10    3.09140E-05   -0.40534        3.29994E-17
+       3      2.81864E-17   -7.97310E-17    1.60692E-13   -0.40534       -3.09140E-05    3.66096E-17
+       4      1.01131E-16    4.93930E-17    7.47619E-15    1.87612E-10   -2.92532E-14   -4.78032E-17
+       5      8.54480E-17    1.81908E-16    1.70972E-07   -1.17867E-14    2.14139E-08    5.93819E-18
+       6      2.25946E-16    6.01611E-17    -1.5075       -6.13276E-15   -0.16960       -6.57949E-17
+       7      1.73261E-16    3.45372E-16   -9.68331E-11    6.45788E-07   -0.17163       -2.84776E-17
+       8      1.49799E-16   -4.43195E-16    1.22059E-14   -0.17163       -6.45788E-07   -7.54543E-18
+       9      1.18945E-16    4.88172E-16   -0.28405       -7.85794E-15   -3.19558E-02   -1.33172E-16
+      10     -3.07710E-16   -3.79393E-16   -2.30548E-14   -0.27748        1.71877E-07    8.06505E-17
+      11      8.80031E-17    1.35718E-16   -6.69266E-10    1.71877E-07    0.27748       -5.07094E-17
+      12     -6.67044E-17    8.74551E-16    1.06178E-14    2.54662E-10    1.79284E-14   -1.31015E-16
+      13     -5.42852E-17   -3.82502E-16   -3.90924E-15   -2.34713E-10   -1.57829E-14   -8.00194E-17
+      14      7.60453E-16    2.25492E-16    1.50879E-14    0.10347        3.65955E-08   -1.45433E-16
+      15     -7.31627E-17    9.14557E-16   -7.37207E-11   -3.65955E-08    0.10347        3.89156E-17
+      16      2.85840E-15    3.00614E-16    1.44178E-14   -1.44400E-11    6.78197E-15   -2.17358E-15
+      17     -1.49006E-14    1.33779E-15   -4.86774E-06    1.25839E-14   -5.55660E-07    4.67216E-15
+      18      3.87232E-14    4.33079E-15     1.1614       -2.87782E-16    0.13065       -4.22276E-14
+      19      1.24343E-13    7.62833E-15    4.52044E-10    3.56532E-08   -0.13495       -1.04540E-13
+      20     -1.94553E-13    1.52433E-15    3.89321E-14   -0.13495       -3.56532E-08    1.49466E-13
+
+
+                    E F F E C T I V E   M A S S
+
+ MODE NO    X-COMPONENT    Y-COMPONENT    Z-COMPONENT    X-ROTATION     Y-ROTATION     Z-ROTATION 
+
+       1      5.90006E-34    6.57587E-33     6.7666        4.38018E-27    8.56395E-02    1.17767E-34
+       2      3.29377E-32    4.33566E-32    1.10465E-18    2.16514E-09    0.37224        2.46710E-33
+       3      1.79992E-33    1.44022E-32    5.85010E-26    0.37224        2.16514E-09    3.03644E-33
+       4      2.36613E-32    5.64424E-33    1.29311E-28    8.14323E-20    1.97980E-27    5.28675E-33
+       5      1.49810E-32    6.78955E-32    5.99770E-14    2.85050E-28    9.40868E-16    7.23509E-35
+       6      5.92749E-32    4.20236E-33     2.6387        4.36689E-29    3.33966E-02    5.02627E-33
+       7      6.51215E-32    2.58761E-31    2.03409E-20    9.04697E-13    6.39047E-02    1.75927E-33
+       8      4.86791E-32    4.26101E-31    3.23196E-28    6.39047E-02    9.04697E-13    1.23507E-34
+       9      2.79963E-32    4.71575E-31    0.15966        1.22186E-28    2.02071E-03    3.50941E-32
+      10      2.01047E-31    3.05627E-31    1.12859E-27    0.16348        6.27262E-14    1.38111E-32
+      11      1.64441E-32    3.91103E-32    9.51067E-19    6.27262E-14    0.16348        5.45998E-33
+      12      8.52505E-33    1.46541E-30    2.16001E-28    1.24256E-19    6.15847E-28    3.28876E-32
+      13      4.83253E-33    2.39927E-31    2.50609E-29    9.03407E-20    4.08491E-28    1.05003E-32
+      14      1.04934E-30    9.22639E-32    4.13074E-28    1.94271E-02    2.43011E-15    3.83794E-32
+      15      9.71293E-33    1.51772E-30    9.86164E-21    2.43011E-15    1.94271E-02    2.74800E-33
+      16      1.38419E-29    1.53098E-31    3.52165E-28    3.53252E-22    7.79224E-29    8.00387E-30
+      17      2.73498E-28    2.20455E-30    2.91877E-11    1.95064E-28    3.80333E-13    2.68893E-29
+      18      1.32324E-27    1.65513E-29     1.1903        7.30844E-32    1.50643E-02    1.57358E-27
+      19      2.73587E-26    1.02970E-28    3.61587E-19    2.24931E-15    3.22269E-02    1.93383E-26
+      20      6.69775E-26    4.11160E-30    2.68206E-27    3.22269E-02    2.24931E-15    3.95311E-26
+
+ TOTAL        9.59484E-26    1.30949E-28     10.755        0.65128        0.78740        6.04781E-26
+1
+
+   Abaqus 6.14-1                                  Date 06-Feb-2016   Time 20:17:41
+   For use by Supplied By SSQ under license from Dassault Systemes or its subsidiary.
+
+                                                                                               STEP    2  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       2     R A N D O M    R E S P O N S E   A N A L Y S I S         
+
+
+                                                                                          
+          THE VARIANCE WILL BE COMPUTED NUMERICALLY  
+          FREQUENCY RANGE DEFINITIONS (CYCLES/TIME)
+                   LOW         HIGH     POINTS         BIAS   TYPE OF SCALING
+
+
+                   0.100      500.        20          1.00      LOGARITHMIC     
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1         0.00E+000               16                 16
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                              INCREMENT NUMBER     1
+                              FREQUENCY           0.100    
+
+
+
+                              INCREMENT NUMBER     2
+                              FREQUENCY           0.138    
+
+
+
+                              INCREMENT NUMBER     3
+                              FREQUENCY           0.190    
+
+
+
+                              INCREMENT NUMBER     4
+                              FREQUENCY           0.262    
+
+
+
+                              INCREMENT NUMBER     5
+                              FREQUENCY           0.362    
+
+
+
+                              INCREMENT NUMBER     6
+                              FREQUENCY           0.499    
+
+
+
+                              INCREMENT NUMBER     7
+                              FREQUENCY           0.689    
+
+
+
+                              INCREMENT NUMBER     8
+                              FREQUENCY           0.950    
+
+
+
+                              INCREMENT NUMBER     9
+                              FREQUENCY            1.31    
+
+
+
+                              INCREMENT NUMBER    10
+                              FREQUENCY            1.81    
+
+
+
+                              INCREMENT NUMBER    11
+                              FREQUENCY            2.49    
+
+
+
+                              INCREMENT NUMBER    12
+                              FREQUENCY            3.44    
+
+
+
+                              INCREMENT NUMBER    13
+                              FREQUENCY            4.74    
+
+
+
+                              INCREMENT NUMBER    14
+                              FREQUENCY            6.54    
+
+
+
+                              INCREMENT NUMBER    15
+                              FREQUENCY            9.02    
+
+
+
+                              INCREMENT NUMBER    16
+                              FREQUENCY            12.4    
+
+
+
+                              INCREMENT NUMBER    17
+                              FREQUENCY            17.2    
+
+
+
+                              INCREMENT NUMBER    18
+                              FREQUENCY            23.7    
+
+
+
+                              INCREMENT NUMBER    19
+                              FREQUENCY            32.6    
+
+
+
+                              INCREMENT NUMBER    20
+                              FREQUENCY            45.0    
+
+
+
+                              INCREMENT NUMBER    21
+                              FREQUENCY            46.8    
+
+
+
+                              INCREMENT NUMBER    22
+                              FREQUENCY            48.7    
+
+
+
+                              INCREMENT NUMBER    23
+                              FREQUENCY            50.7    
+
+
+
+                              INCREMENT NUMBER    24
+                              FREQUENCY            52.8    
+
+
+
+                              INCREMENT NUMBER    25
+                              FREQUENCY            54.9    
+
+
+
+                              INCREMENT NUMBER    26
+                              FREQUENCY            57.1    
+
+
+
+                              INCREMENT NUMBER    27
+                              FREQUENCY            59.4    
+
+
+
+                              INCREMENT NUMBER    28
+                              FREQUENCY            61.9    
+
+
+
+                              INCREMENT NUMBER    29
+                              FREQUENCY            64.4    
+
+
+
+                              INCREMENT NUMBER    30
+                              FREQUENCY            67.0    
+
+
+
+                              INCREMENT NUMBER    31
+                              FREQUENCY            69.7    
+
+
+
+                              INCREMENT NUMBER    32
+                              FREQUENCY            72.5    
+
+
+
+                              INCREMENT NUMBER    33
+                              FREQUENCY            75.4    
+
+
+
+                              INCREMENT NUMBER    34
+                              FREQUENCY            78.5    
+
+
+
+                              INCREMENT NUMBER    35
+                              FREQUENCY            81.7    
+
+
+
+                              INCREMENT NUMBER    36
+                              FREQUENCY            85.0    
+
+
+
+                              INCREMENT NUMBER    37
+                              FREQUENCY            88.4    
+
+
+
+                              INCREMENT NUMBER    38
+                              FREQUENCY            92.0    
+
+
+
+                              INCREMENT NUMBER    39
+                              FREQUENCY            95.8    
+
+
+
+                              INCREMENT NUMBER    40
+                              FREQUENCY            95.8    
+
+
+
+                              INCREMENT NUMBER    41
+                              FREQUENCY            95.8    
+
+
+
+                              INCREMENT NUMBER    42
+                              FREQUENCY            95.8    
+
+
+
+                              INCREMENT NUMBER    43
+                              FREQUENCY            95.8    
+
+
+
+                              INCREMENT NUMBER    44
+                              FREQUENCY            97.7    
+
+
+
+                              INCREMENT NUMBER    45
+                              FREQUENCY            99.7    
+
+
+
+                              INCREMENT NUMBER    46
+                              FREQUENCY            102.    
+
+
+
+                              INCREMENT NUMBER    47
+                              FREQUENCY            104.    
+
+
+
+                              INCREMENT NUMBER    48
+                              FREQUENCY            106.    
+
+
+
+                              INCREMENT NUMBER    49
+                              FREQUENCY            108.    
+
+
+
+                              INCREMENT NUMBER    50
+                              FREQUENCY            110.    
+
+
+
+                              INCREMENT NUMBER    51
+                              FREQUENCY            112.    
+
+
+
+                              INCREMENT NUMBER    52
+                              FREQUENCY            115.    
+
+
+
+                              INCREMENT NUMBER    53
+                              FREQUENCY            117.    
+
+
+
+                              INCREMENT NUMBER    54
+                              FREQUENCY            119.    
+
+
+
+                              INCREMENT NUMBER    55
+                              FREQUENCY            122.    
+
+
+
+                              INCREMENT NUMBER    56
+                              FREQUENCY            124.    
+
+
+
+                              INCREMENT NUMBER    57
+                              FREQUENCY            127.    
+
+
+
+                              INCREMENT NUMBER    58
+                              FREQUENCY            129.    
+
+
+
+                              INCREMENT NUMBER    59
+                              FREQUENCY            132.    
+
+
+
+                              INCREMENT NUMBER    60
+                              FREQUENCY            135.    
+
+
+
+                              INCREMENT NUMBER    61
+                              FREQUENCY            137.    
+
+
+
+                              INCREMENT NUMBER    62
+                              FREQUENCY            140.    
+
+
+
+                              INCREMENT NUMBER    63
+                              FREQUENCY            142.    
+
+
+
+                              INCREMENT NUMBER    64
+                              FREQUENCY            144.    
+
+
+
+                              INCREMENT NUMBER    65
+                              FREQUENCY            147.    
+
+
+
+                              INCREMENT NUMBER    66
+                              FREQUENCY            149.    
+
+
+
+                              INCREMENT NUMBER    67
+                              FREQUENCY            151.    
+
+
+
+                              INCREMENT NUMBER    68
+                              FREQUENCY            153.    
+
+
+
+                              INCREMENT NUMBER    69
+                              FREQUENCY            156.    
+
+
+
+                              INCREMENT NUMBER    70
+                              FREQUENCY            158.    
+
+
+
+                              INCREMENT NUMBER    71
+                              FREQUENCY            160.    
+
+
+
+                              INCREMENT NUMBER    72
+                              FREQUENCY            163.    
+
+
+
+                              INCREMENT NUMBER    73
+                              FREQUENCY            165.    
+
+
+
+                              INCREMENT NUMBER    74
+                              FREQUENCY            168.    
+
+
+
+                              INCREMENT NUMBER    75
+                              FREQUENCY            170.    
+
+
+
+                              INCREMENT NUMBER    76
+                              FREQUENCY            173.    
+
+
+
+                              INCREMENT NUMBER    77
+                              FREQUENCY            176.    
+
+
+
+                              INCREMENT NUMBER    78
+                              FREQUENCY            178.    
+
+
+
+                              INCREMENT NUMBER    79
+                              FREQUENCY            181.    
+
+
+
+                              INCREMENT NUMBER    80
+                              FREQUENCY            184.    
+
+
+
+                              INCREMENT NUMBER    81
+                              FREQUENCY            186.    
+
+
+
+                              INCREMENT NUMBER    82
+                              FREQUENCY            186.    
+
+
+
+                              INCREMENT NUMBER    83
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    84
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    85
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    86
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    87
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    88
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    89
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    90
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    91
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    92
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    93
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    94
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    95
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    96
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    97
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    98
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER    99
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER   100
+                              FREQUENCY            187.    
+
+
+
+                              INCREMENT NUMBER   101
+                              FREQUENCY            189.    
+
+
+
+                              INCREMENT NUMBER   102
+                              FREQUENCY            191.    
+
+
+
+                              INCREMENT NUMBER   103
+                              FREQUENCY            193.    
+
+
+
+                              INCREMENT NUMBER   104
+                              FREQUENCY            195.    
+
+
+
+                              INCREMENT NUMBER   105
+                              FREQUENCY            197.    
+
+
+
+                              INCREMENT NUMBER   106
+                              FREQUENCY            199.    
+
+
+
+                              INCREMENT NUMBER   107
+                              FREQUENCY            200.    
+
+
+
+                              INCREMENT NUMBER   108
+                              FREQUENCY            202.    
+
+
+
+                              INCREMENT NUMBER   109
+                              FREQUENCY            204.    
+
+
+
+                              INCREMENT NUMBER   110
+                              FREQUENCY            206.    
+
+
+
+                              INCREMENT NUMBER   111
+                              FREQUENCY            208.    
+
+
+
+                              INCREMENT NUMBER   112
+                              FREQUENCY            210.    
+
+
+
+                              INCREMENT NUMBER   113
+                              FREQUENCY            212.    
+
+
+
+                              INCREMENT NUMBER   114
+                              FREQUENCY            214.    
+
+
+
+                              INCREMENT NUMBER   115
+                              FREQUENCY            216.    
+
+
+
+                              INCREMENT NUMBER   116
+                              FREQUENCY            219.    
+
+
+
+                              INCREMENT NUMBER   117
+                              FREQUENCY            221.    
+
+
+
+                              INCREMENT NUMBER   118
+                              FREQUENCY            223.    
+
+
+
+                              INCREMENT NUMBER   119
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   120
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   121
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   122
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   123
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   124
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   125
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   126
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   127
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   128
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   129
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   130
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   131
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   132
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   133
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   134
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   135
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   136
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   137
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   138
+                              FREQUENCY            225.    
+
+
+
+                              INCREMENT NUMBER   139
+                              FREQUENCY            228.    
+
+
+
+                              INCREMENT NUMBER   140
+                              FREQUENCY            232.    
+
+
+
+                              INCREMENT NUMBER   141
+                              FREQUENCY            235.    
+
+
+
+                              INCREMENT NUMBER   142
+                              FREQUENCY            239.    
+
+
+
+                              INCREMENT NUMBER   143
+                              FREQUENCY            243.    
+
+
+
+                              INCREMENT NUMBER   144
+                              FREQUENCY            246.    
+
+
+
+                              INCREMENT NUMBER   145
+                              FREQUENCY            250.    
+
+
+
+                              INCREMENT NUMBER   146
+                              FREQUENCY            254.    
+
+
+
+                              INCREMENT NUMBER   147
+                              FREQUENCY            258.    
+
+
+
+                              INCREMENT NUMBER   148
+                              FREQUENCY            262.    
+
+
+
+                              INCREMENT NUMBER   149
+                              FREQUENCY            266.    
+
+
+
+                              INCREMENT NUMBER   150
+                              FREQUENCY            270.    
+
+
+
+                              INCREMENT NUMBER   151
+                              FREQUENCY            274.    
+
+
+
+                              INCREMENT NUMBER   152
+                              FREQUENCY            278.    
+
+
+
+                              INCREMENT NUMBER   153
+                              FREQUENCY            282.    
+
+
+
+                              INCREMENT NUMBER   154
+                              FREQUENCY            287.    
+
+
+
+                              INCREMENT NUMBER   155
+                              FREQUENCY            291.    
+
+
+
+                              INCREMENT NUMBER   156
+                              FREQUENCY            295.    
+
+
+
+                              INCREMENT NUMBER   157
+                              FREQUENCY            300.    
+
+
+
+                              INCREMENT NUMBER   158
+                              FREQUENCY            302.    
+
+
+
+                              INCREMENT NUMBER   159
+                              FREQUENCY            304.    
+
+
+
+                              INCREMENT NUMBER   160
+                              FREQUENCY            305.    
+
+
+
+                              INCREMENT NUMBER   161
+                              FREQUENCY            307.    
+
+
+
+                              INCREMENT NUMBER   162
+                              FREQUENCY            309.    
+
+
+
+                              INCREMENT NUMBER   163
+                              FREQUENCY            311.    
+
+
+
+                              INCREMENT NUMBER   164
+                              FREQUENCY            313.    
+
+
+
+                              INCREMENT NUMBER   165
+                              FREQUENCY            315.    
+
+
+
+                              INCREMENT NUMBER   166
+                              FREQUENCY            317.    
+
+
+
+                              INCREMENT NUMBER   167
+                              FREQUENCY            318.    
+
+
+
+                              INCREMENT NUMBER   168
+                              FREQUENCY            320.    
+
+
+
+                              INCREMENT NUMBER   169
+                              FREQUENCY            322.    
+
+
+
+                              INCREMENT NUMBER   170
+                              FREQUENCY            324.    
+
+
+
+                              INCREMENT NUMBER   171
+                              FREQUENCY            326.    
+
+
+
+                              INCREMENT NUMBER   172
+                              FREQUENCY            328.    
+
+
+
+                              INCREMENT NUMBER   173
+                              FREQUENCY            330.    
+
+
+
+                              INCREMENT NUMBER   174
+                              FREQUENCY            332.    
+
+
+
+                              INCREMENT NUMBER   175
+                              FREQUENCY            334.    
+
+
+
+                              INCREMENT NUMBER   176
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   177
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   178
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   179
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   180
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   181
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   182
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   183
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   184
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   185
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   186
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   187
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   188
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   189
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   190
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   191
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   192
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   193
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   194
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   195
+                              FREQUENCY            336.    
+
+
+
+                              INCREMENT NUMBER   196
+                              FREQUENCY            338.    
+
+
+
+                              INCREMENT NUMBER   197
+                              FREQUENCY            339.    
+
+
+
+                              INCREMENT NUMBER   198
+                              FREQUENCY            341.    
+
+
+
+                              INCREMENT NUMBER   199
+                              FREQUENCY            342.    
+
+
+
+                              INCREMENT NUMBER   200
+                              FREQUENCY            344.    
+
+
+
+                              INCREMENT NUMBER   201
+                              FREQUENCY            345.    
+
+
+
+                              INCREMENT NUMBER   202
+                              FREQUENCY            347.    
+
+
+
+                              INCREMENT NUMBER   203
+                              FREQUENCY            349.    
+
+
+
+                              INCREMENT NUMBER   204
+                              FREQUENCY            350.    
+
+
+
+                              INCREMENT NUMBER   205
+                              FREQUENCY            352.    
+
+
+
+                              INCREMENT NUMBER   206
+                              FREQUENCY            353.    
+
+
+
+                              INCREMENT NUMBER   207
+                              FREQUENCY            355.    
+
+
+
+                              INCREMENT NUMBER   208
+                              FREQUENCY            357.    
+
+
+
+                              INCREMENT NUMBER   209
+                              FREQUENCY            358.    
+
+
+
+                              INCREMENT NUMBER   210
+                              FREQUENCY            360.    
+
+
+
+                              INCREMENT NUMBER   211
+                              FREQUENCY            362.    
+
+
+
+                              INCREMENT NUMBER   212
+                              FREQUENCY            363.    
+
+
+
+                              INCREMENT NUMBER   213
+                              FREQUENCY            365.    
+
+
+
+                              INCREMENT NUMBER   214
+                              FREQUENCY            367.    
+
+
+
+                              INCREMENT NUMBER   215
+                              FREQUENCY            367.    
+
+
+
+                              INCREMENT NUMBER   216
+                              FREQUENCY            367.    
+
+
+
+                              INCREMENT NUMBER   217
+                              FREQUENCY            367.    
+
+
+
+                              INCREMENT NUMBER   218
+                              FREQUENCY            367.    
+
+
+
+                              INCREMENT NUMBER   219
+                              FREQUENCY            367.    
+
+
+
+                              INCREMENT NUMBER   220
+                              FREQUENCY            367.    
+
+
+
+                              INCREMENT NUMBER   221
+                              FREQUENCY            367.    
+
+
+
+                              INCREMENT NUMBER   222
+                              FREQUENCY            368.    
+
+
+
+                              INCREMENT NUMBER   223
+                              FREQUENCY            368.    
+
+
+
+                              INCREMENT NUMBER   224
+                              FREQUENCY            368.    
+
+
+
+                              INCREMENT NUMBER   225
+                              FREQUENCY            368.    
+
+
+
+                              INCREMENT NUMBER   226
+                              FREQUENCY            368.    
+
+
+
+                              INCREMENT NUMBER   227
+                              FREQUENCY            368.    
+
+
+
+                              INCREMENT NUMBER   228
+                              FREQUENCY            368.    
+
+
+
+                              INCREMENT NUMBER   229
+                              FREQUENCY            368.    
+
+
+
+                              INCREMENT NUMBER   230
+                              FREQUENCY            368.    
+
+
+
+                              INCREMENT NUMBER   231
+                              FREQUENCY            369.    
+
+
+
+                              INCREMENT NUMBER   232
+                              FREQUENCY            369.    
+
+
+
+                              INCREMENT NUMBER   233
+                              FREQUENCY            369.    
+
+
+
+                              INCREMENT NUMBER   234
+                              FREQUENCY            372.    
+
+
+
+                              INCREMENT NUMBER   235
+                              FREQUENCY            375.    
+
+
+
+                              INCREMENT NUMBER   236
+                              FREQUENCY            378.    
+
+
+
+                              INCREMENT NUMBER   237
+                              FREQUENCY            381.    
+
+
+
+                              INCREMENT NUMBER   238
+                              FREQUENCY            384.    
+
+
+
+                              INCREMENT NUMBER   239
+                              FREQUENCY            387.    
+
+
+
+                              INCREMENT NUMBER   240
+                              FREQUENCY            390.    
+
+
+
+                              INCREMENT NUMBER   241
+                              FREQUENCY            394.    
+
+
+
+                              INCREMENT NUMBER   242
+                              FREQUENCY            397.    
+
+
+
+                              INCREMENT NUMBER   243
+                              FREQUENCY            400.    
+
+
+
+                              INCREMENT NUMBER   244
+                              FREQUENCY            403.    
+
+
+
+                              INCREMENT NUMBER   245
+                              FREQUENCY            407.    
+
+
+
+                              INCREMENT NUMBER   246
+                              FREQUENCY            410.    
+
+
+
+                              INCREMENT NUMBER   247
+                              FREQUENCY            413.    
+
+
+
+                              INCREMENT NUMBER   248
+                              FREQUENCY            417.    
+
+
+
+                              INCREMENT NUMBER   249
+                              FREQUENCY            420.    
+
+
+
+                              INCREMENT NUMBER   250
+                              FREQUENCY            423.    
+
+
+
+                              INCREMENT NUMBER   251
+                              FREQUENCY            427.    
+
+
+
+                              INCREMENT NUMBER   252
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   253
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   254
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   255
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   256
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   257
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   258
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   259
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   260
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   261
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   262
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   263
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   264
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   265
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   266
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   267
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   268
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   269
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   270
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   271
+                              FREQUENCY            430.    
+
+
+
+                              INCREMENT NUMBER   272
+                              FREQUENCY            434.    
+
+
+
+                              INCREMENT NUMBER   273
+                              FREQUENCY            437.    
+
+
+
+                              INCREMENT NUMBER   274
+                              FREQUENCY            441.    
+
+
+
+                              INCREMENT NUMBER   275
+                              FREQUENCY            444.    
+
+
+
+                              INCREMENT NUMBER   276
+                              FREQUENCY            448.    
+
+
+
+                              INCREMENT NUMBER   277
+                              FREQUENCY            451.    
+
+
+
+                              INCREMENT NUMBER   278
+                              FREQUENCY            455.    
+
+
+
+                              INCREMENT NUMBER   279
+                              FREQUENCY            458.    
+
+
+
+                              INCREMENT NUMBER   280
+                              FREQUENCY            462.    
+
+
+
+                              INCREMENT NUMBER   281
+                              FREQUENCY            466.    
+
+
+
+                              INCREMENT NUMBER   282
+                              FREQUENCY            469.    
+
+
+
+                              INCREMENT NUMBER   283
+                              FREQUENCY            473.    
+
+
+
+                              INCREMENT NUMBER   284
+                              FREQUENCY            477.    
+
+
+
+                              INCREMENT NUMBER   285
+                              FREQUENCY            481.    
+
+
+
+                              INCREMENT NUMBER   286
+                              FREQUENCY            484.    
+
+
+
+                              INCREMENT NUMBER   287
+                              FREQUENCY            488.    
+
+
+
+                              INCREMENT NUMBER   288
+                              FREQUENCY            492.    
+
+
+
+                              INCREMENT NUMBER   289
+                              FREQUENCY            496.    
+
+
+
+                              INCREMENT NUMBER   290
+                              FREQUENCY            500.    
+
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH      2 WARNING MESSAGES ON THE DAT FILE
+                              AND      51 WARNING MESSAGES ON THE MSG FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =   50.100    
+       SYSTEM TIME (SEC)    =  0.80000    
+       TOTAL CPU TIME (SEC) =   50.900    
+       WALLCLOCK TIME (SEC) =         51

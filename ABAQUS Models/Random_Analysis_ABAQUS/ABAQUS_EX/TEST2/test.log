@@ -1,0 +1,11 @@
+Abaqus JOB test
+Abaqus 6.13-1
+Abaqus License Manager checked out the following licenses:
+Abaqus/Foundation checked out 3 tokens.
+<9 out of 50 licenses remain available>.
+Begin Analysis Input File Processor
+2/5/2016 5:47:27 PM
+Run pre.exe
+2/5/2016 5:47:39 PM
+Abaqus Error: Analysis Input File Processor exited with an error.
+Abaqus/Analysis exited with errors

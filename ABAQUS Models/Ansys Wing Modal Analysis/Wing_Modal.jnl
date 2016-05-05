@@ -1,0 +1,296 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.openStep(
+    'C:/Users/ado/Documents/ABAQUS Runs/Ansys Wing Modal Analysis/step_file.step'
+    , scaleFromFile=OFF)
+mdb.models['Model-1'].PartFromGeometryFile(combine=True, dimensionality=THREE_D
+    , geometryFile=mdb.acis, name='step_file', type=DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['step_file'].AutoRepair()
+del mdb.models['Model-1'].parts['step_file']
+mdb.openStep(
+    'C:/Users/ado/Documents/ABAQUS Runs/Ansys Wing Modal Analysis/step_file.step'
+    , scaleFromFile=OFF)
+mdb.models['Model-1'].PartFromGeometryFile(combine=False, dimensionality=
+    THREE_D, geometryFile=mdb.acis, name='step_file-1', type=DEFORMABLE_BODY)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=2, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name='step_file-2', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=3, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name='step_file-3', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].PartFromGeometryFile(bodyNum=4, combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name='step_file-4', type=
+    DEFORMABLE_BODY)
+del mdb.models['Model-1'].parts['step_file-3']
+del mdb.models['Model-1'].parts['step_file-4']
+mdb.models['Model-1'].Material(name='Al')
+mdb.models['Model-1'].materials['Al'].Density(table=((2700.0, ), ))
+mdb.models['Model-1'].materials['Al'].Elastic(table=((68900000000.0, 0.33), ))
+mdb.models['Model-1'].HomogeneousShellSection(idealization=NO_IDEALIZATION, 
+    integrationRule=SIMPSON, material='Al', name='Section-1', numIntPts=5, 
+    poissonDefinition=DEFAULT, preIntegrate=OFF, temperature=GRADIENT, 
+    thickness=0.01, thicknessField='', thicknessModulus=None, thicknessType=
+    UNIFORM, useDensity=OFF)
+mdb.models['Model-1'].parts['step_file-2'].Set(faces=
+    mdb.models['Model-1'].parts['step_file-2'].faces.getSequenceFromMask((
+    '[#1 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['step_file-2'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['step_file-2'].sets['Set-1'], sectionName=
+    'Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].parts['step_file-1'].Set(faces=
+    mdb.models['Model-1'].parts['step_file-1'].faces.getSequenceFromMask((
+    '[#1 ]', ), ), name='Set-1')
+mdb.models['Model-1'].parts['step_file-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['step_file-1'].sets['Set-1'], sectionName=
+    'Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=OFF, name='step_file-1-1'
+    , part=mdb.models['Model-1'].parts['step_file-1'])
+mdb.models['Model-1'].rootAssembly.Instance(dependent=OFF, name='step_file-2-1'
+    , part=mdb.models['Model-1'].parts['step_file-2'])
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['step_file-2-1'].edges.getSequenceFromMask(
+    ('[#2 ]', ), ), name='m_Set-1')
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['step_file-2-1'].edges.getSequenceFromMask(
+    ('[#2 ]', ), ), name='s_Set-1')
+mdb.models['Model-1'].Tie(adjust=ON, master=
+    mdb.models['Model-1'].rootAssembly.sets['m_Set-1'], name='Constraint-1', 
+    positionToleranceMethod=COMPUTED, slave=
+    mdb.models['Model-1'].rootAssembly.sets['s_Set-1'], thickness=ON, 
+    tieRotations=ON)
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['step_file-2-1'].edges.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Set-3')
+del mdb.models['Model-1'].rootAssembly.sets['Set-3']
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['step_file-1-1'].edges.getSequenceFromMask(
+    ('[#2 ]', ), ), name='Set-3')
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['step_file-2-1'].edges.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Set-4')
+mdb.models['Model-1'].Tie(adjust=ON, master=
+    mdb.models['Model-1'].rootAssembly.sets['Set-3'], name='Constraint-2', 
+    positionToleranceMethod=COMPUTED, slave=
+    mdb.models['Model-1'].rootAssembly.sets['Set-4'], thickness=ON, 
+    tieRotations=ON)
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['step_file-2-1'].edges.getSequenceFromMask(
+    mask=('[#4 ]', ), )+\
+    mdb.models['Model-1'].rootAssembly.instances['step_file-1-1'].edges.getSequenceFromMask(
+    mask=('[#4 ]', ), ), name='Set-5')
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='BC-1', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-5'], u1=SET, u2=SET, 
+    u3=SET, ur1=SET, ur2=SET, ur3=SET)
+mdb.models['Model-1'].rootAssembly.setElementType(elemTypes=(ElemType(
+    elemCode=S4R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    hourglassControl=DEFAULT), ElemType(elemCode=S3, elemLibrary=STANDARD)), 
+    regions=(
+    mdb.models['Model-1'].rootAssembly.instances['step_file-1-1'].faces.getSequenceFromMask(
+    mask=('[#1 ]', ), )+\
+    mdb.models['Model-1'].rootAssembly.instances['step_file-2-1'].faces.getSequenceFromMask(
+    mask=('[#1 ]', ), ), ))
+mdb.models['Model-1'].rootAssembly.seedPartInstance(deviationFactor=0.1, 
+    minSizeFactor=0.1, regions=(
+    mdb.models['Model-1'].rootAssembly.instances['step_file-1-1'], ), size=0.1)
+mdb.models['Model-1'].rootAssembly.seedPartInstance(deviationFactor=0.1, 
+    minSizeFactor=0.1, regions=(
+    mdb.models['Model-1'].rootAssembly.instances['step_file-2-1'], ), size=0.1)
+mdb.models['Model-1'].rootAssembly.generateMesh(regions=(
+    mdb.models['Model-1'].rootAssembly.instances['step_file-1-1'], 
+    mdb.models['Model-1'].rootAssembly.instances['step_file-2-1']))
+# Save by ado on 2016_02_14-20.39.38; build 6.14-1 2014_06_04-18.11.02 134264
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].FrequencyStep(name='Step-1', numEigen=6, previous=
+    'Initial')
+# Save by ado on 2016_02_14-20.39.58; build 6.14-1 2014_06_04-18.11.02 134264
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Job-1', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, queue=None, resultsFormat=ODB, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'NO CONSTRAINT IS FORMED FOR THE TIED PAIR (ASSEMBLY_S_SET-1_CNS_, ASSEMBLY_M_SET-1_CNS_).  ALL THE SLAVE NODES ARE PART OF THE MASTER SURFACE.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY_S_SET-1_CNS_ IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_S_SET-1_CNS_-ASSEMBLY_M_SET-1_CNS_), ADJUSTMENT WAS SPECIFIED BUT NO NODE WAS ADJUSTED MORE THAN THE ADJUSTMENT DISTANCE = 2.22000E-16.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY_SET-4_CNS_ IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_SET-4_CNS_-ASSEMBLY_SET-3_CNS_), ADJUSTMENT WAS SPECIFIED BUT NO NODE WAS ADJUSTED MORE THAN THE ADJUSTMENT DISTANCE = 2.22000E-16.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 1 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Ansys Wing Modal Analysis\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 9884, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 71.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 1, 'stepTime': 1e-36, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Feb 14 20:40:26 2016', 
+    'jobName': 'Job-1'})
+del mdb.models['Model-1'].constraints['Constraint-1']
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['step_file-1-1'].edges.getSequenceFromMask(
+    ('[#8 ]', ), ), name='Set-6')
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['step_file-2-1'].edges.getSequenceFromMask(
+    ('[#2 ]', ), ), name='Set-7')
+mdb.models['Model-1'].Tie(adjust=ON, master=
+    mdb.models['Model-1'].rootAssembly.sets['Set-6'], name='Constraint-3', 
+    positionToleranceMethod=COMPUTED, slave=
+    mdb.models['Model-1'].rootAssembly.sets['Set-7'], thickness=ON, 
+    tieRotations=ON)
+# Save by ado on 2016_02_14-20.42.48; build 6.14-1 2014_06_04-18.11.02 134264
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY_SET-4_CNS_ IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_SET-4_CNS_-ASSEMBLY_SET-3_CNS_), ADJUSTMENT WAS SPECIFIED BUT NO NODE WAS ADJUSTED MORE THAN THE ADJUSTMENT DISTANCE = 2.22000E-16.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'SLAVE SURFACE ASSEMBLY_SET-7_CNS_ IS A NODE-BASED SURFACE USED WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE SHOULD BE USED INSTEAD.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'FOR *TIE PAIR (ASSEMBLY_SET-7_CNS_-ASSEMBLY_SET-6_CNS_), ADJUSTMENT WAS SPECIFIED BUT NO NODE WAS ADJUSTED MORE THAN THE ADJUSTMENT DISTANCE = 2.22000E-16.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'Boundary conditions are specified on inactive dof of 2 nodes. The nodes have been identified in node set WarnNodeBCInactiveDof.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Ansys Wing Modal Analysis\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 6424, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 70.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 6, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 1, 'stepTime': 1e-36, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Sun Feb 14 20:43:07 2016', 
+    'jobName': 'Job-1'})
+# Save by ado on 2016_02_14-20.45.31; build 6.14-1 2014_06_04-18.11.02 134264

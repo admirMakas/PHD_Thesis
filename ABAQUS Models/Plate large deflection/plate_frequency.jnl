@@ -1,0 +1,940 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].ConstrainedSketch(name='__profile__', sheetSize=1.0)
+mdb.models['Model-1'].sketches['__profile__'].rectangle(point1=(0.215, -0.17), 
+    point2=(-0.23, 0.165))
+mdb.models['Model-1'].sketches['__profile__'].ObliqueDimension(textPoint=(
+    -0.408065021038055, 0.014339342713356), value=0.2, vertex1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[2], vertex2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[3])
+mdb.models['Model-1'].sketches['__profile__'].ObliqueDimension(textPoint=(
+    0.018166147172451, -0.127116605639458), value=0.2, vertex1=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[3], vertex2=
+    mdb.models['Model-1'].sketches['__profile__'].vertices[0])
+mdb.models['Model-1'].sketches['__profile__'].dragEntity(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[5], points=((
+    -0.142198026180267, -0.035), (-0.14, -0.035), (-0.075, -0.065), (-0.05, 
+    -0.075), (-0.02, -0.08), (0.0, -0.08), (0.015, -0.08), (0.0, -0.095), (
+    -0.005, -0.1)))
+mdb.models['Model-1'].sketches['__profile__'].dragEntity(entity=
+    mdb.models['Model-1'].sketches['__profile__'].geometry[2], points=((-0.03, 
+    -0.0321088880300522), (-0.03, -0.03), (0.03, -0.035), (0.05, -0.035), (
+    0.065, -0.035), (0.08, -0.035), (0.095, -0.035), (0.105, -0.035), (0.095, 
+    -0.035), (0.1, -0.035)))
+mdb.models['Model-1'].Part(dimensionality=THREE_D, name='Part-1', type=
+    DEFORMABLE_BODY)
+mdb.models['Model-1'].parts['Part-1'].BaseShell(sketch=
+    mdb.models['Model-1'].sketches['__profile__'])
+del mdb.models['Model-1'].sketches['__profile__']
+mdb.models['Model-1'].Material(name='Material-1')
+mdb.models['Model-1'].materials['Material-1'].Elastic(table=((68700000000.0, 
+    0.3), ))
+mdb.models['Model-1'].HomogeneousShellSection(idealization=NO_IDEALIZATION, 
+    integrationRule=SIMPSON, material='Material-1', name='Section-1', 
+    numIntPts=5, poissonDefinition=DEFAULT, preIntegrate=OFF, temperature=
+    GRADIENT, thickness=0.005, thicknessField='', thicknessModulus=None, 
+    thicknessType=UNIFORM, useDensity=OFF)
+mdb.models['Model-1'].parts['Part-1'].Set(faces=
+    mdb.models['Model-1'].parts['Part-1'].faces.getSequenceFromMask(('[#1 ]', 
+    ), ), name='Set-1')
+mdb.models['Model-1'].parts['Part-1'].SectionAssignment(offset=0.0, 
+    offsetField='', offsetType=MIDDLE_SURFACE, region=
+    mdb.models['Model-1'].parts['Part-1'].sets['Set-1'], sectionName=
+    'Section-1', thicknessAssignment=FROM_SECTION)
+mdb.models['Model-1'].rootAssembly.DatumCsysByDefault(CARTESIAN)
+mdb.models['Model-1'].rootAssembly.Instance(dependent=OFF, name='Part-1-1', 
+    part=mdb.models['Model-1'].parts['Part-1'])
+mdb.models['Model-1'].rootAssembly.Set(edges=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].edges.getSequenceFromMask(
+    ('[#f ]', ), ), name='Set-1')
+mdb.models['Model-1'].DisplacementBC(amplitude=UNSET, createStepName='Initial', 
+    distributionType=UNIFORM, fieldName='', localCsys=None, name='BC-1', 
+    region=mdb.models['Model-1'].rootAssembly.sets['Set-1'], u1=SET, u2=SET, 
+    u3=SET, ur1=SET, ur2=SET, ur3=SET)
+mdb.models['Model-1'].StaticStep(name='Step-1', nlgeom=ON, previous='Initial')
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-1', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].Pressure(amplitude=UNSET, createStepName='Step-1', 
+    distributionType=UNIFORM, field='', magnitude=-1000.0, name='Load-1', 
+    region=mdb.models['Model-1'].rootAssembly.surfaces['Surf-1'])
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=1000.0)
+mdb.models['Model-1'].rootAssembly.setElementType(elemTypes=(ElemType(
+    elemCode=S4R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    hourglassControl=DEFAULT), ElemType(elemCode=S3, elemLibrary=STANDARD)), 
+    regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ), ))
+mdb.models['Model-1'].rootAssembly.seedPartInstance(deviationFactor=0.1, 
+    minSizeFactor=0.1, regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'], ), size=0.02)
+mdb.models['Model-1'].rootAssembly.seedPartInstance(deviationFactor=0.1, 
+    minSizeFactor=0.1, regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'], ), size=0.01)
+mdb.models['Model-1'].rootAssembly.generateMesh(regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'], ))
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Job-1', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, queue=None, resultsFormat=ODB, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Plate large deflection\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 9752, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 27.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 
+    'equilibrium': 2})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Wed Feb 03 12:01:19 2016', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=10000.0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Plate large deflection\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 8972, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 27.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 
+    'equilibrium': 2})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Wed Feb 03 12:03:09 2016', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=100000.0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Plate large deflection\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 11748, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 27.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 2, 'phase': STANDARD_PHASE, 
+    'equilibrium': 2})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Wed Feb 03 12:04:11 2016', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].ConstrainedSketch(name='__edit__', objectToCopy=
+    mdb.models['Model-1'].parts['Part-1'].features['Shell planar-1'].sketch)
+mdb.models['Model-1'].parts['Part-1'].projectReferencesOntoSketch(filter=
+    COPLANAR_EDGES, sketch=mdb.models['Model-1'].sketches['__edit__'], 
+    upToFeature=
+    mdb.models['Model-1'].parts['Part-1'].features['Shell planar-1'])
+mdb.models['Model-1'].sketches['__edit__'].dimensions[0].setValues(value=1)
+mdb.models['Model-1'].sketches['__edit__'].dimensions[1].setValues(value=1)
+mdb.models['Model-1'].sketches['__edit__'].dragEntity(entity=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[3], points=((
+    -0.609258472919464, 0.1), (-0.61, 0.1), (-0.46, 0.165), (-0.31, 0.265), (
+    -0.23, 0.29), (-0.145, 0.32), (-0.195, 0.365), (-0.235, 0.43), (-0.24, 
+    0.46), (-0.24, 0.495), (-0.24, 0.5)))
+mdb.models['Model-1'].sketches['__edit__'].dragEntity(entity=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[2], points=((0.1, 
+    -0.220712512731552), (0.105, -0.22), (0.28, -0.225), (0.37, -0.22), (0.405, 
+    -0.21), (0.455, -0.21), (0.47, -0.205), (0.495, -0.2), (0.505, -0.2)))
+mdb.models['Model-1'].sketches['__edit__'].dragEntity(entity=
+    mdb.models['Model-1'].sketches['__edit__'].geometry[4], points=((-0.495, 
+    0.447711408138275), (-0.495, 0.45), (-0.5, 0.45), (-0.5, 0.45)))
+mdb.models['Model-1'].parts['Part-1'].features['Shell planar-1'].setValues(
+    sketch=mdb.models['Model-1'].sketches['__edit__'])
+del mdb.models['Model-1'].sketches['__edit__']
+mdb.models['Model-1'].parts['Part-1'].regenerate()
+mdb.models['Model-1'].rootAssembly.regenerate()
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=10000.0)
+mdb.models['Model-1'].rootAssembly.setElementType(elemTypes=(ElemType(
+    elemCode=S4R, elemLibrary=STANDARD, secondOrderAccuracy=OFF, 
+    hourglassControl=DEFAULT), ElemType(elemCode=S3, elemLibrary=STANDARD)), 
+    regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ), ))
+mdb.models['Model-1'].rootAssembly.seedPartInstance(deviationFactor=0.1, 
+    minSizeFactor=0.1, regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'], ), size=0.1)
+mdb.models['Model-1'].rootAssembly.seedPartInstance(deviationFactor=0.1, 
+    minSizeFactor=0.1, regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'], ), size=0.05)
+mdb.models['Model-1'].rootAssembly.generateMesh(regions=(
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'], ))
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Plate large deflection\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 10412, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 27.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 
+    'equilibrium': 6})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Wed Feb 03 12:07:53 2016', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].StaticStep(name='Step-2', previous='Initial')
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-2', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].Pressure(amplitude=UNSET, createStepName='Step-2', 
+    distributionType=UNIFORM, field='', magnitude=10000.0, name='Load-2', 
+    region=mdb.models['Model-1'].rootAssembly.surfaces['Surf-2'])
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].HistoryOutputRequest(createStepName='Step-2', name=
+    'H-Output-2', variables=PRESELECT)
+mdb.models['Model-1'].FieldOutputRequest(createStepName='Step-2', name=
+    'F-Output-2', variables=('S', 'MISES', 'MISESMAX', 'TSHR', 'CTSHR', 
+    'ALPHA', 'TRIAX', 'VS', 'PS', 'CS11', 'ALPHAN', 'SSAVG', 'MISESONLY', 
+    'PRESSONLY', 'E', 'VE', 'PE', 'VEEQ', 'PEEQ', 'PEEQT', 'PEEQMAX', 'PEMAG', 
+    'PEQC', 'EE', 'IE', 'THE', 'NE', 'LE', 'ER', 'SE', 'SPE', 'SEPE', 'SEE', 
+    'SEP', 'SALPHA', 'U', 'UT', 'UR', 'V', 'VT', 'VR', 'RBANG', 'RBROT', 'RF', 
+    'RT', 'RM', 'CF', 'SF', 'TF', 'VF', 'ESF1', 'NFORC', 'NFORCSO', 'RBFOR', 
+    'BF', 'CORIOMAG', 'ROTAMAG', 'CENTMAG', 'CENTRIFMAG', 'GRAV', 'P', 'HP', 
+    'TRSHR', 'TRNOR', 'CSTRESS', 'CSTRESSETOS', 'CLINELOAD', 'CPOINTLOAD', 
+    'CDSTRESS', 'CDISP', 'CDISPETOS', 'CFORCE', 'CNAREA', 'CSTATUS', 'PPRESS', 
+    'ENER', 'ELEN', 'ELEDEN'))
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST V IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST VF IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST VT IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE REQUEST FOR MISES OUTPUT WILL BE REPLACED BY A REQUEST FOR S OUTPUT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE ALPHAN HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST LE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'STRAIN OUTPUT REQUEST NE IS NOT VALID FOR SOME ELEMENTS IN THIS ANALYSIS. THIS REQUEST IS SWITCHED TO THE STRAIN MEASURE, E.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CS11 IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST SEPE IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST SPE IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST TRIAX IS NOT AVAILABLE FOR THE MATERIAL FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST VE IS NOT AVAILABLE FOR THE MATERIAL FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST VEEQ IS NOT AVAILABLE FOR THE MATERIAL FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST VS IS NOT AVAILABLE FOR THE MATERIAL FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST ESF1 IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST SALPHA IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST SEE IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST SEP IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST NFORCSO IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE NLGEOM FLAG WAS NOT ACTIVE IN THE PREVIOUS GENERAL (NON-PERTURBATION) STEP.  THE ACTIVATION OF NLGEOM IN THE CURRENT STEP WILL LEAD TO INCORRECT RESULTS FOR THE SHELL ELEMENTS USED IN THIS ANALYSIS.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST V IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST VF IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST VT IS NOT AVAILABLE FOR THIS TYPE OF ANALYSIS', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE REQUEST FOR MISES OUTPUT WILL BE REPLACED BY A REQUEST FOR S OUTPUT', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT VARIABLE ALPHAN HAS NO COMPONENTS IN THIS ANALYSIS FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST CS11 IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST SEPE IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST SPE IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST TRIAX IS NOT AVAILABLE FOR THE MATERIAL FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST VE IS NOT AVAILABLE FOR THE MATERIAL FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST VEEQ IS NOT AVAILABLE FOR THE MATERIAL FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST VS IS NOT AVAILABLE FOR THE MATERIAL FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST ESF1 IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST SALPHA IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST SEE IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST SEP IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'OUTPUT REQUEST NFORCSO IS NOT AVAILABLE FOR ELEMENT TYPE S4R', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Plate large deflection\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Job-1'})
+del mdb.models['Model-1'].steps['Step-2']
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Plate large deflection\\Job-1.odb', 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 3684, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 27.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 
+    'equilibrium': 6})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Wed Feb 03 14:24:04 2016', 
+    'jobName': 'Job-1'})
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=15000.0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 13172, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 27.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 
+    'equilibrium': 6})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Wed Feb 03 16:27:00 2016', 
+    'jobName': 'Job-1'})
+mdb.models['Model-1'].loads['Load-1'].setValues(magnitude=10000.0)
+mdb.jobs['Job-1'].submit(consistencyChecking=OFF)
+mdb.jobs['Job-1']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Temp\\Job-1.odb', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 5020, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 0, 'phase': STANDARD_PHASE, 
+    'equilibrium': 0})
+mdb.jobs['Job-1']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Job-1', 'memory': 27.0})
+mdb.jobs['Job-1']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 1, 
+    'jobName': 'Job-1', 'severe': 0, 'iterations': 6, 'phase': STANDARD_PHASE, 
+    'equilibrium': 6})
+mdb.jobs['Job-1']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Job-1'})
+mdb.jobs['Job-1']._Message(JOB_COMPLETED, {'time': 'Wed Feb 03 17:06:51 2016', 
+    'jobName': 'Job-1'})
+# Save by ado on 2016_02_08-11.12.14; build 6.14-1 2014_06_04-18.11.02 134264
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['Model-1'].steps['Step-1']
+mdb.models['Model-1'].FrequencyStep(name='Step-1', numEigen=5, previous=
+    'Initial')
+del mdb.jobs['Job-1']
+mdb.Job(atTime=None, contactPrint=OFF, description='', echoPrint=OFF, 
+    explicitPrecision=SINGLE, getMemoryFromAnalysis=True, historyPrint=OFF, 
+    memory=90, memoryUnits=PERCENTAGE, model='Model-1', modelPrint=OFF, 
+    multiprocessingMode=DEFAULT, name='Freq_Job', nodalOutputPrecision=SINGLE, 
+    numCpus=1, numGPUs=0, queue=None, resultsFormat=ODB, scratch='', type=
+    ANALYSIS, userSubroutine='', waitHours=0, waitMinutes=0)
+mdb.jobs['Freq_Job'].submit(consistencyChecking=OFF)
+mdb.jobs['Freq_Job']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ERROR, {'phase': BATCHPRE_PHASE, 
+    'message': 'THERE ARE NO ELEMENTS WITH MASS MATRICES IN THE MODEL. THE FREQUENCY EXTRACTION CANNOT BE DONE. IF THIS IS A RESTART JOB, MAKE SURE THAT THE OLD JOB CONTAINS "*RESTART, WRITE"', 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'IN THIS TYPE OF ANALYSIS ONE WOULD NORMALLY EXPECT THAT A DENSITY FOR MATERIAL MATERIAL-1 WOULD BE DEFINED.', 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Plate large deflection\\Freq_Job.odb', 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ABORTED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase failed due to errors', 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ERROR, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(JOB_ABORTED, {
+    'message': 'Analysis Input File Processor exited with an error.', 
+    'jobName': 'Freq_Job'})
+mdb.models['Model-1'].materials['Material-1'].Density(table=((2711.0, ), ))
+# Save by ado on 2016_02_08-11.13.54; build 6.14-1 2014_06_04-18.11.02 134264
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Freq_Job'].submit(consistencyChecking=OFF)
+mdb.jobs['Freq_Job']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Plate large deflection\\Freq_Job.odb', 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 4136, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Freq_Job', 'memory': 32.0})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 1, 'stepTime': 1e-36, 'step': 1, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(JOB_COMPLETED, {
+    'time': 'Mon Feb 08 11:14:11 2016', 'jobName': 'Freq_Job'})
+mdb.models['Model-1'].StaticStep(name='Step-2', previous='Step-1')
+mdb.models['Model-1'].rootAssembly.Surface(name='Surf-3', side1Faces=
+    mdb.models['Model-1'].rootAssembly.instances['Part-1-1'].faces.getSequenceFromMask(
+    ('[#1 ]', ), ))
+mdb.models['Model-1'].Pressure(amplitude=UNSET, createStepName='Step-2', 
+    distributionType=UNIFORM, field='', magnitude=10000.0, name='Load-1', 
+    region=mdb.models['Model-1'].rootAssembly.surfaces['Surf-3'])
+# Save by ado on 2016_02_08-11.24.06; build 6.14-1 2014_06_04-18.11.02 134264
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Freq_Job'].submit(consistencyChecking=OFF)
+mdb.jobs['Freq_Job']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Plate large deflection\\Freq_Job.odb', 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 13020, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Freq_Job', 'memory': 39.0})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 1, 'stepTime': 1e-36, 'step': 1, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 2, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Freq_Job', 'memory': 27.0})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 1, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 2, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Freq_Job']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(JOB_COMPLETED, {
+    'time': 'Mon Feb 08 11:24:22 2016', 'jobName': 'Freq_Job'})
+mdb.models['Model-1'].FrequencyStep(name='Step-3', numEigen=5, previous=
+    'Step-2')
+mdb.jobs['Freq_Job'].submit(consistencyChecking=OFF)
+mdb.jobs['Freq_Job']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Plate large deflection\\Freq_Job.odb', 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 13468, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Freq_Job', 'memory': 39.0})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 1, 'stepTime': 1e-36, 'step': 1, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 2, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Freq_Job', 'memory': 33.0})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 1, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 2, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 1, 
+    'phase': STANDARD_PHASE, 'equilibrium': 1})
+mdb.jobs['Freq_Job']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 0, 'stepTime': 0.0, 'step': 3, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Freq_Job', 'memory': 32.0})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 1, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 2, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 3, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 4, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 5, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 1, 'stepTime': 1e-36, 'step': 3, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(JOB_COMPLETED, {
+    'time': 'Mon Feb 08 11:29:00 2016', 'jobName': 'Freq_Job'})
+mdb.models['Model-1'].steps['Step-2'].setValues(nlgeom=ON)
+# Save by ado on 2016_02_08-11.30.50; build 6.14-1 2014_06_04-18.11.02 134264
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+mdb.jobs['Freq_Job'].submit(consistencyChecking=OFF)
+mdb.jobs['Freq_Job']._Message(STARTED, {'phase': BATCHPRE_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(WARNING, {'phase': BATCHPRE_PHASE, 
+    'message': 'THE NLGEOM FLAG IS ACTIVATED BECAUSE IT WAS ACTIVE IN THE PREVIOUS STEP. GEOMETRIC NONLINEARITY IN THE BASE STATE WILL BE CONSIDERED IN THE CURRENT STEP.', 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FILE, {'phase': BATCHPRE_PHASE, 
+    'file': 'C:\\Users\\ado\\Documents\\ABAQUS Runs\\Plate large deflection\\Freq_Job.odb', 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(COMPLETED, {'phase': BATCHPRE_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STARTED, {'phase': STANDARD_PHASE, 
+    'clientHost': 'DESKTOP-5UE3P8V', 'handle': 6584, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 0, 'stepTime': 0.0, 'step': 1, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Freq_Job', 'memory': 39.0})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 1, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 2, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 3, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 4, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 0, 
+    'frame': 5, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 0.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 1, 'stepTime': 1e-36, 'step': 1, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 1, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 0.0, 'attempts': 0, 
+    'timeIncrement': 1.0, 'increment': 0, 'stepTime': 0.0, 'step': 2, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Freq_Job', 'memory': 33.0})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 1, 
+    'frame': 1, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1.0, 'increment': 1, 'stepTime': 1.0, 'step': 2, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 6, 
+    'phase': STANDARD_PHASE, 'equilibrium': 6})
+mdb.jobs['Freq_Job']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 2, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 0, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 0, 'stepTime': 0.0, 'step': 3, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(WARNING, {'phase': STANDARD_PHASE, 
+    'message': 'RESULTS MAY BE INACCURATE BECAUSE A PERTURBATION ANALYSIS HAS BEEN REQUESTED ABOUT AN NLGEOM BASE STATE WHICH CONTAINS 400 DLOADS WHICH CAUSE UNSYMMETRIC STIFFNESS CONTRIBUTIONS, BUT THE SYMMETRIC SOLVER IS BEING USED', 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(MEMORY_ESTIMATE, {'phase': STANDARD_PHASE, 
+    'jobName': 'Freq_Job', 'memory': 32.0})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 1, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 2, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 3, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 4, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(ODB_FRAME, {'phase': STANDARD_PHASE, 'step': 2, 
+    'frame': 5, 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(STATUS, {'totalTime': 1.0, 'attempts': 1, 
+    'timeIncrement': 1e-36, 'increment': 1, 'stepTime': 1e-36, 'step': 3, 
+    'jobName': 'Freq_Job', 'severe': 0, 'iterations': 0, 
+    'phase': STANDARD_PHASE, 'equilibrium': 0})
+mdb.jobs['Freq_Job']._Message(END_STEP, {'phase': STANDARD_PHASE, 'stepId': 3, 
+    'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(COMPLETED, {'phase': STANDARD_PHASE, 
+    'message': 'Analysis phase complete', 'jobName': 'Freq_Job'})
+mdb.jobs['Freq_Job']._Message(JOB_COMPLETED, {
+    'time': 'Mon Feb 08 11:31:08 2016', 'jobName': 'Freq_Job'})
+# Save by ado on 2016_02_08-11.37.09; build 6.14-1 2014_06_04-18.11.02 134264

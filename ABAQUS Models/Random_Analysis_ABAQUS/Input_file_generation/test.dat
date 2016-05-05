@@ -1,0 +1,474 @@
+1
+
+   Abaqus 6.14-1                                  Date 06-Feb-2016   Time 15:02:51
+   For use by Supplied By SSQ under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Simulia Corp.
+                                 Rising Sun Mills
+                                 166 Valley Street
+                           Providence, RI 02909-2499, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine DESKTOP-5UE3P8V 
+                          you are authorized to run
+                          Abaqus/Foundation until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      http://www.3ds.com/products/simulia/locations/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                    Abaqus 6.14-1                        * 
+                *                                                         * 
+                *          BUILD ID: 2014_06_04-18.11.02 134264           * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using release 6.14 manuals    * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *Heading
+  *Node
+  *Element, type=S4R
+  *Nset, nset=ASSEMBLY_PART-1-1_SET-1
+  *Elset, elset=ASSEMBLY_PART-1-1_SET-1
+  *Nset, nset=ASSEMBLY_SET-1
+  *Elset, elset=ASSEMBLY_SET-1
+  *Elset, elset=ASSEMBLY__SURF-1_SPOS
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-1
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-1
+  *material, name=MATERIAL-1
+  *density
+  *elastic
+  *shellsection, elset=ASSEMBLY_PART-1-1_SET-1, material=MATERIAL-1
+  *boundary
+  *shellsection, elset=ASSEMBLY_PART-1-1_SET-1, material=MATERIAL-1
+  *surface, type=ELEMENT, name=ASSEMBLY_SURF-1
+  *output, field, variable=PRESELECT
+  *output, field, variable=PRESELECT
+  *output, history, variable=PRESELECT
+  *output, field, variable=PRESELECT
+  *output, field, variable=PRESELECT
+  *output, history, variable=PRESELECT
+  *output, field, variable=PRESELECT
+  *output, field, variable=PRESELECT
+  *output, history, variable=PRESELECT
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *output, field, variable=PRESELECT
+  *Step, name=Step-2, nlgeom=NO, perturbation
+  *steadystatedynamics
+  *output, field, variable=PRESELECT
+  *output, history, variable=PRESELECT
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *Step, name=Step-2, nlgeom=NO, perturbation
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *output, field, variable=PRESELECT
+  *endstep
+  *Step, name=Step-2, nlgeom=NO, perturbation
+  *steadystatedynamics
+  *dsload, real
+  *output, field, variable=PRESELECT
+  *output, history, variable=PRESELECT
+  *endstep
+  *boundary
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *endstep
+  *Step, name=Step-2, nlgeom=NO, perturbation
+  *steadystatedynamics
+  *steadystatedynamics
+  *endstep
+
+     - (RAMP) OR (STEP) - INDICATE USE OF DEFAULT AMPLITUDES ASSOCIATED WITH THE STEP
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                    60
+          NUMBER OF NODES IS                                       77
+          NUMBER OF NODES DEFINED BY THE USER                      77
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                  462
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =  0.10000    
+       SYSTEM TIME (SEC)    =   0.0000    
+       TOTAL CPU TIME (SEC) =  0.10000    
+       WALLCLOCK TIME (SEC) =          0
+1
+
+   Abaqus 6.14-1                                  Date 06-Feb-2016   Time 15:02:55
+   For use by Supplied By SSQ under license from Dassault Systemes or its subsidiary.
+
+                                                                                               STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     C A L C U L A T I O N   O F   E I G E N V A L U E S
+
+                                            F O R   N A T U R A L   F R E Q U E N C I E S
+
+
+
+                                                                                          
+
+     THE LANCZOS EIGENSOLVER IS USED FOR THIS ANALYSIS
+     Abaqus WILL COMPUTE UNCOUPLED
+      STRUCTURAL AND ACOUSTIC MODES
+     NUMBER OF EIGENVALUES                      5
+     HIGHEST FREQUENCY OF INTEREST                  1.00000E+18
+     MAXIMUM NUMBER OF STEPS WITHIN RUN               35
+     BLOCK SIZE FOR LANCZOS PROCEDURE                  5
+     THE EIGENVECTORS ARE SCALED SO THAT 
+      THE LARGEST DISPLACEMENT ENTRY IN EACH VECTOR
+      IS UNITY
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+
+
+
+                    TOTAL MASS OF MODEL
+
+                       16.85056    
+
+
+                    LOCATION OF THE CENTER OF MASS OF THE MODEL
+
+                     -5.6250006E-02      3.7500009E-02       0.000000    
+
+
+                    MOMENTS OF INERTIA ABOUT THE ORIGIN
+                           I(XX)               I(YY)               I(ZZ)
+
+                       1.094639           3.116902           4.211505    
+
+
+                    PRODUCTS OF INERTIA ABOUT THE ORIGIN
+                           I(XY)               I(XZ)               I(YZ)
+
+                      3.5544162E-02       0.000000           0.000000    
+
+
+                    MOMENTS OF INERTIA ABOUT THE CENTER OF MASS
+                           I(XX)               I(YY)               I(ZZ)
+
+                       1.070943           3.063585           4.134493    
+
+
+                    PRODUCTS OF INERTIA ABOUT THE CENTER OF MASS
+                           I(XY)               I(XZ)               I(YZ)
+
+                     -8.3266727E-17       0.000000           0.000000    
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1         1.53E+006               19                 25
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                              E I G E N V A L U E    O U T P U T     
+
+ MODE NO      EIGENVALUE              FREQUENCY         GENERALIZED MASS   COMPOSITE MODAL DAMPING            
+                             (RAD/TIME)   (CYCLES/TIME)
+
+
+       1       84082.         289.97         46.150         2.5347         0.0000    
+       2      1.63922E+05     404.87         64.438         2.6089         0.0000    
+       3      4.13753E+05     643.24         102.37         2.4479         0.0000    
+       4      7.54560E+05     868.65         138.25         2.7195         0.0000    
+       5      9.09501E+05     953.68         151.78         2.6826         0.0000    
+
+
+          P A R T I C I P A T I O N   F A C T O R S
+
+ MODE NO    X-COMPONENT    Y-COMPONENT    Z-COMPONENT    X-ROTATION     Y-ROTATION     Z-ROTATION 
+
+       1     -2.10609E-16    2.97590E-16     1.8507        6.94028E-02    0.10410        2.44448E-17
+       2     -3.83660E-17    2.87951E-17    1.07068E-09    4.01503E-11   -0.62099        6.47795E-17
+       3     -1.50313E-13   -1.72747E-13    0.78434        2.94126E-02    4.41189E-02    9.93021E-14
+       4      3.62928E-11    4.20470E-11    4.76204E-09   -0.36777        2.44127E-10   -2.52047E-11
+       5      3.90857E-11    4.61354E-11   -1.23212E-11   -4.28693E-10   -1.60575E-09   -2.68534E-11
+
+
+                    E F F E C T I V E   M A S S
+
+ MODE NO    X-COMPONENT    Y-COMPONENT    Z-COMPONENT    X-ROTATION     Y-ROTATION     Z-ROTATION 
+
+       1      1.12430E-31    2.24474E-31     8.6820        1.22091E-02    2.74704E-02    1.51462E-33
+       2      3.84019E-33    2.16320E-33    2.99073E-18    4.20570E-21     1.0061        1.09480E-32
+       3      5.53071E-26    7.30477E-26     1.5059        2.11764E-03    4.76469E-03    2.41380E-26
+       4      3.58210E-21    4.80802E-21    6.16713E-17    0.36784        1.62079E-19    1.72767E-21
+       5      4.09816E-21    5.70978E-21    4.07248E-22    4.92999E-19    6.91682E-18    1.93443E-21
+
+ TOTAL        7.68031E-21    1.05179E-20     10.188        0.38216         1.0383        3.66212E-21
+1
+
+   Abaqus 6.14-1                                  Date 06-Feb-2016   Time 15:02:55
+   For use by Supplied By SSQ under license from Dassault Systemes or its subsidiary.
+
+                                                                                               STEP    2  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       2     S T E A D Y   S T A T E   A N A L Y S I S                
+
+
+                                                                                          
+          FULL STRUCTURAL-ACOUSTIC COUPLING IS USED IN THIS
+          FORCED RESPONSE ANALYSIS
+          FREQUENCY RANGE DEFINITIONS (CYCLES/TIME)
+                LOW         HIGH        POINTS        BIAS     SCALE FACTOR  TYPE OF SCALING
+
+
+              0.100         10.0           20         1.00         1.00       Logarithmic     
+          INTERVAL WILL BE DIVIDED FIRST USING EIGENFREQUENCIES.
+
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1         0.00E+000               16                 16
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                              INCREMENT NUMBER     1
+                              FREQUENCY =  0.10000000    
+
+
+
+                              INCREMENT NUMBER     2
+                              FREQUENCY =  0.12742750    
+
+
+
+                              INCREMENT NUMBER     3
+                              FREQUENCY =  0.16237767    
+
+
+
+                              INCREMENT NUMBER     4
+                              FREQUENCY =  0.20691381    
+
+
+
+                              INCREMENT NUMBER     5
+                              FREQUENCY =  0.26366509    
+
+
+
+                              INCREMENT NUMBER     6
+                              FREQUENCY =  0.33598183    
+
+
+
+                              INCREMENT NUMBER     7
+                              FREQUENCY =  0.42813324    
+
+
+
+                              INCREMENT NUMBER     8
+                              FREQUENCY =  0.54555948    
+
+
+
+                              INCREMENT NUMBER     9
+                              FREQUENCY =  0.69519280    
+
+
+
+                              INCREMENT NUMBER    10
+                              FREQUENCY =  0.88586679    
+
+
+
+                              INCREMENT NUMBER    11
+                              FREQUENCY =   1.1288379    
+
+
+
+                              INCREMENT NUMBER    12
+                              FREQUENCY =   1.4384499    
+
+
+
+                              INCREMENT NUMBER    13
+                              FREQUENCY =   1.8329807    
+
+
+
+                              INCREMENT NUMBER    14
+                              FREQUENCY =   2.3357215    
+
+
+
+                              INCREMENT NUMBER    15
+                              FREQUENCY =   2.9763514    
+
+
+
+                              INCREMENT NUMBER    16
+                              FREQUENCY =   3.7926902    
+
+
+
+                              INCREMENT NUMBER    17
+                              FREQUENCY =   4.8329302    
+
+
+
+                              INCREMENT NUMBER    18
+                              FREQUENCY =   6.1584821    
+
+
+
+                              INCREMENT NUMBER    19
+                              FREQUENCY =   7.8475997    
+
+
+
+                              INCREMENT NUMBER    20
+                              FREQUENCY =   10.000000    
+
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =  0.20000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.30000    
+       WALLCLOCK TIME (SEC) =          1

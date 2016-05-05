@@ -1,0 +1,27 @@
+********************************************************************************
+Probe Values Report, written on Tue Feb 02 10:41:28 2016
+
+Source
+-------
+
+   ODB: C:/Users/ado/Documents/ABAQUS Runs/Plate wt Hole Plasticity/Job-1.odb
+   Step: Step-1
+   Frame: Increment      2: Step Time =   0.1400
+   Variable: E, Max. In-Plane Principal (Not averaged)
+
+Loc 1 : Integration point values
+
+Probe values reported at integration points
+
+  Part Instance  Element ID        Type  Attached nodes
+--------------------------------------------------------------------------------
+    PART-1-1         135       CPS4R          51           3          52         353
+    PART-1-1         614       CPS4R          52           3         120         746
+
+
+  Part Instance  Element ID        Type   Int. Pt.  E, Max. In-Plane Principal
+--------------------------------------------------------------------------------
+    PART-1-1         135       CPS4R          1   892.E-06
+    PART-1-1         614       CPS4R          1   897.E-06
+
+

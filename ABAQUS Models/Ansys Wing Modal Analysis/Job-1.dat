@@ -1,0 +1,397 @@
+1
+
+   Abaqus 6.14-1                                  Date 14-Feb-2016   Time 20:43:02
+   For use by Supplied By SSQ under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Simulia Corp.
+                                 Rising Sun Mills
+                                 166 Valley Street
+                           Providence, RI 02909-2499, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine DESKTOP-5UE3P8V 
+                          you are authorized to run
+                          Abaqus/Foundation until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      http://www.3ds.com/products/simulia/locations/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                    Abaqus 6.14-1                        * 
+                *                                                         * 
+                *          BUILD ID: 2014_06_04-18.11.02 134264           * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using release 6.14 manuals    * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *Heading
+  *Node
+  *Element, type=S4R
+  *Nset, nset=ASSEMBLY_STEP_FILE-1-1_SET-1
+  *Elset, elset=ASSEMBLY_STEP_FILE-1-1_SET-1
+  *Node
+  *Element, type=S4R
+  *Nset, nset=ASSEMBLY_STEP_FILE-2-1_SET-1
+  *Elset, elset=ASSEMBLY_STEP_FILE-2-1_SET-1
+  *Nset, nset=ASSEMBLY_M_SET-1
+  *Nset, nset=ASSEMBLY_SET-3
+  *Nset, nset=ASSEMBLY_SET-4
+  *Nset, nset=ASSEMBLY_SET-5
+  *Nset, nset=ASSEMBLY_SET-6
+  *Nset, nset=ASSEMBLY_SET-7
+  *Nset, nset=ASSEMBLY_S_SET-1
+  *Elset, elset=ASSEMBLY_M_SET-1
+  *Elset, elset=ASSEMBLY_SET-3
+  *Elset, elset=ASSEMBLY_SET-4
+  *Elset, elset=ASSEMBLY_SET-5
+  *Elset, elset=ASSEMBLY_SET-6
+  *Elset, elset=ASSEMBLY_SET-7
+  *Elset, elset=ASSEMBLY_S_SET-1
+  *tie, name=ASSEMBLY_CONSTRAINT-2, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-3, adjust=YES
+  *surface, type=NODE, name=ASSEMBLY_SET-3_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-4_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-6_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-7_CNS_
+  *tie, name=ASSEMBLY_CONSTRAINT-2, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-3, adjust=YES
+  *surface, type=NODE, name=ASSEMBLY_SET-3_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-4_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-6_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-7_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-3_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-4_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-6_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-7_CNS_
+  *tie, name=ASSEMBLY_CONSTRAINT-2, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-3, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-2, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-3, adjust=YES
+  *shellsection, elset=ASSEMBLY_STEP_FILE-1-1_SET-1, material=AL
+  *shellsection, elset=ASSEMBLY_STEP_FILE-2-1_SET-1, material=AL
+  *material, name=AL
+  *density
+  *elastic
+  *shellsection, elset=ASSEMBLY_STEP_FILE-1-1_SET-1, material=AL
+  *shellsection, elset=ASSEMBLY_STEP_FILE-2-1_SET-1, material=AL
+  *boundary
+  *tie, name=ASSEMBLY_CONSTRAINT-2, adjust=YES
+
+ ***WARNING: SLAVE SURFACE ASSEMBLY_SET-4_CNS_ IS A NODE-BASED SURFACE USED 
+             WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED 
+             STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE 
+             SHOULD BE USED INSTEAD.
+
+ ***WARNING: FOR *TIE PAIR (ASSEMBLY_SET-4_CNS_-ASSEMBLY_SET-3_CNS_), 
+             ADJUSTMENT WAS SPECIFIED BUT NO NODE WAS ADJUSTED MORE THAN THE 
+             ADJUSTMENT DISTANCE = 2.22000E-16.
+  *tie, name=ASSEMBLY_CONSTRAINT-3, adjust=YES
+
+ ***WARNING: SLAVE SURFACE ASSEMBLY_SET-7_CNS_ IS A NODE-BASED SURFACE USED 
+             WITH SURFACE TO SURFACE APPROACH.  IN ORDER TO OBTAIN IMPROVED 
+             STRESS ACCURACY WITH THIS APPROACH, AN ELEMENT-BASED SURFACE 
+             SHOULD BE USED INSTEAD.
+
+ ***WARNING: FOR *TIE PAIR (ASSEMBLY_SET-7_CNS_-ASSEMBLY_SET-6_CNS_), 
+             ADJUSTMENT WAS SPECIFIED BUT NO NODE WAS ADJUSTED MORE THAN THE 
+             ADJUSTMENT DISTANCE = 2.22000E-16.
+  *tie, name=ASSEMBLY_CONSTRAINT-2, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-3, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-2, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-3, adjust=YES
+  *shellsection, elset=ASSEMBLY_STEP_FILE-1-1_SET-1, material=AL
+  *shellsection, elset=ASSEMBLY_STEP_FILE-2-1_SET-1, material=AL
+  *surface, type=NODE, name=ASSEMBLY_SET-3_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-4_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-6_CNS_
+  *surface, type=NODE, name=ASSEMBLY_SET-7_CNS_
+  *tie, name=ASSEMBLY_CONSTRAINT-2, adjust=YES
+  *tie, name=ASSEMBLY_CONSTRAINT-3, adjust=YES
+  *output, field, variable=PRESELECT
+  *output, field, variable=PRESELECT
+  *output, field, variable=PRESELECT
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *output, field, variable=PRESELECT
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *output, field, variable=PRESELECT
+  *endstep
+  *boundary
+  *Step, name=Step-1, nlgeom=NO, perturbation
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON
+  *endstep
+
+ ***WARNING: DEGREE OF FREEDOM 1 IS NOT ACTIVE ON NODE 651 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 2 IS NOT ACTIVE ON NODE 651 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 3 IS NOT ACTIVE ON NODE 651 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 4 IS NOT ACTIVE ON NODE 651 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 5 IS NOT ACTIVE ON NODE 651 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 6 IS NOT ACTIVE ON NODE 651 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 1 IS NOT ACTIVE ON NODE 663 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 2 IS NOT ACTIVE ON NODE 663 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 3 IS NOT ACTIVE ON NODE 663 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 4 IS NOT ACTIVE ON NODE 663 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 5 IS NOT ACTIVE ON NODE 663 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: DEGREE OF FREEDOM 6 IS NOT ACTIVE ON NODE 663 INSTANCE 
+             STEP_FILE-2-1 - THIS BOUNDARY CONDITION IS IGNORED
+
+ ***WARNING: Boundary conditions are specified on inactive dof of 2 nodes. The 
+             nodes have been identified in node set WarnNodeBCInactiveDof.
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                  1200
+          NUMBER OF NODES IS                                     1326
+          NUMBER OF NODES DEFINED BY THE USER                    1326
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                 7956
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =  0.10000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.20000    
+       WALLCLOCK TIME (SEC) =          0
+1
+
+   Abaqus 6.14-1                                  Date 14-Feb-2016   Time 20:43:06
+   For use by Supplied By SSQ under license from Dassault Systemes or its subsidiary.
+
+                                                                                               STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     C A L C U L A T I O N   O F   E I G E N V A L U E S
+
+                                            F O R   N A T U R A L   F R E Q U E N C I E S
+
+
+
+                                                                                          
+
+     THE LANCZOS EIGENSOLVER IS USED FOR THIS ANALYSIS
+     Abaqus WILL COMPUTE UNCOUPLED
+      STRUCTURAL AND ACOUSTIC MODES
+     NUMBER OF EIGENVALUES                      6
+     HIGHEST FREQUENCY OF INTEREST                  1.00000E+18
+     MAXIMUM NUMBER OF STEPS WITHIN RUN               35
+     BLOCK SIZE FOR LANCZOS PROCEDURE                  6
+     THE EIGENVECTORS ARE SCALED SO THAT 
+      THE LARGEST DISPLACEMENT ENTRY IN EACH VECTOR
+      IS UNITY
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+
+
+
+                    TOTAL MASS OF MODEL
+
+                       274.9910    
+
+
+                    LOCATION OF THE CENTER OF MASS OF THE MODEL
+
+                      0.4935652         -5.3435173E-18     -4.0928196E-16
+
+
+                    MOMENTS OF INERTIA ABOUT THE ORIGIN
+                           I(XX)               I(YY)               I(ZZ)
+
+                       573.8786           664.2892           91.45303    
+
+
+                    PRODUCTS OF INERTIA ABOUT THE ORIGIN
+                           I(XY)               I(XZ)               I(YZ)
+
+                      1.7087026E-16      6.7168493E-14     -2.0039190E-04
+
+
+                    MOMENTS OF INERTIA ABOUT THE CENTER OF MASS
+                           I(XX)               I(YY)               I(ZZ)
+
+                       573.8786           597.2995           24.46339    
+
+
+                    PRODUCTS OF INERTIA ABOUT THE CENTER OF MASS
+                           I(XY)               I(XZ)               I(YZ)
+
+                     -5.5438399E-16      1.1618288E-14     -2.0039190E-04
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1         2.21E+008               19                 70
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                              E I G E N V A L U E    O U T P U T     
+
+ MODE NO      EIGENVALUE              FREQUENCY         GENERALIZED MASS   COMPOSITE MODAL DAMPING            
+                             (RAD/TIME)   (CYCLES/TIME)
+
+
+       1       903.16         30.053         4.7830         68.693         0.0000    
+       2       24956.         157.98         25.143         72.170         0.0000    
+       3       40341.         200.85         31.966         70.773         0.0000    
+       4       57243.         239.26         38.079         53.951         0.0000    
+       5       93582.         305.91         48.687         49.716         0.0000    
+       6      1.18988E+05     344.95         54.900         24.742         0.0000    
+
+
+          P A R T I C I P A T I O N   F A C T O R S
+
+ MODE NO    X-COMPONENT    Y-COMPONENT    Z-COMPONENT    X-ROTATION     Y-ROTATION     Z-ROTATION 
+
+       1     -2.71218E-06     1.5816       -5.46123E-07    -1.7498       -2.54450E-06    0.78708    
+       2      1.68974E-05   -0.86494        1.36413E-07    -1.3517        1.74615E-05   -0.53496    
+       3       1.5441        1.04997E-05    1.60553E-04    9.86781E-06     1.7781        9.16059E-06
+       4     -1.01214E-05   -0.15417        8.31030E-07   -0.15671       -1.68421E-05    0.49508    
+       5     -2.40533E-06    0.51902        2.50562E-08     1.0345        4.29705E-06    0.30089    
+       6     -6.03312E-02    2.46262E-06   -2.20064E-04    9.43594E-07   -8.46703E-02   -7.81003E-06
+
+
+                    E F F E C T I V E   M A S S
+
+ MODE NO    X-COMPONENT    Y-COMPONENT    Z-COMPONENT    X-ROTATION     Y-ROTATION     Z-ROTATION 
+
+       1      5.05300E-10     171.82        2.04877E-11     210.33        4.44751E-10     42.555    
+       2      2.06063E-08     53.993        1.34299E-12     131.86        2.20051E-08     20.654    
+       3       168.74        7.80225E-09    1.82435E-06    6.89145E-09     223.77        5.93904E-09
+       4      5.52689E-09     1.2823        3.72595E-11     1.3250        1.53036E-08     13.223    
+       5      2.87636E-10     13.393        3.12121E-14     53.207        9.17981E-10     4.5011    
+       6      9.00571E-02    1.50047E-10    1.19820E-06    2.20294E-11    0.17738        1.50917E-09
+
+ TOTAL         168.83         240.49        3.02261E-06     396.73         223.95         80.934    
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH     17 WARNING MESSAGES ON THE DAT FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =  0.40000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.50000    
+       WALLCLOCK TIME (SEC) =          1

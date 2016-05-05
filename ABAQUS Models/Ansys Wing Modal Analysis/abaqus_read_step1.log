@@ -1,0 +1,118 @@
+--------------------------------------------------------------------------------
+Translator Name    : Spatial InterOp Connect ( Version : 23 0 2)
+System Name        : Windows_NT
+Machine Name       : DESKTOP-5UE3P8V
+User Name          : ado
+Source System      : STEP
+Destination System : ACIS
+Input File         : C:\Users\ado\Documents\ABAQUS Runs\Ansys Wing Modal Analysis\step_file.step
+Start Time         : Sun Feb 14 20:31:52 2016
+
+--------------------------------------------------------------------------------
+Message : === Translation Options ===
+Message : TranslateAllClass2SheetsInSingleBody : true
+Message : TranslateAttributes : true
+Message : Representation : BRep+Assembly
+Message : Healing : true
+Message : ===========================
+-------------------------Source File Header Information-------------------------
+Modification Date        : 2016-02-15T01:15:33+19:00
+File Name                : step_file.step
+Author                   : ' '
+Organization             : ' '
+Source System            : 3D_Kernel_IO2014-beta_14006 by CT CoreTechnologie
+Version                  : HyperWorksVersion-13.0.0.119
+Authorization            :  
+File Description         : 'CAx-IF Rec.Pracs.--- Model Styling and Organization---1.2---2011-12-15'
+Implementation Level     : 1
+File Schema Name         : 'AUTOMOTIVE_DESIGN { 1 0 10303 214 1 1 1 1 }'
+Document Type            : Part
+Units                    : METER
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Source Document Preprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Target Document Preprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Start BRep
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+BRep Source Representation Preprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+BRep Source Representation Postprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+BRep Target Representation Postprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+End BRep
+------------------------Representation Conversion Summary-----------------------
+No. of Acorn Bodies                       :    0
+No. of Mixed Bodies                       :    0
+No. of Solid Bodies                       :    2
+No. of Wire Bodies                        :    2
+No. of Free Surfaces                      :    0
+No. of Free Curves                        :    0
+No. of Sheet Bodies                       :    0
+No. of Free Points                        :    0
+--------------------------------------------------------------------------------
+BRep Conversion Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Start DocumentFeature
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+DocumentFeature Source Representation Preprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+DocumentFeature Source Representation Postprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+DocumentFeature Target Representation Postprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+End DocumentFeature
+------------------------Representation Conversion Summary-----------------------
+No. of Selection Sets                     :    0
+No. of Working Coordinate Systems         :    0
+No. of Associative Groups                 :    0
+No. of Layer Filters                      :    0
+--------------------------------------------------------------------------------
+DocumentFeature Conversion Result : No Entity to Translate
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Start Assembly
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Assembly Source Representation Preprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Assembly Source Representation Postprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Assembly Target Representation Postprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+End Assembly
+Assembly Conversion Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Target Document Postprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Target Document Postprocessing Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+---------------------------Document Conversion Summary--------------------------
+No. of Items of DocumentFeature Representation :    0
+No. of Items of BRep Representation            :    4
+--------------------------------------------------------------------------------
+Finish Time : Sun Feb 14 20:31:52 2016
+
+--------------------------------------------------------------------------------
+Translation Result : Success
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------

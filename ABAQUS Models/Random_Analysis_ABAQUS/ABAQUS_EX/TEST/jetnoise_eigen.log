@@ -1,0 +1,325 @@
+*********************************************************************
+Abaqus/fromNastran 6.13-1
+
+reading bulk data from: C:\Users\WSUadm\Desktop\ABAQUS_EX\TEST\jetnoise_eigen.dat
+ creating Abaqus input: C:\Users\WSUadm\Desktop\ABAQUS_EX\TEST\jetnoise_eigen.inp
+writing diagnostics to: C:\Users\WSUadm\Desktop\ABAQUS_EX\TEST\jetnoise_eigen.log
+
+ environment variables: fromnastran_wtmass_fixup <not present>
+                      : fromnastran_distribution <not present>
+                      : fromnastran_pbar_zero_reset <not present>
+                      : fromnastran_loadcases <not present>
+                      : fromnastran_surface_based_coupling <not present>
+                      : fromnastran_cquad4 <not present>
+                      : fromnastran_chexa <not present>
+                      : fromnastran_ctetra <not present>
+                      : fromnastran_cbar <not present>
+                      : fromnastran_beam_offset_coupling <not present>
+                      : fromnastran_beam_orientation_vector <not present>
+                      : fromnastran_shell_general_section <not present>
+                      : fromnastran_eigensolver <not present>
+                      : fromnastran_plotel <not present>
+                      : fromnastran_cdh_weld <not present>
+                      : fromnastran_spoint_dof <not present>
+
+command line arguments: wtmass_fixup=ON
+                      : distribution=preservePID
+                      : pbar_zero_reset=1e-20
+                      : loadcases=ON
+                      : surface_based_coupling=ON
+                      : cquad4=S4R
+                      : chexa=C3D8I
+                      : ctetra=C3D10M
+                      : cbar=B31
+                      : beam_offset_coupling=ON
+                      : beam_orientation_vector=ON
+                      : shell_general_section=OFF
+                      : plotel <not present>
+                      : cdh_weld <not present>
+                      : eigensolver <not present>
+                      : spoint_dof <not present, using default=9>
+**ignored line 1: "1"
+**ignored line 3: "   Abaqus 6.13-1                                  Date 05-Feb-2016   Time 14:33:24"
+**ignored line 4: "   For use at  under license from Dassault Systemes or its subsidiary."
+**ignored line 8: "                         The Abaqus Software is a product of:"
+**ignored line 10: "                           Dassault Systemes Simulia Corp."
+**ignored line 11: "                                 Rising Sun Mills"
+**ignored line 12: "                                 166 Valley Street"
+**ignored line 13: "                           Providence, RI 02909-2499, USA"
+**ignored line 17: "                   Available for internal use at . "
+**ignored line 18: "                   The Abaqus Online Support System is accessible"
+**ignored line 19: "                   through the "My Support" section of the SIMULIA"
+**ignored line 20: "                   Home Page at http://www.simulia.com."
+**ignored line 22: "                   Support policies for academic licenses are described"
+**ignored line 23: "                   on the SIMULIA web site at"
+**ignored line 24: "                   http://www.3ds.com/products/simulia/academics/"
+**ignored line 26: "                          On machine luigi "
+**ignored line 27: "                          you are authorized to run"
+**ignored line 28: "                          Abaqus/Foundation until 30-Aug-2016"
+**ignored line 30: "                          Your site id is: 200000000026328 "
+**ignored line 34: "                    For assistance or any other information you may"
+**ignored line 35: "                    obtain contact information for your local office"
+**ignored line 36: "                    from the world wide web at:"
+**ignored line 38: "                      http://www.3ds.com/products/simulia/locations/"
+**ignored line 41: "                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * "
+**ignored line 42: "                *                                                         * "
+**ignored line 43: "                *                   *****************                     * "
+**ignored line 44: "                *                   *  N O T I C E  *                     * "
+**ignored line 45: "                *                   *****************                     * "
+**ignored line 46: "                *                                                         * "
+**ignored line 47: "                *                                                         * "
+**ignored line 48: "                *                    Abaqus 6.13-1                        * "
+**ignored line 49: "                *                                                         * "
+**ignored line 50: "                *          BUILD ID: 2013_05_15-22.28.56 126354           * "
+**ignored line 51: "                *                                                         * "
+**ignored line 52: "                *                                                         * "
+**ignored line 53: "                *  Please make sure you are using release 6.13 manuals    * "
+**ignored line 54: "                *  plus the notes accompanying this release.              * "
+**ignored line 55: "                *                                                         * "
+**ignored line 56: "                *                                                         * "
+**ignored line 57: "                *                                                         * "
+**ignored line 58: "                *                                                         * "
+**ignored line 59: "                *                                                         * "
+**ignored line 60: "                *   This program may not be used for commercial purposes  * "
+**ignored line 61: "                *           without payment of a commercial fee.          * "
+**ignored line 62: "                *                                                         * "
+**ignored line 63: "                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * "
+**ignored line 70: "     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION"
+**ignored line 71: "   *******************************************************"
+**ignored line 74: "     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION"
+**ignored line 75: "   ***********************************************************"
+**ignored line 80: "     OPTIONS BEING PROCESSED"
+**ignored line 81: "   ***************************"
+**ignored line 84: "  *Heading"
+**ignored line 85: "  *Node"
+**ignored line 86: "  *Element, type=B23"
+**ignored line 87: "  *Elset, elset=ASSEMBLY_PART-1-1_ALL"
+**ignored line 88: "  *Nset, nset=ASSEMBLY_ALL"
+**ignored line 89: "  *Nset, nset=ASSEMBLY_N2"
+**ignored line 90: "  *Nset, nset=ASSEMBLY_SUPP"
+**ignored line 91: "  *beamgeneralsection, elset=ASSEMBLY_PART-1-1_ALL, density=0.0001, section=GENERAL"
+**ignored line 92: "  *boundary"
+**ignored line 93: "  *boundary"
+**ignored line 94: "  *beamgeneralsection, elset=ASSEMBLY_PART-1-1_ALL, density=0.0001, section=GENERAL"
+**ignored line 95: "  *output, field, variable=PRESELECT"
+**ignored line 96: "  *output, field, variable=PRESELECT"
+**ignored line 97: "  *output, field, variable=PRESELECT"
+**ignored line 98: "  *Step, name=Step-1, nlgeom=NO, perturbation"
+**ignored line 99: "  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON"
+**ignored line 100: "  *output, field, variable=PRESELECT"
+**ignored line 101: "  *Step, name=Step-1, nlgeom=NO, perturbation"
+**ignored line 102: "  *Step, name=Step-1, nlgeom=NO, perturbation"
+**ignored line 103: "  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON"
+**ignored line 104: "  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON"
+**ignored line 105: "  *output, field, variable=PRESELECT"
+**ignored line 106: "  *endstep"
+**ignored line 107: "  *boundary"
+**ignored line 108: "  *boundary"
+**ignored line 109: "  *Step, name=Step-1, nlgeom=NO, perturbation"
+**ignored line 110: "  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON"
+**ignored line 111: "  *frequency, eigensolver=LANCZOS, normalization=DISPLACEMENT, acousticcoupling=ON"
+**ignored line 112: "  *endstep"
+**ignored line 116: "                            P R O B L E M   S I Z E"
+**ignored line 119: "          NUMBER OF ELEMENTS IS                                    20"
+**ignored line 120: "          NUMBER OF NODES IS                                       41"
+**ignored line 121: "          NUMBER OF NODES DEFINED BY THE USER                      21"
+**ignored line 122: "          NUMBER OF INTERNAL NODES GENERATED BY THE PROGRAM        20"
+**ignored line 123: "          TOTAL NUMBER OF VARIABLES IN THE MODEL                  103"
+**ignored line 124: "          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER"
+**ignored line 125: "           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)"
+**ignored line 129: "                              END OF USER INPUT PROCESSING"
+**ignored line 133: "     JOB TIME SUMMARY"
+**ignored line 134: "       USER TIME (SEC)      =  0.10000    "
+**ignored line 135: "       SYSTEM TIME (SEC)    =  0.10000    "
+**ignored line 136: "       TOTAL CPU TIME (SEC) =  0.20000    "
+**ignored line 137: "       WALLCLOCK TIME (SEC) =          0"
+**ignored line 138: "1"
+**ignored line 140: "   Abaqus 6.13-1                                  Date 05-Feb-2016   Time 14:33:35"
+**ignored line 141: "   For use at  under license from Dassault Systemes or its subsidiary."
+**ignored line 143: "                                                                                               STEP    1  INCREMENT    1"
+**ignored line 147: "                        S T E P       1     C A L C U L A T I O N   O F   E I G E N V A L U E S"
+**ignored line 149: "                                            F O R   N A T U R A L   F R E Q U E N C I E S"
+**ignored line 155: "     THE LANCZOS EIGENSOLVER IS USED FOR THIS ANALYSIS"
+**ignored line 156: "     Abaqus WILL COMPUTE UNCOUPLED"
+**ignored line 157: "      STRUCTURAL AND ACOUSTIC MODES"
+**ignored line 158: "     NUMBER OF EIGENVALUES                     20"
+**ignored line 159: "     HIGHEST FREQUENCY OF INTEREST                  1.00000E+18"
+**ignored line 160: "     MAXIMUM NUMBER OF STEPS WITHIN RUN               35"
+**ignored line 161: "     BLOCK SIZE FOR LANCZOS PROCEDURE                  7"
+**ignored line 162: "     THE EIGENVECTORS ARE SCALED SO THAT "
+**ignored line 163: "      THE LARGEST DISPLACEMENT ENTRY IN EACH VECTOR"
+**ignored line 164: "      IS UNITY"
+**ignored line 166: "     THIS IS A LINEAR PERTURBATION STEP."
+**ignored line 167: "     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE"
+**ignored line 171: "                    TOTAL MASS OF MODEL"
+**ignored line 173: "                       5.000000    "
+**ignored line 176: "                    LOCATION OF THE CENTER OF MASS OF THE MODEL"
+**ignored line 178: "                       2.500000           0.000000    "
+**ignored line 181: "                    MOMENT OF INERTIA ABOUT THE ORIGIN"
+**ignored line 182: "                           I(ZZ)"
+**ignored line 184: "                       41.66667    "
+**ignored line 187: "                    PRODUCT OF INERTIA ABOUT THE ORIGIN"
+**ignored line 188: "                           I(XY)"
+**ignored line 190: "                       0.000000    "
+**ignored line 193: "                    MOMENT OF INERTIA ABOUT THE CENTER OF MASS"
+**ignored line 194: "                           I(ZZ)"
+**ignored line 196: "                       10.41667    "
+**ignored line 199: "                    PRODUCT OF INERTIA ABOUT THE CENTER OF MASS"
+**ignored line 200: "                           I(XY)"
+**ignored line 202: "                       0.000000    "
+**ignored line 204: "                   M E M O R Y   E S T I M A T E"
+**ignored line 206: " PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO"
+**ignored line 207: "              OPERATIONS           REQUIRED          MINIMIZE I/O"
+**ignored line 208: "             PER ITERATION         (MBYTES)           (MBYTES)"
+**ignored line 210: "     1         5.10E+003               16                 25"
+**ignored line 212: " NOTE:"
+**ignored line 213: "      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,"
+**ignored line 214: "          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST"
+**ignored line 215: "          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN."
+**ignored line 216: "      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE"
+**ignored line 217: "          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN"
+**ignored line 218: "          INTO ACCOUNT IF APPLICABLE. "
+**ignored line 219: "      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE "
+**ignored line 220: "          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR "
+**ignored line 221: "          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN"
+**ignored line 222: "          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL"
+**ignored line 223: "          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC "
+**ignored line 224: "          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS."
+**ignored line 225: "      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS"
+**ignored line 226: "          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING "
+**ignored line 227: "          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, "
+**ignored line 228: "          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE"
+**ignored line 229: "          PRINTED HERE."
+**ignored line 230: "      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF"
+**ignored line 231: "          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE"
+**ignored line 232: "          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK"
+**ignored line 233: "          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE"
+**ignored line 234: "          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL"
+**ignored line 235: "          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK"
+**ignored line 236: "          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY"
+**ignored line 237: "          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE"
+**ignored line 238: "          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE"
+**ignored line 239: "          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE."
+**ignored line 240: "      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY."
+**ignored line 243: "                              E I G E N V A L U E    O U T P U T     "
+**ignored line 246: "                             (RAD/TIME)   (CYCLES/TIME)"
+**ignored line 249: "       1       97.460         9.8722         1.5712         2.4974         0.0000    "
+**ignored line 250: "       2       119.98         10.953         1.7433         1.3732         0.0000    "
+**ignored line 251: "       3       187.68         13.700         2.1804         1.2175         0.0000    "
+**ignored line 252: "       4       297.93         17.261         2.7471         1.2838         0.0000    "
+**ignored line 253: "       5       429.75         20.730         3.2994         1.0606         0.0000    "
+**ignored line 254: "       6       1571.1         39.637         6.3084         2.4605         0.0000    "
+**ignored line 255: "       7       1757.2         41.918         6.6715         1.3748         0.0000    "
+**ignored line 256: "       8       2224.9         47.169         7.5072         1.3141         0.0000    "
+**ignored line 257: "       9       2863.3         53.510         8.5164         1.3911         0.0000    "
+**ignored line 258: "      10       3535.6         59.461         9.4634         1.2161         0.0000    "
+**ignored line 259: "      11       8192.7         90.513         14.406         2.3084         0.0000    "
+**ignored line 260: "      12       8844.6         94.046         14.968         1.3666         0.0000    "
+**ignored line 261: "      13       10420.         102.08         16.246         1.3231         0.0000    "
+**ignored line 262: "      14       12443.         111.55         17.753         1.4469         0.0000    "
+**ignored line 263: "      15       14419.         120.08         19.111         1.2111         0.0000    "
+**ignored line 264: "      16       30720.         175.27         27.895        1.04167E-02     0.0000    "
+**ignored line 265: "      17       32556.         180.43         28.717         17.204         0.0000    "
+**ignored line 266: "      18       37238.         192.97         30.713         6.9291         0.0000    "
+**ignored line 267: "      19       43707.         209.06         33.273         5.1885         0.0000    "
+**ignored line 268: "      20       50952.         225.73         35.925         4.9042         0.0000    "
+**ignored line 271: "          P A R T I C I P A T I O N   F A C T O R S"
+**ignored line 275: "       1      3.08950E-17    0.25478         0.0000         0.0000         0.0000        0.63694    "
+**ignored line 276: "       2     -2.75216E-17   -3.38567E-16     0.0000         0.0000         0.0000        -1.2669    "
+**ignored line 277: "       3     -3.98390E-17   -0.61845         0.0000         0.0000         0.0000        -1.5461    "
+**ignored line 278: "       4     -1.93441E-16    3.23498E-15     0.0000         0.0000         0.0000        -2.0111    "
+**ignored line 279: "       5      1.54159E-16     1.6504         0.0000         0.0000         0.0000         4.1261    "
+**ignored line 280: "       6     -7.07554E-17   -1.24087E-16     0.0000         0.0000         0.0000       -0.32052    "
+**ignored line 281: "       7     -1.53151E-17    0.18204         0.0000         0.0000         0.0000        0.45509    "
+**ignored line 282: "       8     -1.04806E-16    6.33627E-17     0.0000         0.0000         0.0000       -0.24475    "
+**ignored line 283: "       9      6.23259E-17   -3.77007E-02     0.0000         0.0000         0.0000       -9.42518E-02"
+**ignored line 284: "      10     -7.82025E-17   -4.25077E-16     0.0000         0.0000         0.0000       -1.85265E-02"
+**ignored line 285: "      11      1.35903E-16    8.70288E-02     0.0000         0.0000         0.0000        0.21757    "
+**ignored line 286: "      12      7.38727E-16   -6.50952E-15     0.0000         0.0000         0.0000       -0.43146    "
+**ignored line 287: "      13     -8.11068E-17    0.21741         0.0000         0.0000         0.0000        0.54353    "
+**ignored line 288: "      14     -6.05440E-17   -5.08339E-16     0.0000         0.0000         0.0000        0.74727    "
+**ignored line 289: "      15      2.39419E-15   -0.63978         0.0000         0.0000         0.0000        -1.5995    "
+**ignored line 290: "      16      1.21373E-10    2.87502E-10     0.0000         0.0000         0.0000        -2.5000    "
+**ignored line 291: "      17     -1.96932E-13    1.54762E-02     0.0000         0.0000         0.0000        3.86905E-02"
+**ignored line 292: "      18      2.30874E-12    5.48934E-12     0.0000         0.0000         0.0000       -2.60668E-02"
+**ignored line 293: "      19      5.15161E-11   -3.37025E-04     0.0000         0.0000         0.0000       -8.42563E-04"
+**ignored line 294: "      20     -5.13085E-11   -1.23140E-10     0.0000         0.0000         0.0000       -1.64351E-02"
+**ignored line 297: "                    E F F E C T I V E   M A S S"
+**ignored line 301: "       1      2.38376E-33    0.16211         0.0000         0.0000         0.0000         1.0132    "
+**ignored line 302: "       2      1.04009E-33    1.57402E-31     0.0000         0.0000         0.0000         2.2040    "
+**ignored line 303: "       3      1.93236E-33    0.46567         0.0000         0.0000         0.0000         2.9105    "
+**ignored line 304: "       4      4.80374E-32    1.34346E-29     0.0000         0.0000         0.0000         5.1920    "
+**ignored line 305: "       5      2.52045E-32     2.8889         0.0000         0.0000         0.0000         18.056    "
+**ignored line 306: "       6      1.23178E-32    3.78853E-32     0.0000         0.0000         0.0000        0.25276    "
+**ignored line 307: "       7      3.22455E-34    4.55563E-02     0.0000         0.0000         0.0000        0.28473    "
+**ignored line 308: "       8      1.44347E-32    5.27600E-33     0.0000         0.0000         0.0000        7.87170E-02"
+**ignored line 309: "       9      5.40376E-33    1.97723E-03     0.0000         0.0000         0.0000        1.23577E-02"
+**ignored line 310: "      10      7.43738E-33    2.19742E-31     0.0000         0.0000         0.0000        4.17414E-04"
+**ignored line 311: "      11      4.26357E-32    1.74839E-02     0.0000         0.0000         0.0000        0.10927    "
+**ignored line 312: "      12      7.45757E-31    5.79065E-29     0.0000         0.0000         0.0000        0.25440    "
+**ignored line 313: "      13      8.70361E-33    6.25388E-02     0.0000         0.0000         0.0000        0.39087    "
+**ignored line 314: "      14      5.30378E-33    3.73895E-31     0.0000         0.0000         0.0000        0.80798    "
+**ignored line 315: "      15      6.94226E-30    0.49574         0.0000         0.0000         0.0000         3.0984    "
+**ignored line 316: "      16      1.53452E-22    8.61017E-22     0.0000         0.0000         0.0000        6.51042E-02"
+**ignored line 317: "      17      6.67210E-25    4.12058E-03     0.0000         0.0000         0.0000        2.57536E-02"
+**ignored line 318: "      18      3.69339E-23    2.08792E-22     0.0000         0.0000         0.0000        4.70814E-03"
+**ignored line 319: "      19      1.37698E-20    5.89338E-07     0.0000         0.0000         0.0000        3.68336E-06"
+**ignored line 320: "      20      1.29106E-20    7.43652E-20     0.0000         0.0000         0.0000        1.32468E-03"
+**ignored line 322: " TOTAL        2.68714E-20     4.1441         0.0000         0.0000         0.0000         34.762    "
+**ignored line 325: "          THE ANALYSIS HAS BEEN COMPLETED"
+**ignored line 333: "     JOB TIME SUMMARY"
+**ignored line 334: "       USER TIME (SEC)      =   0.0000    "
+**ignored line 335: "       SYSTEM TIME (SEC)    =  0.10000    "
+**ignored line 336: "       TOTAL CPU TIME (SEC) =  0.10000    "
+**ignored line 337: "       WALLCLOCK TIME (SEC) =          1"
+---------------------------------------------------
+completed first pass through Bulk Data file
+        0 = number of lines in File Management and Executive Control
+        0 = number of lines in Case Control Section
+      337 = number of lines in Bulk Data Section
+      337 = total number of lines
+        0 = number of lines read from 0 include files
+        0 = number of keywords
+       98 = number of blank lines
+        0 = number of comment lines
+        0 = number of lines with partial comments
+       78 = number of lines truncated at 80 characters
+      234 = number of unrecognized lines written to output file
+           (name = C:/Users/WSUadm/Desktop/ABAQUS_EX/TEST/jetnoise_eigen.log)
+        0 = number of lines written to scratch file
+           (name = C:/Users/WSUadm/Desktop/ABAQUS_EX/TEST/jetnoise_eigen.tmp) for further processing
+           (        0 from Free Format                  )
+           (        0 from nonstandard Free Format (tokens > 8 characters) )
+           (        0 from Single Precision Fixed Format)
+           (        0 from Double Precision Fixed Format)
+--------------------------------
+Nastran Case Control entities not processed:
+     keyword   number
+------------   ------
+    ANALYSIS        1
+       MODES        3
+| ---------------------------------------------------------
+| environment_variable / command_line_argument summary:
+| PARAM,WTMASS will be used to adjust structural mass/density
+| *DISTRIBUTION will be used for shell offsets, orientations, and thicknesses
+|  shell elements will be grouped by PSHELL ID
+| Zero PBAR/PBEAM cross sectional parameters will be reset to 1e-20
+| Rigid links will be modeled using surface-based *COUPLING constraints
+| Beam orientations will be modeled using vectors on beam sections
+| Beam offsets will be modeled using rigid couplings and extra nodes
+| PSHELL/PCOMP will default to *SHELL SECTION
+| PLOTELs will not be translated
+| "CDH welds" (isolated CHEXAs with 8 RBE3s) will not be translated to
+|   rigid fasteners
+| CWELDs will be translated to compliant fasteners
+| CQUAD4 elements will be translated to S4R
+| SPOINT DOF 0 will be reset to 9 in DMIG, MPC, CELAS2, and CMASS2 data
+---------------------------------------------------
+... completed second pass through Bulk Data file
+NOTE: largest node number in Nastran data = 0
+NOTE: largest element number in Nastran data = 0
+---------------------------------------------------
+... completed third pass through Bulk Data file
+---------------------------------------------------
+*** no elements in the model can have mass
+---------------------------------------------------
