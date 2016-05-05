@@ -1,0 +1,280 @@
+$ DEC/CMS REPLACEMENT HISTORY, Element HA144C.DAT
+$ *2     6-JUL-1994 14:06:28 A_BOYADJIAN "68 PLUS/G/ CHANGE DBSDIR: TO  FOR INCLUDE CARDS"
+$ *1     5-JUL-1994 16:49:04 A_BOYADJIAN "68 PLUS/G/ NEW FOR V68 AERO_SS BOOK"
+$ DEC/CMS REPLACEMENT HISTORY, Element HA144C.DAT
+ID MSC, HA144C $ E_JOHNSON V68  5-JUL-1994
+$ID MSC, HA144C
+$$$$$$$$ HANDBOOK FOR AEROELASTIC ANALYSIS EXAMPLE HA144C       $$$$$$$$
+$                                                                      $
+$       MODEL DESCRIPTION       MODEL A OF NASA TN D-1824              $
+$                               HALF SPAN 15 DEGREE SWEPT WING         $
+$                               28 QUAD4 PANEL MODEL                   $
+$                                                                      $
+$                               THIS RUN ALSO DEMONSTRATES THAT THE    $
+$                               USER MAY PROVIDE DOWNWASHES DUE TO     $
+$                               INITIAL INCDENCE, TWIST, AND CAMBER    $
+$                                                                      $
+$       SOLUTION                WIND TUNNEL MOUNT, STATIC STABILITY    $
+$                               ANALYSIS USING DOUBLET LATTICE METHOD  $
+$                               AERODYNAMICS AT MACH NO. 0.45          $
+$                                                                      $
+$       OUTPUT                  PLOTS OF THE STRUCTURAL MODEL          $
+$                               LISTS OF STATIC STABILITY DERIVATIVES, $
+$                               AND  THE STRESSES AND DEFLECTIONS OF   $
+$                               A CANTILEVERED WING WIND TUNNEL MODEL  $
+$                               AT AN INITIAL ANGLE OF ATTACK          $
+$                                                                      $
+$$$$$$$$                                                        $$$$$$$$
+TIME 5 $ CPU TIME IN MINUTES
+SOL 144  $ STATIC AERO
+CEND
+TITLE = EXAMPLE HA144C: HALF SPAN 15-DEG SWEPT UNTAPERED WING  HA144C
+SUBT  = CANTILEVERED WIND TUNNEL MOUNT, DOUBLET-LATTICE AERO
+LABEL = 0.041 IN PLATE W/BEVELLED LEADING AND TRAILING EDGES
+  ECHO   = BOTH
+  SPC    = 1
+  LOAD   = 30 $ REACTION FORCE MINUS GRAVITY LOAD
+  DISP   = ALL
+  STRESS = ALL
+  FORCE  = ALL
+  AEROF  = ALL
+  APRES  = ALL
+  TRIM = 1
+$
+OUTPUT(PLOT)
+  CSCALE 2.0
+  PLOTTER NASTRAN
+  SET 1  = AERO1
+  SET 2  = QUAD4
+  PTITLE = AERODYNAMIC ELEMENTS
+  FIND SCALE, ORIGIN 1 ,SET 1
+  PLOT ORIGIN 1, SET 1, LABEL ELEMENTS
+$
+  PTITLE = STRUCTURAL ELEMENTS
+  FIND SCALE, ORIGIN 1, SET 2
+  PLOT ORIGIN 1, SET 2, LABEL ELEMENTS
+BEGIN BULK
+$*** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * ***$
+$                                                                       $
+$        THE ANNOTATIONS IN THIS INPUT DECK ARE INTENDED TO             $
+$        EXPLAIN THE DATA ON THE CARD IMAGES FOR THIS                   $
+$        EXAMPLE WITHOUT REFERENCE TO THE VARIOUS MANUALS WHERE         $
+$        MORE GENERAL DESCRIPTIONS WILL BE FOUND.                       $
+$                                                                       $
+$*** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * ***$
+INCLUDE 'platest.dat'
+$                                                                       $
+$        THE RBAR ENTRY DEFINES A RIGID BAR WITH SIX DEGREES OF         $
+$        FREEDOM AT EACH END.  LISTED ARE THE GRID POINT NUMBERS,       $
+$        THE INDEPENDENT AND THE DEPENDENT DOFS AT THE TWO ENDS.        $
+$                                                                       $
+$       EID     GA      GB      CNA     CNB     CMA     CMB             $
+RBAR    101     17      9       123456
+RBAR    102     17      25      123456
+$                                                                       $
+$                 * * MASS AND INERTIA PROPERTIES * *                   $
+$                                                                       $
+$        THE MAT1 ENTRY DEFINES THE MATERIAL PROPERTIES FOR LINEAR,     $
+$        TEMPERATURE-INDEPENDENT, ISOTROPIC MATERIALS.  IT LISTS        $
+$        YOUNGS MODULUS, THE SHEAR MODULUS, POISSONS RATIO MASS         $
+$        DENSITY, THERMAL EXPANSION COEFFICIENT AND STRUCTURAL          $
+$        ELEMENT DAMPING.                                               $
+$                                                                       $
+$       MID     E       G       NU      RHO     A       TREF    GE
+MAT1    1       10.3+6  3.9+6           .100
+$                                                                       $
+$        THE CONM2 ENTRY ASSIGNS A CONCENTRATED MASS AND MOMENT OF      $
+$        INERTIA TO STRUCTURAL GRID POINT G.  LISTED ARE THE GRID       $
+$        NUMBER, THE COORDINATE SYSTEM, THE MASS AND THE LOCATION       $
+$        OF THE CENTER OF MASS RELATIVE TO THE GRID POINT.  THE         $
+$        CONTINUATION ENTRY LISTS THE LOWER LEFT TRIANGLE OF THE        $
+$        MOMENT OF INERTIA MATRIX (SANS MINUS SIGNS). THE NUMBERS       $
+$        LISTED HERE ARE CHOSEN AS LARGE VALUES TO REPRESENT A          $
+$        GROUNDED SYSTEM.                                               $
+$                                                                       $
+$       EID     G       CID     M       X1      X2      X3
+CONM2   53      17      0       1.0+5                                   +CM2
+$       I11     I21     I22     I31     I32     I33
++CM2                    1.0+5
+$                                                                       $
+$        THE GRAV ENTRY DEFINES A UNIT GRAVITY VECTOR TO BE USED        $
+$        TO APPLY THE GRAVITY LOAD.  LISTED ARE THE COORDINATE          $
+$        SYSTEM, THE SCALAR ACCELERATION DUE TO GRAVITY AND THE         $
+$        COMPONENTS OF THE UNIT VECTOR.                                 $
+$                                                                       $
+$       SID     CID     G       N1      N2      N3
+GRAV    10              386.088 0.0     0.0     -1.0
+$                                                                       $
+$
+$        THE FORCE ENTRY DEFINES A STATIC LOAD AT A GRID POINT BY       $
+$        DEFINING A VECTOR.  THE FORCE IS NECESSARY HERE TO BALANCE     $
+$        THE WEIGHT OF THE MODEL AND ITS SUPPORT.                       $
+$                                                                       $
+$       ID      G       CID     F       N1      N2      N3
+FORCE   20      17              1.0+5   0.0     0.0     1.0
+$                                                                       $
+$        THE LOAD ENTRY PERMITS COMBINING THE FORCE AND GRAVITY LOADS.  $
+$        S AND THE SI ARE SCALE FACTORS AND THE LI ARE LOAD SET ID      $
+$        NUMBERS.                                                       $
+$                                                                       $
+$       SID     S       S1      L1      S2      L2      ETC             $
+LOAD    30      1.0     1.0     10      1.0     20
+$                                                                       $
+$                                                                       $
+PARAM   AUNITS  .0025901
+$                                                                       $
+$                    * * STRUCTURAL CONSTRAINTS * *                     $
+$                                                                       $
+$        THE SUPORT ENTRY IDENTIFIES A DOF IN WHICH THE USER DESIRES    $
+$        DETERMINATE REACTIONS TO BE APPLIED TO PREVENT RIGID BODY      $
+$        MOTION. IT INVOKES THE SOLUTION OF THE BALANCE EQUATIONS TO    $
+$        DETERMINE THE REACTIONS.  IN THE STATIC AEROELASTIC SOLUTION   $
+$        THE DOF COMPONENTS MUST BE CONSISTENT WITH THE UNDEFINED       $
+$        VARIABLES ON THE TRIM ENTRIES.  IT IS ALSO IMPORTANT THAT      $
+$        NO OTHER POINT ON THE STRUCTURE BE CONSTRAINED IN THESE        $
+$        DOFS; OTHERWISE, UNDETERMINED CONSTRAINT FORCES WILL BE        $
+$        IMPOSED AND THE REACTIONS AT THE SUPORT POINT WILL NOT         $
+$        BE THE TOTAL OF THE REACTION FORCES.                           $
+$                                                                       $
+$       ID      C                                                       $
+SUPORT  17      35
+$                                                                       $
+$        THE SPC1 ENTRY DEFINES SETS OF SINGLE-POINT CONSTRAINTS.       $
+$        IT LISTS ITS ID, THE DOF COMPONENTS TO BE CONSTRAINED          $
+$        AND THE GRID POINT NO.                                         $
+$                                                                       $
+$       SID     C       G1      G2      ETC.
+SPC1    1       1246    17
+SPC1    1       6       1       THRU    8
+SPC1    1       6       10      THRU    16
+SPC1    1       6       18      THRU    24
+SPC1    1       6       26      THRU    40
+$                                                                       $
+$        THE ASET1 ENTRY DEFINES DOFS THAT THE USER DESIRES TO BE       $
+$        INDEPENDENT.  IT LISTS THE DOF COMPONENT NUMBERS AND THE       $
+$        GRID ID NO.S.                                                  $
+$                                                                       $
+$       V       ID1     THRU    ID2
+ASET1   3        1      THRU     8
+ASET1   3       10      THRU    16
+ASET1   3       18      THRU    24
+ASET1   3       26      THRU    40
+$                                                                       $
+$                    * * * AERODYNAMIC DATA * * *                       $
+$                                                                       $
+$                         (LB-IN-SEC SYSTEM)                            $
+$                                                                       $
+$                      * * ELEMENT GEOMETRY * *                         $
+$                                                                       $
+$        THE AEROS ENTRY IS UNIQUE TO THE STATIC AEROELASTICITY         $
+$        SOLUTION, SOL21.  ACSID IDENTIFIES THE AERO COORDINATE         $
+$        SYSTEM.  RCSID IDENTIFIES THE REFERENCE COORDINATE SYS-        $
+$        TEM FOR RIGID BODY MOTION.  REFC IS THE REFERENCE CHORD.       $
+$        REFB IS THE REFERENCE SPAN (NOT THE SEMI-SPAN).  REFS IS       $
+$        THE REFERENCE WING AREA (FOR ONE SIDE ONLY, IN THIS CASE).     $
+$        SYMXZ AND SYMXY ARE SYMMETRY KEYS THAT SPECIFY THE             $
+$        PRESENCE OF REFLECTION PLANES ONLY, NOT THE EXISTENCE OF       $
+$        OTHER LIFTING SURFACES.                                        $
+$                                                                       $
+$       ACSID   RCSID   REFC    REFB    REFS    SYMXZ   SYMXY
+AEROS   0       11      2.07055 11.0502 11.4400 1
+$                                                                       $
+$        THIS CORD2R ENTRY DEFINES THE AERO COORDINATE SYSTEM           $
+$        FLAGGED BY THE AEROS ENTRY.  THE ORIGIN IS AT THE WING         $
+$        SUPPORT POINT (GRID 17).  LISTED ARE THE ORIGIN, A POINT       $
+$        0N THE Z-AXIS AND A POINT ON THE X-AXIS, ALL IN THE RID        $
+$        COORDINATE SYSTEM.                                             $
+$                                                                       $
+$       CID     RID     A1      A2      A3      B1      B2      B3
+CORD2R  11              1.035275 0.0    0.0     1.035275 0.0    1.0     +CORD1
+$       C1      C2      C3
++CORD1  2.0     0.0     0.0
+$                                                                       $
+$        THE CAERO1 ENTRY IS USED FOR DOUBLET LATTICE AERODYNAMICS.     $
+$        LISTED ARE ITS PAERO ENTRY ID AND THE COORDINATE SYSTEM        $
+$        FOR LOCATING THE INBOARD AND OUTBOARD LEADING EDGE POINTS      $
+$        (1 AND 4).  NSPAN AND NCHORD, OR LSPAN AND LCHORD, ARE         $
+$        USED TO PARTITION THE WING INTO AERODYNAMIC PANELS.            $
+$        THE FORMER FOR UNIFORMLY SPACED PANELS AND THE LATTER          $
+$        FOR NON-UNIFORMLY SPACED PANELS.  IGID IS THE ID OF ITS        $
+$        ASSOCIATED INTERFERENCE GROUP.  THE CONTINUATION ENTRY         $
+$        DEFINES POINTS 1 AND 4, THE ROOT CHORD AND TIP CHORD.          $
+$        THE BOXES FORMED BY THE GRID LINES WILL BE NUMBERED            $
+$        BEGINNING WITH EID SO CHOOSE A NUMBER THAT IS UNIQUE,          $
+$        AND IS GREATER THAN ALL STRUCTURAL GRID, SCALAR AND            $
+$        EXTRA POINT IDS.                                               $
+$                                                                       $
+$       EID     PID     CP      NSPAN   NCHORD  LSPAN   LCHORD  IGID
+CAERO1  101     1       0       6       4                       1       +CA101
+$      ( FWD LEFT POINT  )   ROOTCHORD ( FWD RIGHT POINT  )  TIP CHORD
+$       X1      Y1      Z1      X12     X4        Y4    Z4      X14
++CA101  .0      .0      .0      2.07055 1.48044 5.52510 0.0     2.07055
+$                                                                       $
+$        THE PAERO1 ENTRY IS REQUIRED EVEN THOUGH IT IS NON-FUNCTIONAL  $
+$        (BECAUSE THERE ARE NO ASSOCIATED BODIES IN THIS EXAMPLE).      $
+$                                                                       $
+$       PID     B1      B2      B3      B4      B5      B6
+PAERO1  1
+$
+$                  * SURFACE SPLINE FIT ON THE WING *                   $
+$                                                                       $
+$        THE SPLINE1 ENTRY DEFINES A SURFACE SPLINE FOR INTERPO-        $
+$        LATING OUT-OF-PLANE DISPLACEMENTS FROM THE STRUCTURAL          $
+$        GRID POINTS ON THE SETG ENTRY TO THE SUB-REGION DEFINED        $
+$        BY AERODYNAMIC BOXES 101 THRU 124 OF THE REGION ON THE         $
+$        CAERO1 ENTRY.  DZ=0 SPECIFIES THAT NO SMOOTHING OF THE         $
+$        SPLINE IS TO BE IMPOSED.                                       $
+$                                                                       $
+$       EID     CAERO   BOX1    BOX2    SETG    DZ
+SPLINE1 100     101     101     124     100     .0
+$                                                                       $
+$        THE SET1 ENTRY DEFINES THE STRUCTURAL GRID POINTS TO           $
+$        BE USED BY THE SURFACE SPLINE FOR INTERPOLATION.               $
+$                                                                       $
+$       SID     G1      G2      G3      G4      G5      G6
+SET1    100     2       4       6       8       9       11      13      +S1
++S1     15      18      20      22      24      25      27      29      +S2
++S2     31      34      36      38      40
+$                                                                       $
+$                   * * USER SUPPLIED AERO DATA * *                     $
+$                                                                       $
+$        THE DMI ENTRY ACCOMMODATES DIRECT INPUT OF USER SUPPLIED       $
+$        MATRICES OF DATA.  LISTED ARE THE NAME OF THE MATRIX, THE      $
+$        FORM OF MATRIX, THE TYPE OF DATA BEING INPUT, AND THE TYPE     $
+$        EXPECTED AS OUTPUT.  M IS THE NUMBER OF ROWS AND N IS THE      $
+$        NUMBER OF COLUMNS.  THE DATA ARE EXPECTED BY COLUMNS.  THE     $
+$        CONTINUATION ENTRY LISTS THE COLUMN NO., THE ROW NO. OF THE    $
+$        FIRST NON-ZERO ELEMENT AND THE FOLLOWING ELEMENTS IN THAT      $
+$        COLUMN.                                                        $
+$                                                                       $
+$     * INITIAL DOWNWASHES (E.G., DUE TO INCIDENCE,TWIST OR CAMBER) *   $
+$                                                                       $
+DMI     W2GJ    0       2       1       0               24      2
+DMI     W2GJ    1       1       0.17453 THRU    24
+DMI     W2GJ    2       1       0.17453 THRU    24
+$                                                                       $
+$               * * * STATIC AEROELASTIC SOLUTION * * *                 $
+$                                                                       $
+$                       * * AERODYNAMIC DOFS * *                        $
+$                                                                       $
+$        THE AESTAT ENTRY LISTS TRIM VARIABLES USED TO SPECIFY          $
+$        RIGID BODY MOTIONS.  THESE AND THE CONTROL SURFACE             $
+$        ROTATIONS MAKE UP THE VARIABLES IN THE EQUATIONS OF            $
+$        MOTION.                                                        $
+$                                                                       $
+AESTAT  501     ANGLEA
+AESTAT  502     PITCH
+AESTAT  503     URDD3
+AESTAT  504     URDD5
+$                                                                       $
+$                      * * TRIM CONDITIONS * *                          $
+$                                                                       $
+$        THE TRIM ENTRY SPECIFIES CONSTRAINTS FOR THE TRIM VARIABLES    $
+$        LISTED ON THE AESTAT AND AESURF ENTRIES.  LISTED ARE ITS ID,   $
+$        THE MACH NUMBER, DYNAMIC PRESSURE AND PAIRS OF TRIM VARI-      $
+$        ABLES AND THEIR CONSTRAINED VALUES.  THOSE THAT ARE NOT        $
+$        HELD FIXED MUST BE CONSTRAINED BY REACTION FORCES STIPU-       $
+$        LATED ON THE SUPORT ENTRY.                                     $
+$                                                                       $
+TRIM    1       0.45    2.0     ANGLEA  0.0     PITCH   0.0
+ENDDATA

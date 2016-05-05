@@ -1,0 +1,41 @@
+$ DEC/CMS REPLACEMENT HISTORY, Element BAHAILE.DAT
+$ *1     5-JUL-1994 16:44:58 A_BOYADJIAN "68 PLUS/G/ NEW FOR V68 AERO_SS BOOK"
+$ DEC/CMS REPLACEMENT HISTORY, Element BAHAILE.DAT
+$       GRID 12 IS INBOARD OF THE AILERON AND ON THE TRAILING EDGE;
+$       IT IS ALIGNED STREAMWISE BEHIND GRIDS 7 AND 8 AND PROVIDES
+$       THE MEANS TO INCLUDE THE AILERON IN THE ANALYSIS.
+$
+$       ID      CP      X1      X2      X3      CD      PS      SEID
+GRID    12              -86.45  368.                    1246
+$                                                                       $
+$        THE CELAS2 ENTRY DEFINES A SCALAR SPRING ELEMENT WITHOUT       $
+$        REFERENCE TO A PROPERTY ENTRY, IN THIS CASE AN AILERON         $
+$        HINGE SPRING STIFFNESS.  IT LISTS THE ID, THE STIFFNESS,       $
+$        THE CONNECTION POINT AND DOF COMPONENT.                        $
+$                                                                       $
+$       EID     K       G1      C1
+CELAS2  3       5142661.12      5
+$                                                                       $
+$                  * * AILERON INERTIAL PROPERTIES * *                  $
+$
+CONM1   2       12                                                      +AIL1
++AIL1   0.0                                                     0.0     +AIL2
++AIL2           13970.5
+$
+$        THE MPC ENTRY DEFINES A MULTIPOINT CONSTRAINT IN THE FORM      $
+$        OF A LINEAR EQUATION.  IT LISTS A SET OF TRIPLES CONSISTING    $
+$        OF THE GRID NO., THE CONSTRAINED DOF COMPONENTS AND THE        $
+$        LINEAR COEFFICIENT.                                            $
+$                                                                       $
+$        THIS ONE SPECIFIES THAT THE Z DISPLACEMENT AT THE TRAILING     $
+$        EDGE OF THE AILERON IS A LINEAR EXTRAPOLATION FROM POINTS      $
+$        7 AND 8 PLUS THE DISTANCE FROM THE HINGE-LINE TO THE           $
+$        TRAILING EDGE TIMES A UNIT (SMALL), ANGULAR ROTATION OF THE    $
+$        AILERON.  SEE P.3.5-9 OF THE "HANDBOOK FOR DYNAMIC ANALYSIS"   $
+$        FOR A DISCUSSION OF THE LAGRANGE MULTIPLIER METHOD WHICH       $
+$        IS USED HERE TO INTRODUCE THE AILERON ROTATION DOF.            $
+$                                                                       $
+$       SID     G       C       A       G       C       A
+MPC     1       12      3       -1.0    8       3       1.5             +MPC1
+$               G       C       A       G       C       A
++MPC1           7       3       -0.5    12      5       33.25

@@ -1,0 +1,397 @@
+$EXECUTIVE CONTROL STATEMENTS
+$
+TIME 10 $CPU TIME SET AT 10 MINUTES
+SOL 144 $STATIC AEROELASTIC SOLVER INVOKED
+CEND $ENDS THE EXECUTIVE CONTROL SECTION
+$
+$--------------------------------------------------------------------------------------------------
+$OUTPUT REQUEST KEPT SAME AS EXAMPLE IN ORDER TO COMPARE RESULTS
+$
+LABEL = HALF-SPAN MODEL, STATIC SYMMETRIC LOADING
+  ECHO    = BOTH
+  SPC     = 1   $ SYMMETRIC CONSTRAINTS
+  DISP    = ALL $ PRINT ALL DISPLACEMENTS
+  STRESS  = ALL $ PRINT ALL STRESSES
+  FORCE   = ALL $ PRINT ALL FORCES
+  AEROF   = ALL $ PRINT ALL AERODYNAMIC FORCES
+  APRES   = ALL $ PRINT ALL AERODYNAMIC PRESSURES
+SUBCASE 1
+  TRIM = 1      $ 1 G LEVEL FLIGHT (LOW SPEED)
+SUBCASE 2
+  TRIM = 2      $ 1 G LEVEL FLIGHT (HIGH SUBSONIC SPEED)
+SUBCASE 3
+  TRIM = 3      $ 1 G LEVEL FLIGHT (LOW SUPERSONIC SPEED)
+OUTPUT(PLOT)
+  PLOTTER = NASTRAN
+  SET 1 = ALL
+  FIND SCALE, ORIGIN 1,SET 1
+  PLOT SET 1
+  PLOT STATIC DEFORMATION 0, ORIGIN 1, SET 1, OUTLINE
+  $
+$------------------------------------------------------------------------------------------------
+BEGIN BULK
+$
+$
+$                             TRIM CONDITIONS FOR THE ANALYSIS (3 TOTAL)
+$
+$TRIM PARAMATERS ARE DEFINED AS FOLLOWS
+$PITCH = PITCH RATE DEFINED AS qc/2V
+$URDD3 = NORMAL LOAD FACTOR (IN G'S) DEFINED AS ddot{z}/g
+$URDD5 = PITCH ACCELERATION DEFINED AS ddot{theta}/g
+$
+$
+$
+$TRIM CONDITION #1
+$       ID      MACH    Q       LABEL1  UX1     LABEL2  UX2             +TRM
+TRIM    1       0.9     40.     PITCH   0.0     URDD3   -1.0            +TR1
+$       LABEL3  UX3
++TR1    URDD5   0.0
+$
+$
+$TRIM CONDITION #2
+$       ID      MACH    Q       LABEL1  UX1     LABEL2  UX2             +TRM
+TRIM    2       0.9     1200.   PITCH   0.0     URDD3   -1.0            +TR2
++TR2    URDD5   0.0
+$
+$
+$TRIM CONDITION #3
+$       ID      MACH    Q       LABEL1  UX1     LABEL2  UX2             +TRM
+TRIM    3       1.3     1151.   PITCH   0.0     URDD3   -1.0            +TR3
++TR3    URDD5   0.0
+$
+$
+$
+$--------------------------------------------------------------------------------------------------
+$PARAMATERS DEFINED BELOW FOR THE AEROELASTICITY ANALYSIS
+$
+$PARAM GRDPNT USED TO DEFINE THE NODE AT WHICH INERTIAL PROPERTIES WILL BE DEFINED.
+PARAM   GRDPNT  3
+$
+$PARAM WTMASS CAUSES ALL MASSES TO BE DIVIDED BY GRAVIATIONAL ACCELERATION.
+PARAM   WTMASS  .031081
+$
+$PARAM AUNITS ALLOWS ACCELERATIONS TO BE SPECIFIED IN TERMS OF G'S.
+PARAM   AUNITS  .031081
+$--------------------------------------------------------------------------------------------------
+$
+$
+$FUSILAGE NODES
+$       ID      CP      X1      X2      X3      CD      PS      SEID
+GRID    1               0.      0.      0.
+GRID    2               10.     0.      0.
+GRID    3               15.     0.      0.
+GRID    4               20.     0.      0.
+GRID    5               25.     0.      0.
+GRID    6               27.5    0.      0.
+GRID    7               30.     0.      0.
+GRID    8               32.5    0.      0.
+GRID    9               35.     0.      0.
+$
+$
+$WING NODES
+$       ID      CP      X1      X2      X3      CD      PS      SEID
+$COLUMN 1     --------------------------------------------------------
+GRID    10              22.113  +5.     0.
+GRID    11              24.613  +5.     0.
+GRID    12              27.113  +5.     0.
+GRID    13              29.613  +5.     0.
+GRID    14              32.113  +5.     0.
+$COLUMN 2 NEXT--------------------------------------------------------
+GRID    15              19.225  +10.    0.
+GRID    16              21.727  +10.    0.
+GRID    17              24.225  +10.    0.
+GRID    18              26.727  +10.    0.
+GRID    19              29.225  +10.    0.
+$COLUMN 3 NEXT--------------------------------------------------------
+GRID    20              16.338  +15.    0.
+GRID    21              18.840  +15.    0.
+GRID    22              21.340  +15.    0.
+GRID    23              23.840  +15.    0.
+GRID    24              26.338  +15.    0.
+$COLUMN 4 NEXT--------------------------------------------------------
+GRID    25              13.450  +20.    0.
+GRID    26              15.954  +20.    0.
+GRID    27              18.450  +20.    0.
+GRID    28              20.954  +20.    0.
+GRID    29              23.450  +20.    0.
+$
+$
+$ELASTIC MATERIAL DEFINED BELOW FOR DEFORMABLE BEAM ELEMENETS
+$SAME MATERIAL USED FOR FUSILAGE AND WING
+$       MID     E       G       NU      RHO     A       TREF    GE
+MAT1    1       1.44+9  5.40+8
+$
+$
+$THIS PBAR CARD WITH ID=1 IS USED FOR THE FUSILAGE ELEMENTS
+$       PID     MID     A       I1      I2      J       NSM
+PBAR    1       1       2.0     .173611 0.15    0.5                     +PB1
+$       C1      C2      D1      D2      E1      E2      F1      F2
++PB1    1.0     1.0     1.0     -1.0    -1.0    1.0     -1.0    -1.0    +PB2
+$       K1      K2      I12
++PB2                    0.0
+$
+$DEFINE SHELL PROPERTIES FOR THE WING ELEMENTS
+$       PID      MID1       T       MID2       MID3       TS/T       NSM
+PSHELL  1        1          .35     1          1
+$
+$
+$DEFINE BAR ELEMENTS FOR THE FUSILAGE (ELEMENT NUMBERING BEGINS AT 1000)
+$       EID     PID     GA      GB      X1      X2      X3
+CBAR    1001    1       1       2       0.      0.      1.
+CBAR    1002    1       2       3       0.      0.      1.
+CBAR    1003    1       3       4       0.      0.      1.
+CBAR    1004    1       4       5       0.      0.      1.
+CBAR    1005    1       5       6       0.      0.      1.
+CBAR    1006    1       6       7       0.      0.      1.
+CBAR    1007    1       7       8       0.      0.      1.
+CBAR    1008    1       8       9       0.      0.      1.
+$
+$
+$DEFINE WING SHELL ELEMENTS
+$       EID     PID     G1      G2      G3      G4
+$ROW 1-------------------------------------------------------------------------
+CQUAD4  2001    1       5       10      11      6
+CQUAD4  2002    1       10      15      16      11
+CQUAD4  2003    1       15      20      21      16
+CQUAD4  2004    1       20      25      26      21
+$ROW 2-------------------------------------------------------------------------
+CQUAD4  2005    1       6       11      12      7
+CQUAD4  2006    1       11      16      17      12
+CQUAD4  2007    1       16      21      22      17
+CQUAD4  2008    1       21      26      27      22
+$ROW 2-------------------------------------------------------------------------
+CQUAD4  2009    1       7       12      13      8
+CQUAD4  2010    1       12      17      18      13
+CQUAD4  2011    1       17      22      23      18
+CQUAD4  2012    1       22      27      28      23
+$ROW 2-------------------------------------------------------------------------
+CQUAD4  2013    1       8       13      14      9
+CQUAD4  2014    1       13      18      19      14
+CQUAD4  2015    1       18      23      24      19
+CQUAD4  2016    1       23      28      29      24
+$
+$NOT USED
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$PBAR WITH ID=2 USED FOR THE DEFORMABLE WING ELEMENTS
+$       PID     MID     A       I1      I2      J       NSM
+$PBAR    2       1       1.5     0.173611+2.0    0.462963                +PB3
+$       C1      C2      D1      D2      E1      E2      F1      F2
+$+PB3    0.5     3.0     0.5     -3.0    -0.5    3.0     -0.5    -3.0    +PB4
+$       K1      K2      I12
+$+PB4                    0.0
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$
+$
+$NOT USED
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$DEFINE BAR ELEMENTS FOR THE WING (ELEMENT NUMBERING BEGINS AT 2000)
+$       EID     PID     GA      GB      X1      X2      X3
+$CBAR    2001    2       5       11      0.      0.      1.
+$CBAR    2002    2       11      22      0.      0.      1.
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$
+$
+$NOT USED
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$RBAR CARD USED TO DEFINE RIGID WING ELEMENTS, WHICH WILL SUPPORT APPLIED
+$WING MASSES (ELEMENT NUMBERING BEGINS AT 3000)
+$       EID     GA      GB      CNA     CNB     CMA    SCMB
+$RBAR    3001    11      10      123456
+$RBAR    3002    11      12      123456
+$RBAR    3003    22      21      123456
+$RBAR    3004    22      23      123456
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$
+$
+$FUSILAGE MASS ELEMENTS DEFINED BELOW (NUMBERING BEGINS AT 4000)
+$       EID     G       CID     M       X1      X2      X3
+CONM2   4001    1       0       1500.0
+CONM2   4002    2       0       1500.0
+CONM2   4003    4       0       1500.0
+CONM2   4004    7       0       1500.0
+$
+$
+$WING MASS ELEMENTS DEFINED BELOW (NUMBERING BEGINS AT 5000)
+$       EID     G       CID     M       X1      X2      X3
+CONM2   5001    11      0       600.0
+CONM2   5002    13      0       400.0
+CONM2   5003    21      0       600.0
+CONM2   5004    23      0       400.0
+$
+$
+$FOLLOWING CONSTRAINTS ARE APPLIED TO THE FUSILAGE NODES
+$NODES (1, 2, 4, 5) ARE CONSTRAINED WITH SYMMETRY IN MIND
+$       SID     C       G1      G2      G3      G4
+SPC1    1       1246    3
+SPC1    1       246     1       2       4       7
+$
+$
+$'SUPPORT' CARD DEFINES THE DEFGREES OF FREEDOMS FOR WHICH REACTIONS ARE APPLIED TO PREVENT RIGID
+$BODY MOTION
+$       ID      C
+SUPORT  3       35
+$
+$
+$NOT USED
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$CARD 'OMIT' USED TO IDENTIFY NODES WHICH WILL NOT BE PART OF THE ANALYSIS
+$       ID      G1      G2
+$OMIT1   4       11      22
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$
+$
+$--------------------------------------------------------------------------------------------------
+$FOLLOWING SECTION DEFINES DATA USED FOR AERODYNAMIC ANALYSIS.
+$SECTION WILL INCLUDE INPUT FOR THE WING AND THE CANARD.
+$
+$------------------------------------------------
+$DEFINITION OF THE WING
+$
+$-----START BY DEFINING THE REQUIRED COORDINATE SYSTEMS FOR THE ANALYSIS-------
+$
+$
+$CARD 'CORD2R' DEFINES THE COORDINATE SYSTEM USED FOR THE AERODYNAMIC ANALYSIS
+$       CID     RID     A1      A2      A3      B1      B2      B3
+CORD2R  1       0       12.5    0.      0.      12.5    0.      10.     +CRD1
+$       C1      C2      C3
++CRD1   20.     0.      0.
+$
+$
+$CARD 'CORD2R' DEFINES THE COORDINATE SYSTEM TO WHICH STABILITY DERIVATIVES WILL
+$BE REFERENCED
+$       CID     RID     A1      A2      A3      B1      B2      B3
+CORD2R  2       0       15.0    0.0     0.0     15.0    0.0     -10.0   +CRD100
+$       C1      C2      C3
++CRD100 0.0     0.0     0.0
+$
+$
+$CARD 'CORD2R' USED TO DEFINE THE COORDINATE SYSTEM, WHICH IS USED BY THE SPLINE 
+$CARD TO DEFINE DIRECTION ALONG WHICH THE SPLINE WILL EXTEND.
+$       CID     CS      A1      A2      A3      B1      B2      B3
+CORD2R  3       0       30.     0.      0.      30.     0.      10.     +CRD2
+$       C1      C2      C3
++CRD2   38.66   +5.0    0.
+$
+$
+$------------THIS ENDS THE CONSTRUCTION OF REQUIRED COORDINATE SYSTEMS---------
+$
+$
+$SET OF STRUCTURAL GRIDS USED FOR THE SPLINING OPERATION.
+$       SID     G1      G2      G3      G4      G5      G6
+SET1    200     4       10      20      6       16      26      12      +S1
++S1     22      8       18      28      14      24      
+$
+$
+$CARD 'AEROS' USED TO DEFINE COORDINATE SYSTEMS USED FOR THE ANALYSIS AND BASIC WING DIMENSIONS.
+$      ACSID    RCSID   REFC    REFB    REFS    SYMXZ   SYMXY
+AEROS   1        2      10.0    40.0    200.0    1
+$
+$
+$CARD 'PAERO1' NEEDED FOR THE CAERO1 CARD ENTRY EVEN THOUGH FUSILAGE MODELING IS NEGLECTED
+$       PID     B1      B2      B3      B4      B5      B6
+PAERO1  300
+$
+$
+$CARD 'CAERO1' IS USED FOR THE DOUBLET-LATTICE AERODYNAMIC ANALYSIS, WHICH IS
+$USED FOR SUBSONIC AEROELASTIC ANALYSIS
+$       EID     PID     CP      NSPAN   NCHORD  LSPAN   LCHORD  IGID
+CAERO1  2000    300             8       4                       1       +CAW
+$      ( FWD LEFT POINT  )     CHORD   ( FWD RIGHT POINT  )     CHORD
+$       X1      Y1      Z1      X12     X4        Y4    Z4      X14
++CAW    25.     0.      0.      10.     13.45   +20.    0.      10.
+$
+$
+$CARD 'SPLINE1' USED TO DEFINE INTERPOLATION OF THE WING ARRAYS AND ATTACHES IT TO THE
+$STRUCTURAL NODES DEFINED IN 'SETG'.
+$WHEN DEFINING THE SPLINE OPERATION THE CAERO1 EID NEEDS TO START AT THE SAME NUMBER AS ID1
+$VALUE, FAILURE TO DO SO WILL RESULT IN RUN ERRORS.
+$ALSO SETG VALUE SHOULD HAVE DIFFERENT ID FROM THE CAERO1 EID
+$       EID     CAERO   BOX1    BOX2    SETG    DZ
+SPLINE1 1500    2000    2000    2031    200     0.
+$
+$
+$------------------------------------------------
+$THIS SECTION DEFINES THE CANARD
+$
+$
+$CARD 'SET1' USED TO DEFINE STRUCTURAL NODES TO BE USED FOR THE SPLINING PROCESS
+$OF THE CANARDS
+$       SGRID    GRID POINTS
+SET1    1100    2       4
+$
+$
+$CARD 'AELIST' DEFINES THE ARRAY OF BOXES THAT DEFINE THE CONTROL SURFACE.
+$       SID     E1      E2      E3      ETC
+AELIST  1000    1000    THRU    1007
+$
+$
+$CARD 'AESURF' WILL DEFINES THE CONTROL SURFACE
+$       ID      LABEL   CID1    ALID1   CID2    ALID2
+AESURF  505     ELEV    1       1000
+$
+$
+$CARD 'CAERO1' USED IN SAME MANNER AS FOR THE WING DEFINITION
+$       EID     PID     CP      NSPAN   NCHORD  LSPAN   LCHORD  IGID
+CAERO1  1000    300             2       4                       1       +CAC
+$      (FWD LEFT POINT       ) CHORD  (FWD RIGHT POINT      )  CHORD
++CAC    10.     0.      0.      10.     10.     5.      0.      10.
+$
+$
+$CARD 'SPLINE2' USED FOR THE CANARD
+$       EID     CAERO   ID1     ID2     SETG    DZ      DTOR    CID
+SPLINE2 1600    1000    1000    1007    1100    0.      1.      1       +SPC
++SPC    1.      -1.
+$                   
+$
+$THIS CONCLUDES THE AERODYNAMIC INPUT SECTION
+$--------------------------------------------------------------------------------------------------
+$
+$USER DEFINED MATRIX INPUTS FOR THE ANALYSIS DEFINED BELOW
+$
+$
+$DIAGONAL MATRIX DEFINED BELOW CARRIES ALL CORRECTION TERMS FOR THE LIFT CALCULATION
+$MATRIX WILL BE 80 BY 80 WITH DIAGONAL VALUES EQUAL TO 1
+$       NAME    "0"     FORM    TIN     TOUT            M       N
+DMI     WKK     0       3       1       0               80      1
+$       NAME    J       I1      A(I1,J) A(I1+1,J) . . .
+DMI     WKK     1       1       1.0     THRU    80
+$
+$
+$MATRIX BELOW DEFINES DOWNWASH INFORMATION FOR THE ANALYSIS
+$MATRIX VALUES CONTAIN INCIDENCE INFORMATION (IN THIS CASE 0.1 DEG OR 0.001745RAD FOR THE WING)
+$THE CANARD HAS NO INCIDENCE, THEREFORE FIRST 8 INPUTS ARE SET TO ZERO, FIRST NONZERO ROW IS 9
+$IT IS A 40 BY 3 MATRIX WHICH HAS FIRST 8 ROWS AS ZERO INPUTS
+$THE REASON FOR 3 COLUMNS IS THAT THERE ARE 3 TRIM CONDITIONS BEING CONSIDERED
+$       NAME    "0"     FORM    TIN     TOUT            M       N
+DMI     W2GJ    0       2       1       0               40      3
+$       NAME    J       I1      A(I1,J) A(I1+1,J) . . .
+DMI     W2GJ    1       9       .0017453THRU    40
+DMI     W2GJ    2       9       .0017453THRU    40
+DMI     W2GJ    3       9       .0017453THRU    40
+$
+$
+$MATRIX DEFINIES ADDITIVE COEFFICIENTS, WHICH ARE ALL 0 IN THIS CASE.
+$MATRIX IS 40 BY 3
+$THE REASON FOR 3 COLUMNS IS THAT THERE ARE 3 TRIM CONDITIONS BEING CONSIDERED, HOWEVER,
+$FOR THIS CASE ONLY ONE MATRIX COLUMN IS NECESSARY.
+$       NAME    "0"     FORM    TIN     TOUT            M       N
+DMI     FA2J    0       2       1       0               40      3
+$       NAME    J       I1      A(I1,J) A(I1+1,J) . . .
+DMI     FA2J    1       1       0.0     THRU    40
+DMI     FA2J    2       1       0.0     THRU    40
+DMI     FA2J    3       1       0.0     THRU    40
+$
+$
+$THIS CONCLUDES USER MATRIX INPUTS
+$--------------------------------------------------------------------------------------------------
+$
+$THIS SECTION DEFINES THE TRIM PARAMATERS, WHICH ARE USED FOR THE THREE TRIM CASES
+$       ID      LABEL
+AESTAT  501     ANGLEA
+AESTAT  502     PITCH
+AESTAT  503     URDD3
+AESTAT  504     URDD5
+$
+$
+$
+ENDDATA
