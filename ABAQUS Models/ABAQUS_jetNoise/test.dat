@@ -1,0 +1,4216 @@
+1
+
+   Abaqus 6.13-1                                  Date 05-Feb-2016   Time 13:30:25
+   For use at  under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Simulia Corp.
+                                 Rising Sun Mills
+                                 166 Valley Street
+                           Providence, RI 02909-2499, USA
+ 
+
+
+                   Available for internal use at . 
+                   The Abaqus Online Support System is accessible
+                   through the "My Support" section of the SIMULIA
+                   Home Page at http://www.simulia.com.
+
+                   Support policies for academic licenses are described
+                   on the SIMULIA web site at
+                   http://www.3ds.com/products/simulia/academics/
+ 
+                          On machine luigi 
+                          you are authorized to run
+                          Abaqus/Standard until 30-Aug-2016
+
+                          Your site id is: 200000000026328 
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      http://www.3ds.com/products/simulia/locations/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                    Abaqus 6.13-1                        * 
+                *                                                         * 
+                *          BUILD ID: 2013_05_15-22.28.56 126354           * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using release 6.13 manuals    * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *   This program may not be used for commercial purposes  * 
+                *           without payment of a commercial fee.          * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+
+          READING RESTART DATA GENERATED ON RELEASE  6.13-1       DATE  05-Feb-2016     TIME  11:47:49
+  *HEADING
+           RESTART FROM EIGENVALUE EXTR.                                                                                                                                                                                                                                  
+
+          STEP    1  INCREMENT    1  HAS BEEN FOUND ON THE RESTART FILE
+
+ ***NOTE: RESTART IS BEING MADE FROM THE END OF A STEP.  THE ENDSTEP PARAMETER 
+          IS NOW SET.
+  *PSD-DEFINITION,NAME=PSD
+  *STEP
+  *STEP
+  *STEP
+  *modal damping, modal=direct
+  *select eigenmodes, generate
+  *EL PRINT,FREQUENCY=80
+  *NODE PRINT,NSET=N2,SUMMARY=NO,FREQUENCY=4
+  *NODE PRINT,FREQUENCY=80
+  *MODAL PRINT,FREQUENCY=20
+  *MODAL FILE
+  *NODE FILE,FREQUENCY=1,NSET=N2
+  *OUTPUT,FIELD
+
+ ***WARNING: *MODAL OUTPUT IS NOT AVAILABLE AS FIELD OUTPUT
+  *OUTPUT,HISTORY
+  *MODAL OUTPUT,VARIABLE=ALL
+
+ ***WARNING: DATACARDS ARE IGNORED IF VARIABLE=ALL HAS BEEN USED
+ LINE IMAGE: GU,
+  *OUTPUT,FIELD,Frequency=1
+  *NODE OUTPUT,NSET=N2
+  *OUTPUT,HISTORY,Frequency=1
+  *NODE OUTPUT,NSET=N2
+  *END STEP
+  *STEP
+  *RANDOM RESPONSE
+  *modal damping, modal=direct
+  *select eigenmodes, generate
+  *CLOAD, LOAD CASE=1
+  *CORRELATION,TYPE=MOVING NOISE
+  *END STEP
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =   0.0000    
+       SYSTEM TIME (SEC)    =  0.10000    
+       TOTAL CPU TIME (SEC) =  0.10000    
+       WALLCLOCK TIME (SEC) =          0
+1
+
+   Abaqus 6.13-1                                  Date 05-Feb-2016   Time 13:30:36
+   For use at  under license from Dassault Systemes or its subsidiary.
+
+      RESTART FROM EIGENVALUE EXTR.                                                            STEP    2  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       2     R A N D O M    R E S P O N S E   A N A L Y S I S         
+
+
+                                                                                          
+          THE VARIANCE WILL BE COMPUTED NUMERICALLY  
+          FREQUENCY RANGE DEFINITIONS (CYCLES/TIME)
+                   LOW         HIGH     POINTS         BIAS   TYPE OF SCALING
+
+
+                   0.100      20.0        20          3.00      LINEAR          
+
+     THIS IS A LINEAR PERTURBATION STEP.
+     ALL LOADS ARE DEFINED AS CHANGE IN LOAD TO THE REFERENCE STATE
+
+
+
+                    TOTAL MASS OF MODEL
+
+                       5.000000    
+
+
+                    LOCATION OF THE CENTER OF MASS OF THE MODEL
+
+                       2.500000           0.000000    
+
+
+                    MOMENT OF INERTIA ABOUT THE ORIGIN
+                           I(ZZ)
+
+                       41.66667    
+
+
+                    PRODUCT OF INERTIA ABOUT THE ORIGIN
+                           I(XY)
+
+                       0.000000    
+
+
+                    MOMENT OF INERTIA ABOUT THE CENTER OF MASS
+                           I(ZZ)
+
+                       10.41667    
+
+
+                    PRODUCT OF INERTIA ABOUT THE CENTER OF MASS
+                           I(XY)
+
+                       0.000000    
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION         (MBYTES)           (MBYTES)
+  
+     1         0.00E+000               13                 13
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+
+
+                              INCREMENT NUMBER     1
+                              FREQUENCY           0.100    
+
+
+
+                              INCREMENT NUMBER     2
+                              FREQUENCY           0.127    
+
+
+
+                              INCREMENT NUMBER     3
+                              FREQUENCY           0.156    
+
+
+
+                              INCREMENT NUMBER     4
+                              FREQUENCY           0.187    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.5611E-04  1.2652E-03  2.1645E-04  1.7543E-03  3.0011E-04  2.4323E-03 
+
+
+                              INCREMENT NUMBER     5
+                              FREQUENCY           0.223    
+
+
+
+                              INCREMENT NUMBER     6
+                              FREQUENCY           0.262    
+
+
+
+                              INCREMENT NUMBER     7
+                              FREQUENCY           0.308    
+
+
+
+                              INCREMENT NUMBER     8
+                              FREQUENCY           0.364    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.6581E-04  1.3502E-03  8.6831E-04  7.0707E-03  4.5472E-03  3.7028E-02 
+
+
+                              INCREMENT NUMBER     9
+                              FREQUENCY           0.438    
+
+
+
+                              INCREMENT NUMBER    10
+                              FREQUENCY           0.560    
+
+
+
+                              INCREMENT NUMBER    11
+                              FREQUENCY            1.11    
+
+
+
+                              INCREMENT NUMBER    12
+                              FREQUENCY            1.23    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      6.7868E-04  6.0456E-03  4.0746E-02  0.3630       2.446       21.79     
+
+
+                              INCREMENT NUMBER    13
+                              FREQUENCY            1.31    
+
+
+
+                              INCREMENT NUMBER    14
+                              FREQUENCY            1.36    
+
+
+
+                              INCREMENT NUMBER    15
+                              FREQUENCY            1.41    
+
+
+
+                              INCREMENT NUMBER    16
+                              FREQUENCY            1.45    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.5621E-03  2.3808E-02  0.2123       1.973       17.59       163.4     
+
+
+                              INCREMENT NUMBER    17
+                              FREQUENCY            1.48    
+
+
+
+                              INCREMENT NUMBER    18
+                              FREQUENCY            1.52    
+
+
+
+                              INCREMENT NUMBER    19
+                              FREQUENCY            1.54    
+
+
+
+                              INCREMENT NUMBER    20
+                              FREQUENCY            1.57    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      4.8689E-02  0.4755       4.745       46.34       462.5       4516.     
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   6.0023E-02  4.8333E-03  1.0222E-03  6.9621E-05  5.8465E-07  2.4253E-08  5.3271E-08  3.9194E-07  1.8204E-07
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   9.3238E-09  6.7794E-11  1.1726E-09  6.8792E-09  3.4258E-09  1.1081E-10  9.9358E-27  1.5695E-13  2.5511E-11
+
+     GU19        GU20    
+
+   5.6142E-11  6.3939E-12
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+    5.850      0.4710      9.9624E-02  6.7853E-03  5.6980E-05  2.3637E-06  5.1918E-06  3.8198E-05  1.7742E-05
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   9.0869E-07  6.6072E-09  1.1428E-07  6.7045E-07  3.3388E-07  1.0800E-08  9.6834E-25  1.5297E-11  2.4863E-09
+
+     GV19        GV20    
+
+   5.4716E-09  6.2315E-10
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+    570.1       45.91       9.709      0.6613      5.5533E-03  2.3037E-04  5.0599E-04  3.7228E-03  1.7291E-03
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+   8.8561E-05  6.4394E-07  1.1138E-05  6.5342E-05  3.2540E-05  1.0525E-06  9.4374E-23  1.4908E-09  2.4232E-07
+
+     GA19        GA20    
+
+   5.3326E-07  6.0732E-08
+
+
+
+                              INCREMENT NUMBER    21
+                              FREQUENCY            1.57    
+
+
+
+                              INCREMENT NUMBER    22
+                              FREQUENCY            1.58    
+
+
+
+                              INCREMENT NUMBER    23
+                              FREQUENCY            1.58    
+
+
+
+                              INCREMENT NUMBER    24
+                              FREQUENCY            1.59    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.4796E-02  0.2434       2.461       24.16       244.2       2398.     
+
+
+                              INCREMENT NUMBER    25
+                              FREQUENCY            1.59    
+
+
+
+                              INCREMENT NUMBER    26
+                              FREQUENCY            1.60    
+
+
+
+                              INCREMENT NUMBER    27
+                              FREQUENCY            1.60    
+
+
+
+                              INCREMENT NUMBER    28
+                              FREQUENCY            1.61    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      9.1169E-03  8.8481E-02  0.9338       9.063       95.65       928.3     
+
+
+                              INCREMENT NUMBER    29
+                              FREQUENCY            1.62    
+
+
+
+                              INCREMENT NUMBER    30
+                              FREQUENCY            1.69    
+
+
+
+                              INCREMENT NUMBER    31
+                              FREQUENCY            1.70    
+
+
+
+                              INCREMENT NUMBER    32
+                              FREQUENCY            1.71    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      9.4252E-02  0.8920       10.91       103.3       1263.      1.1954E+04 
+
+
+                              INCREMENT NUMBER    33
+                              FREQUENCY            1.72    
+
+
+
+                              INCREMENT NUMBER    34
+                              FREQUENCY            1.72    
+
+
+
+                              INCREMENT NUMBER    35
+                              FREQUENCY            1.73    
+
+
+
+                              INCREMENT NUMBER    36
+                              FREQUENCY            1.73    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      0.3041       2.880       36.06       341.5       4276.      4.0492E+04 
+
+
+                              INCREMENT NUMBER    37
+                              FREQUENCY            1.74    
+
+
+
+                              INCREMENT NUMBER    38
+                              FREQUENCY            1.74    
+
+
+
+                              INCREMENT NUMBER    39
+                              FREQUENCY            1.74    
+
+
+
+                              INCREMENT NUMBER    40
+                              FREQUENCY            1.75    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      0.3493       3.310       42.29       400.7       5121.      4.8519E+04 
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   2.5242E-05  0.7044      1.6506E-03  4.1558E-05  1.4995E-08  3.7744E-08  2.5736E-09  3.2725E-07  2.6018E-07
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   2.9079E-08  3.5644E-12  2.3231E-09  6.9511E-09  2.0291E-09  3.5573E-12  7.8928E-27  5.1514E-15  1.5694E-11
+
+     GU19        GU20    
+
+   6.1249E-11  1.5169E-11
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   3.0562E-03   85.28      0.1998      5.0316E-03  1.8155E-06  4.5698E-06  3.1159E-07  3.9621E-05  3.1500E-05
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   3.5206E-06  4.3156E-10  2.8127E-07  8.4159E-07  2.4568E-07  4.3070E-10  9.5561E-25  6.2370E-13  1.9001E-09
+
+     GV19        GV20    
+
+   7.4156E-09  1.8366E-09
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   0.3700      1.0325E+04   24.19      0.6092      2.1981E-04  5.5328E-04  3.7725E-05  4.7970E-03  3.8139E-03
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+   4.2625E-04  5.2250E-08  3.4054E-05  1.0189E-04  2.9745E-05  5.2146E-08  1.1570E-22  7.5513E-11  2.3005E-07
+
+     GA19        GA20    
+
+   8.9783E-07  2.2236E-07
+
+
+
+                              INCREMENT NUMBER    41
+                              FREQUENCY            1.76    
+
+
+
+                              INCREMENT NUMBER    42
+                              FREQUENCY            1.77    
+
+
+
+                              INCREMENT NUMBER    43
+                              FREQUENCY            1.78    
+
+
+
+                              INCREMENT NUMBER    44
+                              FREQUENCY            1.79    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      5.3536E-02  0.5074       6.783       64.28       859.4       8145.     
+
+
+                              INCREMENT NUMBER    45
+                              FREQUENCY            1.81    
+
+
+
+                              INCREMENT NUMBER    46
+                              FREQUENCY            1.82    
+
+
+
+                              INCREMENT NUMBER    47
+                              FREQUENCY            1.84    
+
+
+
+                              INCREMENT NUMBER    48
+                              FREQUENCY            1.88    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      9.3855E-03  8.8403E-02   1.309       12.33       182.7       1721.     
+
+
+                              INCREMENT NUMBER    49
+                              FREQUENCY            2.04    
+
+
+
+                              INCREMENT NUMBER    50
+                              FREQUENCY            2.08    
+
+
+
+                              INCREMENT NUMBER    51
+                              FREQUENCY            2.10    
+
+
+
+                              INCREMENT NUMBER    52
+                              FREQUENCY            2.12    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.0246E-02  8.6825E-02   1.815       15.38       321.6       2726.     
+
+
+                              INCREMENT NUMBER    53
+                              FREQUENCY            2.13    
+
+
+
+                              INCREMENT NUMBER    54
+                              FREQUENCY            2.14    
+
+
+
+                              INCREMENT NUMBER    55
+                              FREQUENCY            2.15    
+
+
+
+                              INCREMENT NUMBER    56
+                              FREQUENCY            2.16    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      3.9536E-02  0.3227       7.308       59.64       1351.      1.1024E+04 
+
+
+                              INCREMENT NUMBER    57
+                              FREQUENCY            2.17    
+
+
+
+                              INCREMENT NUMBER    58
+                              FREQUENCY            2.18    
+
+
+
+                              INCREMENT NUMBER    59
+                              FREQUENCY            2.19    
+
+
+
+                              INCREMENT NUMBER    60
+                              FREQUENCY            2.20    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.3468E-02  0.1861       4.492       35.62       859.7       6817.     
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   1.5594E-04  1.5122E-03  7.7216E-02  2.4019E-06  6.3887E-08  1.1919E-08  1.2378E-07  4.6613E-08  3.4166E-07
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   1.7065E-07  1.8171E-10  4.1435E-09  4.0202E-09  1.3248E-10  7.0335E-11  4.5092E-27  1.0775E-13  1.1311E-12
+
+     GU19        GU20    
+
+   4.3790E-11  4.8181E-11
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   2.9845E-02  0.2894       14.78      4.5971E-04  1.2228E-05  2.2812E-06  2.3691E-05  8.9214E-06  6.5392E-05
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   3.2661E-05  3.4778E-08  7.9303E-07  7.6944E-07  2.5357E-08  1.3462E-08  8.6302E-25  2.0623E-11  2.1649E-10
+
+     GV19        GV20    
+
+   8.3810E-09  9.2216E-09
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+    5.712       55.39       2829.      8.7985E-02  2.3403E-03  4.3660E-04  4.5343E-03  1.7075E-03  1.2516E-02
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+   6.2510E-03  6.6563E-06  1.5178E-04  1.4727E-04  4.8531E-06  2.5764E-06  1.6518E-22  3.9472E-09  4.1435E-08
+
+     GA19        GA20    
+
+   1.6041E-06  1.7649E-06
+
+
+
+                              INCREMENT NUMBER    61
+                              FREQUENCY            2.21    
+
+
+
+                              INCREMENT NUMBER    62
+                              FREQUENCY            2.23    
+
+
+
+                              INCREMENT NUMBER    63
+                              FREQUENCY            2.24    
+
+
+
+                              INCREMENT NUMBER    64
+                              FREQUENCY            2.26    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.2729E-03  1.7660E-02  0.4585       3.563       92.51       718.8     
+
+
+                              INCREMENT NUMBER    65
+                              FREQUENCY            2.28    
+
+
+
+                              INCREMENT NUMBER    66
+                              FREQUENCY            2.31    
+
+
+
+                              INCREMENT NUMBER    67
+                              FREQUENCY            2.36    
+
+
+
+                              INCREMENT NUMBER    68
+                              FREQUENCY            2.57    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.1738E-04  1.1487E-03  3.0606E-02  0.2995       7.980       78.09     
+
+
+                              INCREMENT NUMBER    69
+                              FREQUENCY            2.62    
+
+
+
+                              INCREMENT NUMBER    70
+                              FREQUENCY            2.65    
+
+
+
+                              INCREMENT NUMBER    71
+                              FREQUENCY            2.67    
+
+
+
+                              INCREMENT NUMBER    72
+                              FREQUENCY            2.68    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.0462E-04  1.0076E-03  2.9767E-02  0.2867       8.470       81.57     
+
+
+                              INCREMENT NUMBER    73
+                              FREQUENCY            2.70    
+
+
+
+                              INCREMENT NUMBER    74
+                              FREQUENCY            2.71    
+
+
+
+                              INCREMENT NUMBER    75
+                              FREQUENCY            2.73    
+
+
+
+                              INCREMENT NUMBER    76
+                              FREQUENCY            2.74    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.5920E-04  1.4329E-03  4.7075E-02  0.4237       13.92       125.3     
+
+
+                              INCREMENT NUMBER    77
+                              FREQUENCY            2.75    
+
+
+
+                              INCREMENT NUMBER    78
+                              FREQUENCY            2.76    
+
+
+
+                              INCREMENT NUMBER    79
+                              FREQUENCY            2.77    
+
+
+
+                              INCREMENT NUMBER    80
+                              FREQUENCY            2.78    
+
+
+
+
+                                                  E L E M E N T   O U T P U T
+
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE B23 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       SF1         SM1         
+                NOTE 
+
+           1   1         8.1925E-21  1.9325E-04
+           1   2         2.0598E-21  2.7601E-03
+           1   3         3.2064E-22  8.4073E-03
+           2   1         4.1652E-20  1.2656E-02
+           2   2         8.1441E-21  1.7320E-02
+           2   3         3.5637E-21  2.3023E-02
+           3   1         1.2561E-20  2.3741E-02
+           3   2         1.6985E-20  1.6732E-02
+           3   3         9.3025E-21  1.0957E-02
+           4   1         6.9624E-20  5.5495E-03
+           4   2         4.9148E-20  4.4481E-03
+           4   3         8.2531E-21  1.7485E-02
+           5   1         9.7837E-21  1.7621E-02
+           5   2         1.7186E-20  6.3663E-03
+           5   3         9.5274E-20  8.2764E-03
+           6   1         2.4637E-20  1.2233E-02
+           6   2         6.8417E-22  1.4400E-02
+           6   3         1.3253E-20  1.6877E-02
+           7   1         1.9052E-21  1.4001E-02
+           7   2         2.1942E-20  8.1137E-03
+           7   3         3.7387E-20  4.5646E-03
+           8   1         4.0862E-21  3.3831E-03
+           8   2         5.3052E-21  2.6569E-03
+           8   3         2.7684E-21  3.0027E-03
+           9   1         6.8745E-21  3.4443E-03
+           9   2         2.4203E-21  5.0688E-03
+           9   3         2.6119E-20  9.8774E-03
+          10   1         1.5257E-19  1.0697E-02
+          10   2         3.3031E-20  9.9445E-03
+          10   3         9.9640E-21  1.2689E-02
+          11   1         7.0283E-21  1.4590E-02
+          11   2         6.9222E-20  1.6601E-02
+          11   3         1.1365E-19  2.0924E-02
+          12   1         7.9529E-20  2.0363E-02
+          12   2         6.6963E-20  1.3281E-02
+          12   3         1.7431E-20  7.7106E-03
+          13   1         1.6347E-20  2.5982E-03
+          13   2         8.8027E-21  1.4828E-03
+          13   3         7.7267E-20  1.1633E-02
+          14   1         3.1779E-20  2.0819E-02
+          14   2         4.7222E-20  3.1135E-02
+          14   3         2.8705E-20  4.4850E-02
+          15   1         2.4486E-21  4.5441E-02
+          15   2         2.2796E-20  3.1127E-02
+          15   3         3.6900E-20  1.9695E-02
+          16   1         1.2509E-23  8.9979E-03
+          16   2         9.3766E-22  5.8619E-04
+          16   3         2.7438E-21  1.2557E-02
+          17   1         9.8813E-22  1.9163E-02
+          17   2         3.7788E-22  1.3560E-02
+          17   3         1.5914E-25  1.3292E-02
+          18   1         8.8381E-22  1.3453E-02
+          18   2         3.9851E-21  1.0407E-02
+          18   3         5.0803E-21  7.7761E-03
+          19   1         2.8111E-20  5.0191E-03
+          19   2         7.0829E-21  2.3737E-03
+          19   3         1.0910E-21  1.0060E-03
+          20   1         1.0883E-19  8.0936E-04
+          20   2         7.0040E-21  3.0341E-04
+          20   3         3.8414E-20  5.6575E-05
+
+ MAXIMUM                1.5257E-19  4.5441E-02                                                                                    
+ ELEMENT                       10          15                                                                                     
+
+ MINIMUM                1.5914E-25  5.6575E-05                                                                                    
+ ELEMENT                       17          20                                                                                     
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.0110E-04  1.0065E-03  3.0843E-02  0.3071       9.410       93.69     
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   V2          VR3         A2          AR3      
+            NOTE
+  
+          1       0.000      0.6060       0.000       184.9     
+          2      3.0843E-02  0.3071       9.410       93.69     
+          3      6.0929E-02  5.1032E-04   18.59      0.1557     
+          4      2.7590E-02  0.3414       8.417       104.2     
+          5       0.000      0.4452       0.000       135.8     
+          6      2.1843E-02  0.2150       6.664       65.60     
+          7      3.9953E-02  4.1255E-03   12.19       1.259     
+          8      1.7267E-02  0.2028       5.268       61.89     
+          9       0.000      0.3364       0.000       102.6     
+         10      1.8270E-02  0.2200       5.574       67.13     
+         11      4.2020E-02  6.0969E-02   12.82       18.60     
+         12      2.7763E-02  0.1869       8.470       57.03     
+         13       0.000      0.7689       0.000       234.6     
+         14      4.8959E-02  0.5733       14.94       174.9     
+         15      0.1040      5.8847E-03   31.72       1.795     
+         16      4.6536E-02  0.5988       14.20       182.7     
+         17       0.000      0.6159       0.000       187.9     
+         18      1.8724E-02  9.7881E-02   5.713       29.86     
+         19      2.4280E-02  1.7629E-02   7.408       5.378     
+         20      8.4949E-03  0.1166       2.592       35.56     
+         21       0.000      0.1460       0.000       44.54     
+
+ MAXIMUM         0.1040      0.7689       31.72       234.6    
+ AT NODE                15          13          15          13
+
+ MINIMUM          0.000      5.1032E-04   0.000      0.1557    
+ AT NODE                 1           3           1           3
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   RU2         RUR3        RV2         RVR3        RA2         RAR3     
+            NOTE
+  
+          1       0.000      0.7721       0.000       8.698       0.000       100.3     
+          2      0.1718      0.5241       1.933       5.871       22.24       67.19     
+          3      0.2343      6.6639E-02   2.622      0.8575       29.97       11.36     
+          4      0.1545      0.5459       1.712       6.149       19.30       70.91     
+          5       0.000      0.6074       0.000       6.628       0.000       73.10     
+          6      0.1214      0.3484       1.320       3.876       14.50       44.21     
+          7      0.1576      0.1246       1.735       1.547       19.48       19.70     
+          8      0.1020      0.3717       1.156       4.067       13.51       45.25     
+          9       0.000      0.4110       0.000       4.939       0.000       61.56     
+         10      8.9301E-02  0.2902       1.132       3.778       14.80       50.36     
+         11      0.1230      0.1139       1.590       1.257       21.10       13.98     
+         12      8.2142E-02  0.2987       1.058       3.862       14.01       51.22     
+         13       0.000      0.3488       0.000       4.281       0.000       54.47     
+         14      8.6336E-02  0.3315      0.9855       3.640       11.60       40.55     
+         15      0.1384      0.1430       1.527       1.768       17.15       22.43     
+         16      0.1121      0.2996       1.227       3.344       13.57       38.22     
+         17       0.000      0.6003       0.000       6.660       0.000       74.89     
+         18      0.1601      0.5824       1.810       6.686       20.86       78.64     
+         19      0.2472      7.4662E-02   2.821      0.9505       32.93       12.46     
+         20      0.1826      0.5539       2.094       6.328       24.59       73.95     
+         21       0.000      0.8222       0.000       9.441       0.000       111.1     
+
+ MAXIMUM         0.2472      0.8222       2.821       9.441       32.93       111.1    
+ AT NODE                19          21          19          21          19          21
+
+ MINIMUM          0.000      6.6639E-02   0.000      0.8575       0.000       11.36    
+ AT NODE                 1           3           1           3           1           3
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   1.3857E-04  2.3962E-05  1.4566E-07  4.6181E-05  1.7494E-07  5.1049E-08  6.3779E-08  1.2726E-07  5.8718E-08
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   4.8516E-07  8.3166E-11  3.1482E-09  3.1832E-10  1.7265E-10  1.5607E-11  4.3794E-27  2.5102E-14  1.6122E-12
+
+     GU19        GU20    
+
+   4.2927E-12  7.9654E-11
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   4.2276E-02  7.3106E-03  4.4440E-05  1.4089E-02  5.3373E-05  1.5575E-05  1.9459E-05  3.8825E-05  1.7915E-05
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   1.4802E-04  2.5373E-08  9.6049E-07  9.7117E-08  5.2674E-08  4.7616E-09  1.3361E-24  7.6584E-12  4.9188E-10
+
+     GV19        GV20    
+
+   1.3097E-09  2.4302E-08
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+    12.90       2.230      1.3558E-02   4.299      1.6284E-02  4.7517E-03  5.9366E-03  1.1845E-02  5.4656E-03
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+   4.5159E-02  7.7412E-06  2.9304E-04  2.9630E-05  1.6071E-05  1.4527E-06  4.0764E-22  2.3365E-09  1.5007E-07
+
+     GA19        GA20    
+
+   3.9957E-07  7.4143E-06
+
+
+
+                              INCREMENT NUMBER    81
+                              FREQUENCY            2.79    
+
+
+
+                              INCREMENT NUMBER    82
+                              FREQUENCY            2.81    
+
+
+
+                              INCREMENT NUMBER    83
+                              FREQUENCY            2.83    
+
+
+
+                              INCREMENT NUMBER    84
+                              FREQUENCY            2.85    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      6.7168E-05  7.0419E-04  2.1482E-02  0.2252       6.871       72.03     
+
+
+                              INCREMENT NUMBER    85
+                              FREQUENCY            2.87    
+
+
+
+                              INCREMENT NUMBER    86
+                              FREQUENCY            2.92    
+
+
+
+                              INCREMENT NUMBER    87
+                              FREQUENCY            3.13    
+
+
+
+                              INCREMENT NUMBER    88
+                              FREQUENCY            3.17    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      5.1400E-05  4.8186E-04  2.0423E-02  0.1915       8.115       76.07     
+
+
+                              INCREMENT NUMBER    89
+                              FREQUENCY            3.20    
+
+
+
+                              INCREMENT NUMBER    90
+                              FREQUENCY            3.22    
+
+
+
+                              INCREMENT NUMBER    91
+                              FREQUENCY            3.24    
+
+
+
+                              INCREMENT NUMBER    92
+                              FREQUENCY            3.25    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      7.9094E-05  6.3955E-04  3.3050E-02  0.2672       13.81       111.7     
+
+
+                              INCREMENT NUMBER    93
+                              FREQUENCY            3.27    
+
+
+
+                              INCREMENT NUMBER    94
+                              FREQUENCY            3.28    
+
+
+
+                              INCREMENT NUMBER    95
+                              FREQUENCY            3.29    
+
+
+
+                              INCREMENT NUMBER    96
+                              FREQUENCY            3.30    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.1603E-04  8.9058E-04  4.9862E-02  0.3827       21.43       164.5     
+
+
+                              INCREMENT NUMBER    97
+                              FREQUENCY            3.35    
+
+
+
+                              INCREMENT NUMBER    98
+                              FREQUENCY            3.41    
+
+
+
+                              INCREMENT NUMBER    99
+                              FREQUENCY            3.48    
+
+
+
+                              INCREMENT NUMBER   100
+                              FREQUENCY            3.55    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.0286E-05  2.1895E-04  1.0092E-02  0.1089       5.021       54.19     
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   1.6342E-05  3.6443E-05  1.2467E-05  1.0488E-07  1.6646E-05  2.6850E-09  4.1756E-07  5.4282E-09  3.6999E-07
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   3.9433E-07  3.5889E-10  4.2034E-09  1.9607E-09  5.5555E-12  6.1473E-11  2.1041E-27  9.4011E-14  4.7698E-14
+
+     GU19        GU20    
+
+   2.2256E-11  6.1067E-11
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   8.1301E-03  1.8130E-02  6.2025E-03  5.2178E-05  8.2813E-03  1.3358E-06  2.0774E-04  2.7006E-06  1.8407E-04
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   1.9618E-04  1.7855E-07  2.0912E-06  9.7547E-07  2.7639E-09  3.0583E-08  1.0468E-24  4.6771E-11  2.3730E-11
+
+     GV19        GV20    
+
+   1.1073E-08  3.0381E-08
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+    4.045       9.020       3.086      2.5959E-02   4.120      6.6458E-04  0.1034      1.3436E-03  9.1577E-02
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+   9.7602E-02  8.8829E-05  1.0404E-03  4.8530E-04  1.3750E-06  1.5215E-05  5.2078E-22  2.3269E-08  1.1806E-08
+
+     GA19        GA20    
+
+   5.5087E-06  1.5115E-05
+
+
+
+                              INCREMENT NUMBER   101
+                              FREQUENCY            3.63    
+
+
+
+                              INCREMENT NUMBER   102
+                              FREQUENCY            3.73    
+
+
+
+                              INCREMENT NUMBER   103
+                              FREQUENCY            3.84    
+
+
+
+                              INCREMENT NUMBER   104
+                              FREQUENCY            3.99    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.3006E-05  1.2073E-04  8.1773E-03  7.5904E-02   5.141       47.72     
+
+
+                              INCREMENT NUMBER   105
+                              FREQUENCY            4.24    
+
+
+
+                              INCREMENT NUMBER   106
+                              FREQUENCY            5.37    
+
+
+
+                              INCREMENT NUMBER   107
+                              FREQUENCY            5.62    
+
+
+
+                              INCREMENT NUMBER   108
+                              FREQUENCY            5.77    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      9.8971E-05  8.9313E-06  0.1300      1.1731E-02   170.7       15.41     
+
+
+                              INCREMENT NUMBER   109
+                              FREQUENCY            5.88    
+
+
+
+                              INCREMENT NUMBER   110
+                              FREQUENCY            5.98    
+
+
+
+                              INCREMENT NUMBER   111
+                              FREQUENCY            6.06    
+
+
+
+                              INCREMENT NUMBER   112
+                              FREQUENCY            6.13    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      7.8969E-04  1.6302E-08   1.171      2.4181E-05   1737.      3.5867E-02 
+
+
+                              INCREMENT NUMBER   113
+                              FREQUENCY            6.19    
+
+
+
+                              INCREMENT NUMBER   114
+                              FREQUENCY            6.25    
+
+
+
+                              INCREMENT NUMBER   115
+                              FREQUENCY            6.31    
+
+
+
+                              INCREMENT NUMBER   116
+                              FREQUENCY            6.32    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      6.7946E-03  5.5412E-06   10.70      8.7239E-03  1.6841E+04   13.73     
+
+
+                              INCREMENT NUMBER   117
+                              FREQUENCY            6.32    
+
+
+
+                              INCREMENT NUMBER   118
+                              FREQUENCY            6.33    
+
+
+
+                              INCREMENT NUMBER   119
+                              FREQUENCY            6.34    
+
+
+
+                              INCREMENT NUMBER   120
+                              FREQUENCY            6.35    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      5.0597E-03  8.8228E-06   8.050      1.4038E-02  1.2809E+04   22.34     
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   8.2955E-09  5.6915E-08  5.7205E-08  2.0493E-07  1.1415E-06  3.4924E-03  1.3722E-04  1.0038E-06  3.7660E-08
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   8.1951E-09  8.3442E-10  3.9290E-09  2.0516E-09  4.1389E-09  1.5198E-08  7.5176E-28  1.1132E-11  1.1735E-11
+
+     GU19        GU20    
+
+   3.8669E-12  2.3521E-12
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   1.3199E-05  9.0556E-05  9.1017E-05  3.2607E-04  1.8163E-03   5.557      0.2183      1.5972E-03  5.9921E-05
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   1.3039E-05  1.3276E-06  6.2514E-06  3.2643E-06  6.5853E-06  2.4182E-05  1.1961E-24  1.7713E-08  1.8672E-08
+
+     GV19        GV20    
+
+   6.1526E-09  3.7423E-09
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   2.1000E-02  0.1441      0.1448      0.5188       2.890       8841.       347.4       2.541      9.5339E-02
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+   2.0746E-02  2.1124E-03  9.9464E-03  5.1938E-03  1.0478E-02  3.8475E-02  1.9031E-21  2.8182E-05  2.9708E-05
+
+     GA19        GA20    
+
+   9.7893E-06  5.9544E-06
+
+
+
+                              INCREMENT NUMBER   121
+                              FREQUENCY            6.36    
+
+
+
+                              INCREMENT NUMBER   122
+                              FREQUENCY            6.37    
+
+
+
+                              INCREMENT NUMBER   123
+                              FREQUENCY            6.39    
+
+
+
+                              INCREMENT NUMBER   124
+                              FREQUENCY            6.42    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.1177E-03  2.2151E-05   3.448      3.6065E-02   5614.       58.72     
+
+
+                              INCREMENT NUMBER   125
+                              FREQUENCY            6.56    
+
+
+
+                              INCREMENT NUMBER   126
+                              FREQUENCY            6.59    
+
+
+
+                              INCREMENT NUMBER   127
+                              FREQUENCY            6.61    
+
+
+
+                              INCREMENT NUMBER   128
+                              FREQUENCY            6.62    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      4.9888E-03  3.6810E-04   8.631      0.6369      1.4934E+04   1102.     
+
+
+                              INCREMENT NUMBER   129
+                              FREQUENCY            6.63    
+
+
+
+                              INCREMENT NUMBER   130
+                              FREQUENCY            6.64    
+
+
+
+                              INCREMENT NUMBER   131
+                              FREQUENCY            6.65    
+
+
+
+                              INCREMENT NUMBER   132
+                              FREQUENCY            6.66    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      7.3332E-03  6.0048E-04   12.83       1.051      2.2456E+04   1839.     
+
+
+                              INCREMENT NUMBER   133
+                              FREQUENCY            6.66    
+
+
+
+                              INCREMENT NUMBER   134
+                              FREQUENCY            6.67    
+
+
+
+                              INCREMENT NUMBER   135
+                              FREQUENCY            6.69    
+
+
+
+                              INCREMENT NUMBER   136
+                              FREQUENCY            6.70    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      6.1145E-03  5.5372E-04   10.85      0.9822      1.9240E+04   1742.     
+
+
+                              INCREMENT NUMBER   137
+                              FREQUENCY            6.72    
+
+
+
+                              INCREMENT NUMBER   138
+                              FREQUENCY            6.74    
+
+
+
+                              INCREMENT NUMBER   139
+                              FREQUENCY            6.76    
+
+
+
+                              INCREMENT NUMBER   140
+                              FREQUENCY            6.79    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.8371E-03  2.0453E-04   3.343      0.3722       6085.       677.5     
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   2.8968E-09  3.9999E-08  1.9538E-08  1.8422E-07  7.8648E-08  1.8840E-05  1.5165E-03  2.2828E-05  1.1144E-07
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   3.1750E-08  8.1894E-10  7.7954E-09  2.1293E-09  1.4679E-08  7.7933E-09  1.5584E-27  5.0661E-12  3.5528E-11
+
+     GU19        GU20    
+
+   3.2813E-12  3.6893E-12
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   5.2723E-06  7.2799E-05  3.5560E-05  3.3529E-04  1.4314E-04  3.4290E-02   2.760      4.1548E-02  2.0283E-04
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   5.7785E-05  1.4905E-06  1.4188E-05  3.8755E-06  2.6716E-05  1.4184E-05  2.8364E-24  9.2204E-09  6.4661E-08
+
+     GV19        GV20    
+
+   5.9721E-09  6.7146E-09
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   9.5957E-03  0.1325      6.4720E-02  0.6102      0.2605       62.41       5023.       75.62      0.3692    
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+   0.1052      2.7127E-03  2.5822E-02  7.0534E-03  4.8623E-02  2.5815E-02  5.1623E-21  1.6781E-05  1.1769E-04
+
+     GA19        GA20    
+
+   1.0869E-05  1.2221E-05
+
+
+
+                              INCREMENT NUMBER   141
+                              FREQUENCY            6.82    
+
+
+
+                              INCREMENT NUMBER   142
+                              FREQUENCY            6.86    
+
+
+
+                              INCREMENT NUMBER   143
+                              FREQUENCY            6.93    
+
+
+
+                              INCREMENT NUMBER   144
+                              FREQUENCY            7.25    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      3.2916E-04  2.6688E-04  0.6823      0.5532       1414.       1147.     
+
+
+                              INCREMENT NUMBER   145
+                              FREQUENCY            7.32    
+
+
+
+                              INCREMENT NUMBER   146
+                              FREQUENCY            7.36    
+
+
+
+                              INCREMENT NUMBER   147
+                              FREQUENCY            7.39    
+
+
+
+                              INCREMENT NUMBER   148
+                              FREQUENCY            7.42    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.2123E-03  1.2213E-03   2.631       2.651       5712.       5755.     
+
+
+                              INCREMENT NUMBER   149
+                              FREQUENCY            7.44    
+
+
+
+                              INCREMENT NUMBER   150
+                              FREQUENCY            7.46    
+
+
+
+                              INCREMENT NUMBER   151
+                              FREQUENCY            7.48    
+
+
+
+                              INCREMENT NUMBER   152
+                              FREQUENCY            7.49    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.6885E-03  2.7949E-03   5.958       6.193      1.3201E+04  1.3724E+04 
+
+
+                              INCREMENT NUMBER   153
+                              FREQUENCY            7.51    
+
+
+
+                              INCREMENT NUMBER   154
+                              FREQUENCY            7.53    
+
+
+
+                              INCREMENT NUMBER   155
+                              FREQUENCY            7.55    
+
+
+
+                              INCREMENT NUMBER   156
+                              FREQUENCY            7.57    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.6016E-03  1.7298E-03   3.621       3.910       8185.       8840.     
+
+
+                              INCREMENT NUMBER   157
+                              FREQUENCY            7.59    
+
+
+
+                              INCREMENT NUMBER   158
+                              FREQUENCY            7.62    
+
+
+
+                              INCREMENT NUMBER   159
+                              FREQUENCY            7.65    
+
+
+
+                              INCREMENT NUMBER   160
+                              FREQUENCY            7.69    
+
+
+
+
+                                                  E L E M E N T   O U T P U T
+
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE B23 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       SF1         SM1         
+                NOTE 
+
+           1   1         4.2733E-21  6.0209E-02
+           1   2         1.0327E-21  0.3759
+           1   3         1.9498E-22  0.9621
+           2   1         2.1875E-20  0.8035
+           2   2         4.3020E-21  0.1738
+           2   3         1.8458E-21  5.0064E-03
+           3   1         6.4869E-21  0.2579
+           3   2         8.7686E-21  0.4584
+           3   3         4.8003E-21  0.7180
+           4   1         3.5492E-20  0.3746
+           4   2         2.4940E-20  5.4555E-03
+           4   3         4.1334E-21  0.5196
+           5   1         5.2047E-21  0.6628
+           5   2         8.7044E-21  0.1007
+           5   3         4.9024E-20  4.2416E-02
+           6   1         1.2625E-20  0.1860
+           6   2         3.3757E-22  0.1881
+           6   3         6.8831E-21  0.1940
+           7   1         1.0147E-21  4.8327E-02
+           7   2         1.1499E-20  1.7575E-02
+           7   3         1.9521E-20  0.1933
+           8   1         2.1911E-21  0.3181
+           8   2         2.7494E-21  0.2534
+           8   3         1.3762E-21  0.2186
+           9   1         3.6726E-21  3.2791E-02
+           9   2         1.1993E-21  0.1296
+           9   3         1.3458E-20  0.6803
+          10   1         7.8625E-20  0.7356
+          10   2         1.6986E-20  0.2591
+          10   3         5.1656E-21  3.3776E-02
+          11   1         3.5933E-21  8.0941E-02
+          11   2         3.5512E-20  0.3075
+          11   3         5.8357E-20  0.7034
+          12   1         4.1045E-20  0.5541
+          12   2         3.4576E-20  6.2055E-02
+          12   3         9.0098E-21  0.1005
+          13   1         8.4383E-21  0.2967
+          13   2         4.5969E-21  0.1888
+          13   3         4.0136E-20  0.1368
+          14   1         1.6380E-20  6.9520E-02
+          14   2         2.4248E-20  1.4292E-02
+          14   3         1.4681E-20  6.0904E-02
+          15   1         1.1999E-21  0.1185
+          15   2         1.1784E-20  8.6584E-02
+          15   3         1.9334E-20  7.2924E-02
+          16   1         3.5032E-24  2.2648E-02
+          16   2         4.7951E-22  9.2211E-02
+          16   3         1.3622E-21  0.4102
+          17   1         4.9638E-22  0.2817
+          17   2         1.7035E-22  5.3499E-03
+          17   3         2.8824E-24  0.2991
+          18   1         4.2908E-22  0.5100
+          18   2         2.0411E-21  0.3016
+          18   3         2.6608E-21  0.1506
+          19   1         1.4208E-20  3.0543E-03
+          19   2         3.4337E-21  0.1288
+          19   3         6.4777E-22  0.5429
+          20   1         5.6787E-20  0.6317
+          20   2         3.8105E-21  0.2453
+          20   3         1.9470E-20  3.8331E-02
+
+ MAXIMUM                7.8625E-20  0.9621                                                                                        
+ ELEMENT                       10           1                                                                                     
+
+ MINIMUM                2.8824E-24  3.0543E-03                                                                                    
+ ELEMENT                       17          19                                                                                     
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      3.5555E-04  4.4529E-04  0.8297       1.039       1936.       2425.     
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   V2          VR3         A2          AR3      
+            NOTE
+  
+          1       0.000       40.83       0.000      9.5276E+04 
+          2      0.8297       1.039       1936.       2425.     
+          3      8.0728E-02   36.55       188.4      8.5305E+04 
+          4      0.7807       4.570       1822.      1.0665E+04 
+          5       0.000       2.385       0.000       5565.     
+          6      0.1942       5.428       453.2      1.2667E+04 
+          7      0.1393       8.705       325.0      2.0315E+04 
+          8      0.1672       2.641       390.1       6164.     
+          9       0.000       20.01       0.000      4.6688E+04 
+         10      0.7913      0.2617       1847.       610.8     
+         11      8.1388E-03   34.80       18.99      8.1220E+04 
+         12      0.7599      0.8321       1773.       1942.     
+         13       0.000       12.99       0.000      3.0305E+04 
+         14      5.8465E-02   2.808       136.4       6552.     
+         15      0.1155       3.262       269.6       7613.     
+         16      7.7417E-02   3.660       180.7       8541.     
+         17       0.000       3.231       0.000       7540.     
+         18      0.5701       2.534       1330.       5913.     
+         19      4.5333E-02   25.59       105.8      5.9726E+04 
+         20      0.5752      0.5603       1342.       1308.     
+         21       0.000       27.50       0.000      6.4178E+04 
+
+ MAXIMUM         0.8297       40.83       1936.      9.5276E+04
+ AT NODE                 2           1           2           1
+
+ MINIMUM          0.000      0.2617       0.000       610.8    
+ AT NODE                 1          10           1          10
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   RU2         RUR3        RV2         RVR3        RA2         RAR3     
+            NOTE
+  
+          1       0.000      0.8597       0.000       18.10       0.000       681.7     
+          2      0.1815      0.5254       3.110       6.024       105.3       89.37     
+          3      0.2347      0.3774       2.657       15.65       34.79       663.7     
+          4      0.1651      0.5496       2.973       6.728       104.6       142.9     
+          5       0.000      0.6772       0.000       13.87       0.000       503.9     
+          6      0.1286      0.3580       2.150       5.255       70.47       165.9     
+          7      0.1587      0.2941       1.869       10.94       35.38       442.9     
+          8      0.1107      0.3794       2.083       5.174       71.76       148.5     
+          9       0.000      0.4824       0.000       11.56       0.000       444.1     
+         10      9.8657E-02  0.2963       2.102       4.430       78.08       108.0     
+         11      0.1240      0.2891       1.668       11.48       28.53       498.3     
+         12      9.2102E-02  0.3046       2.051       4.499       77.25       108.6     
+         13       0.000      0.4173       0.000       10.39       0.000       402.7     
+         14      9.3678E-02  0.3393       1.747       4.705       59.54       137.8     
+         15      0.1395      0.2620       1.656       9.062       31.83       362.8     
+         16      0.1174      0.3085       1.852       4.560       57.66       144.2     
+         17       0.000      0.6449       0.000       11.63       0.000       396.7     
+         18      0.1664      0.5847       2.621       7.043       83.05       127.4     
+         19      0.2475      0.2948       2.845       12.06       36.12       512.6     
+         20      0.1879      0.5547       2.795       6.420       82.16       87.44     
+         21       0.000      0.8706       0.000       15.31       0.000       525.3     
+
+ MAXIMUM         0.2475      0.8706       3.110       18.10       105.3       681.7    
+ AT NODE                19          21           2           1           2           1
+
+ MINIMUM          0.000      0.2620       0.000       4.430       0.000       87.44    
+ AT NODE                 1          15           1          10           1          20
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   4.0535E-10  1.8927E-08  9.3524E-09  3.7788E-09  4.7383E-10  5.5765E-07  4.1770E-07  3.8480E-04  2.1886E-05
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   7.0397E-07  1.1405E-09  4.3200E-08  3.7923E-08  4.6908E-09  2.0579E-11  1.1646E-27  8.4671E-15  6.4891E-12
+
+     GU19        GU20    
+
+   3.0913E-11  1.0513E-11
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   9.4595E-07  4.4168E-05  2.1825E-05  8.8183E-06  1.1057E-06  1.3014E-03  9.7476E-04  0.8980      5.1075E-02
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   1.6428E-03  2.6616E-06  1.0081E-04  8.8498E-05  1.0947E-05  4.8024E-08  2.7178E-24  1.9759E-11  1.5143E-08
+
+     GV19        GV20    
+
+   7.2140E-08  2.4533E-08
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   2.2075E-03  0.1031      5.0932E-02  2.0579E-02  2.5804E-03   3.037       2.275       2096.       119.2    
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+    3.834      6.2113E-03  0.2353      0.2065      2.5546E-02  1.1207E-04  6.3424E-21  4.6111E-08  3.5339E-05
+
+     GA19        GA20    
+
+   1.6835E-04  5.7252E-05
+
+
+
+                              INCREMENT NUMBER   161
+                              FREQUENCY            7.74    
+
+
+
+                              INCREMENT NUMBER   162
+                              FREQUENCY            7.82    
+
+
+
+                              INCREMENT NUMBER   163
+                              FREQUENCY            8.20    
+
+
+
+                              INCREMENT NUMBER   164
+                              FREQUENCY            8.28    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      7.3264E-05  3.3114E-04  0.1985      0.8972       537.9       2431.     
+
+
+                              INCREMENT NUMBER   165
+                              FREQUENCY            8.34    
+
+
+
+                              INCREMENT NUMBER   166
+                              FREQUENCY            8.37    
+
+
+
+                              INCREMENT NUMBER   167
+                              FREQUENCY            8.41    
+
+
+
+                              INCREMENT NUMBER   168
+                              FREQUENCY            8.43    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.1934E-04  9.4907E-04  0.6157       2.664       1728.       7478.     
+
+
+                              INCREMENT NUMBER   169
+                              FREQUENCY            8.46    
+
+
+
+                              INCREMENT NUMBER   170
+                              FREQUENCY            8.48    
+
+
+
+                              INCREMENT NUMBER   171
+                              FREQUENCY            8.50    
+
+
+
+                              INCREMENT NUMBER   172
+                              FREQUENCY            8.52    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      3.5022E-04  1.5273E-03   1.003       4.373       2871.      1.2522E+04 
+
+
+                              INCREMENT NUMBER   173
+                              FREQUENCY            8.53    
+
+
+
+                              INCREMENT NUMBER   174
+                              FREQUENCY            8.55    
+
+
+
+                              INCREMENT NUMBER   175
+                              FREQUENCY            8.57    
+
+
+
+                              INCREMENT NUMBER   176
+                              FREQUENCY            8.60    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.5031E-04  7.0789E-04  0.4384       2.065       1279.       6022.     
+
+
+                              INCREMENT NUMBER   177
+                              FREQUENCY            8.62    
+
+
+
+                              INCREMENT NUMBER   178
+                              FREQUENCY            8.65    
+
+
+
+                              INCREMENT NUMBER   179
+                              FREQUENCY            8.69    
+
+
+
+                              INCREMENT NUMBER   180
+                              FREQUENCY            8.73    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.2933E-05  1.5977E-04  6.9061E-02  0.4811       208.0       1449.     
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   8.2099E-10  2.7966E-09  2.3888E-09  3.0013E-09  1.4204E-09  4.2688E-08  1.5258E-07  8.2183E-07  2.8747E-05
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   2.4906E-05  2.1776E-07  1.8935E-08  2.9401E-13  3.3013E-11  7.9720E-12  2.4864E-29  1.5786E-14  5.6462E-13
+
+     GU19        GU20    
+
+   2.1251E-12  1.8935E-11
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   2.4724E-06  8.4220E-06  7.1939E-06  9.0383E-06  4.2775E-06  1.2855E-04  4.5950E-04  2.4749E-03  8.6572E-02
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   7.5005E-02  6.5578E-04  5.7024E-05  8.8540E-10  9.9417E-08  2.4008E-08  7.4877E-26  4.7538E-11  1.7004E-09
+
+     GV19        GV20    
+
+   6.3998E-09  5.7022E-08
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   7.4456E-03  2.5363E-02  2.1664E-02  2.7219E-02  1.2882E-02  0.3871       1.384       7.453       260.7    
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+    225.9       1.975      0.1717      2.6664E-06  2.9939E-04  7.2299E-05  2.2549E-22  1.4316E-07  5.1206E-06
+
+     GA19        GA20    
+
+   1.9273E-05  1.7172E-04
+
+
+
+                              INCREMENT NUMBER   181
+                              FREQUENCY            8.81    
+
+
+
+                              INCREMENT NUMBER   182
+                              FREQUENCY            9.17    
+
+
+
+                              INCREMENT NUMBER   183
+                              FREQUENCY            9.25    
+
+
+
+                              INCREMENT NUMBER   184
+                              FREQUENCY            9.29    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.1125E-05  1.3030E-04  3.7933E-02  0.4443       129.3       1515.     
+
+
+                              INCREMENT NUMBER   185
+                              FREQUENCY            9.33    
+
+
+
+                              INCREMENT NUMBER   186
+                              FREQUENCY            9.36    
+
+
+
+                              INCREMENT NUMBER   187
+                              FREQUENCY            9.38    
+
+
+
+                              INCREMENT NUMBER   188
+                              FREQUENCY            9.41    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      3.0227E-05  3.4075E-04  0.1056       1.190       368.9       4159.     
+
+
+                              INCREMENT NUMBER   189
+                              FREQUENCY            9.43    
+
+
+
+                              INCREMENT NUMBER   190
+                              FREQUENCY            9.45    
+
+
+
+                              INCREMENT NUMBER   191
+                              FREQUENCY            9.46    
+
+
+
+                              INCREMENT NUMBER   192
+                              FREQUENCY            9.55    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.6337E-05  2.2749E-04  5.8865E-02  0.8197       212.1       2953.     
+
+
+                              INCREMENT NUMBER   193
+                              FREQUENCY            9.65    
+
+
+
+                              INCREMENT NUMBER   194
+                              FREQUENCY            9.76    
+
+
+
+                              INCREMENT NUMBER   195
+                              FREQUENCY            9.88    
+
+
+
+                              INCREMENT NUMBER   196
+                              FREQUENCY            10.0    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      5.5108E-07  2.3407E-05  2.1792E-03  9.2560E-02   8.617       366.0     
+
+
+                              INCREMENT NUMBER   197
+                              FREQUENCY            10.2    
+
+
+
+                              INCREMENT NUMBER   198
+                              FREQUENCY            10.4    
+
+
+
+                              INCREMENT NUMBER   199
+                              FREQUENCY            10.6    
+
+
+
+                              INCREMENT NUMBER   200
+                              FREQUENCY            11.0    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      4.5827E-08  1.8027E-05  2.1925E-04  8.6245E-02   1.049       412.6     
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   3.7378E-10  5.1633E-10  1.7776E-09  1.3334E-09  9.5186E-11  1.8120E-09  2.7420E-08  1.2939E-10  8.8853E-09
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   6.1522E-09  3.4390E-08  3.6233E-08  1.0742E-07  2.0167E-07  5.8384E-08  2.1239E-27  3.6967E-11  4.5820E-10
+
+     GU19        GU20    
+
+   1.4225E-10  1.2528E-11
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   1.7883E-06  2.4703E-06  8.5045E-06  6.3794E-06  4.5540E-07  8.6691E-06  1.3119E-04  6.1901E-07  4.2510E-05
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   2.9434E-05  1.6453E-04  1.7335E-04  5.1394E-04  9.6483E-04  2.7933E-04  1.0161E-23  1.7686E-07  2.1922E-06
+
+     GV19        GV20    
+
+   6.8055E-07  5.9939E-08
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   8.5556E-03  1.1818E-02  4.0688E-02  3.0521E-02  2.1787E-03  4.1475E-02  0.6276      2.9615E-03  0.2034    
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+   0.1408      0.7872      0.8293       2.459       4.616       1.336      4.8614E-20  8.4614E-04  1.0488E-02
+
+     GA19        GA20    
+
+   3.2559E-03  2.8676E-04
+
+
+
+                              INCREMENT NUMBER   201
+                              FREQUENCY            12.9    
+
+
+
+                              INCREMENT NUMBER   202
+                              FREQUENCY            13.3    
+
+
+
+                              INCREMENT NUMBER   203
+                              FREQUENCY            13.5    
+
+
+
+                              INCREMENT NUMBER   204
+                              FREQUENCY            13.7    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.1222E-06  1.5390E-04  8.3222E-03   1.141       61.72       8464.     
+
+
+                              INCREMENT NUMBER   205
+                              FREQUENCY            13.9    
+
+
+
+                              INCREMENT NUMBER   206
+                              FREQUENCY            14.0    
+
+
+
+                              INCREMENT NUMBER   207
+                              FREQUENCY            14.1    
+
+
+
+                              INCREMENT NUMBER   208
+                              FREQUENCY            14.2    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      6.7715E-06  6.7494E-04  5.4044E-02   5.387       431.3      4.2992E+04 
+
+
+                              INCREMENT NUMBER   209
+                              FREQUENCY            14.3    
+
+
+
+                              INCREMENT NUMBER   210
+                              FREQUENCY            14.4    
+
+
+
+                              INCREMENT NUMBER   211
+                              FREQUENCY            14.4    
+
+
+
+                              INCREMENT NUMBER   212
+                              FREQUENCY            14.4    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.8221E-05  2.2302E-03  0.2319       18.33       1905.      1.5058E+05 
+
+
+                              INCREMENT NUMBER   213
+                              FREQUENCY            14.4    
+
+
+
+                              INCREMENT NUMBER   214
+                              FREQUENCY            14.5    
+
+
+
+                              INCREMENT NUMBER   215
+                              FREQUENCY            14.5    
+
+
+
+                              INCREMENT NUMBER   216
+                              FREQUENCY            14.5    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.5943E-05  1.9949E-03  0.2149       16.52       1780.      1.3688E+05 
+
+
+                              INCREMENT NUMBER   217
+                              FREQUENCY            14.5    
+
+
+
+                              INCREMENT NUMBER   218
+                              FREQUENCY            14.5    
+
+
+
+                              INCREMENT NUMBER   219
+                              FREQUENCY            14.6    
+
+
+
+                              INCREMENT NUMBER   220
+                              FREQUENCY            14.8    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      5.4242E-06  4.0852E-04  4.6855E-02   3.529       404.7      3.0483E+04 
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   5.4919E-11  3.8516E-10  1.5966E-10  3.5742E-10  8.1619E-11  1.7146E-09  2.4989E-09  1.0778E-08  8.6406E-09
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   1.4805E-07  3.1117E-05  3.0570E-05  2.7945E-08  3.9495E-09  1.5919E-10  2.7154E-29  6.7351E-14  4.6812E-12
+
+     GU19        GU20    
+
+   1.0473E-11  2.2551E-10
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   4.7440E-07  3.3271E-06  1.3792E-06  3.0875E-06  7.0503E-07  1.4811E-05  2.1586E-05  9.3105E-05  7.4639E-05
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   1.2789E-03  0.2688      0.2641      2.4139E-04  3.4116E-05  1.3751E-06  2.3456E-25  5.8178E-10  4.0437E-08
+
+     GV19        GV20    
+
+   9.0464E-08  1.9480E-06
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   4.0979E-03  2.8740E-02  1.1913E-02  2.6670E-02  6.0901E-03  0.1279      0.1865      0.8042      0.6447    
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+    11.05       2322.       2281.       2.085      0.2947      1.1878E-02  2.0261E-21  5.0255E-06  3.4930E-04
+
+     GA19        GA20    
+
+   7.8144E-04  1.6827E-02
+
+
+
+                              INCREMENT NUMBER   221
+                              FREQUENCY            14.8    
+
+
+
+                              INCREMENT NUMBER   222
+                              FREQUENCY            14.9    
+
+
+
+                              INCREMENT NUMBER   223
+                              FREQUENCY            14.9    
+
+
+
+                              INCREMENT NUMBER   224
+                              FREQUENCY            14.9    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      5.4437E-07  3.7627E-05  4.7749E-03  0.3300       41.88       2895.     
+
+
+                              INCREMENT NUMBER   225
+                              FREQUENCY            14.9    
+
+
+
+                              INCREMENT NUMBER   226
+                              FREQUENCY            14.9    
+
+
+
+                              INCREMENT NUMBER   227
+                              FREQUENCY            14.9    
+
+
+
+                              INCREMENT NUMBER   228
+                              FREQUENCY            15.0    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.2391E-07  2.1155E-05  1.0944E-03  0.1869       9.667       1650.     
+
+
+                              INCREMENT NUMBER   229
+                              FREQUENCY            15.0    
+
+
+
+                              INCREMENT NUMBER   230
+                              FREQUENCY            15.0    
+
+
+
+                              INCREMENT NUMBER   231
+                              FREQUENCY            15.0    
+
+
+
+                              INCREMENT NUMBER   232
+                              FREQUENCY            15.0    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      3.1339E-06  3.0093E-04  2.8000E-02   2.689       250.2      2.4022E+04 
+
+
+                              INCREMENT NUMBER   233
+                              FREQUENCY            15.1    
+
+
+
+                              INCREMENT NUMBER   234
+                              FREQUENCY            15.1    
+
+
+
+                              INCREMENT NUMBER   235
+                              FREQUENCY            15.1    
+
+
+
+                              INCREMENT NUMBER   236
+                              FREQUENCY            15.2    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      6.0217E-06  5.7279E-04  5.4906E-02   5.223       500.6      4.7621E+04 
+
+
+                              INCREMENT NUMBER   237
+                              FREQUENCY            15.3    
+
+
+
+                              INCREMENT NUMBER   238
+                              FREQUENCY            15.4    
+
+
+
+                              INCREMENT NUMBER   239
+                              FREQUENCY            15.8    
+
+
+
+                              INCREMENT NUMBER   240
+                              FREQUENCY            16.0    
+
+
+
+
+                                                  E L E M E N T   O U T P U T
+
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE B23 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       SF1         SM1         
+                NOTE 
+
+           1   1         3.2178E-21  2.4740E-02
+           1   2         8.1775E-22  6.4578E-02
+           1   3         1.2095E-22  0.1232
+           2   1         1.6235E-20  1.0815E-02
+           2   2         3.2050E-21  2.2586E-02
+           2   3         1.3602E-21  0.1626
+           3   1         4.9086E-21  0.1107
+           3   2         6.6093E-21  1.5154E-03
+           3   3         3.6018E-21  6.9295E-02
+           4   1         2.7073E-20  0.1658
+           4   2         1.9199E-20  2.3183E-02
+           4   3         3.2674E-21  1.4078E-02
+           5   1         3.7445E-21  7.3556E-02
+           5   2         6.7179E-21  1.5806E-02
+           5   3         3.6992E-20  6.0220E-03
+           6   1         9.5893E-21  1.8027E-02
+           6   2         2.7889E-22  9.4119E-03
+           6   3         5.0825E-21  6.9902E-03
+           7   1         7.7298E-22  5.7629E-03
+           7   2         8.6406E-21  7.3897E-03
+           7   3         1.4624E-20  1.3514E-02
+           8   1         1.5911E-21  2.9240E-03
+           8   2         2.0617E-21  6.2680E-03
+           8   3         1.0734E-21  3.3624E-02
+           9   1         2.7271E-21  5.2957E-03
+           9   2         8.9958E-22  9.5263E-03
+           9   3         1.0042E-20  6.9039E-02
+          10   1         5.9230E-20  2.2571E-02
+          10   2         1.2841E-20  2.1466E-03
+          10   3         3.8517E-21  5.8420E-02
+          11   1         2.7943E-21  6.7369E-02
+          11   2         2.7114E-20  4.8803E-03
+          11   3         4.4355E-20  1.4935E-02
+          12   1         3.1005E-20  7.0944E-02
+          12   2         2.6162E-20  1.9436E-02
+          12   3         6.8423E-21  2.6285E-03
+          13   1         6.3186E-21  2.5954E-02
+          13   2         3.4232E-21  1.7752E-02
+          13   3         2.9964E-20  1.6922E-02
+          14   1         1.2316E-20  4.7518E-03
+          14   2         1.8291E-20  9.3918E-03
+          14   3         1.1112E-20  3.1848E-02
+          15   1         9.6542E-22  1.6613E-02
+          15   2         8.9201E-21  3.4255E-03
+          15   3         1.4410E-20  2.3846E-02
+          16   1         5.3740E-24  3.1726E-02
+          16   2         4.0398E-22  7.2343E-03
+          16   3         1.1112E-21  3.1783E-02
+          17   1         3.8633E-22  2.0169E-02
+          17   2         1.5113E-22  7.8980E-03
+          17   3         1.5931E-24  5.7766E-02
+          18   1         3.4294E-22  2.8801E-02
+          18   2         1.5471E-21  7.8800E-04
+          18   3         1.9734E-21  3.3601E-02
+          19   1         1.0923E-20  5.3992E-02
+          19   2         2.7656E-21  8.6410E-03
+          19   3         4.1828E-22  2.5785E-03
+          20   1         4.2461E-20  3.6669E-02
+          20   2         2.8119E-21  1.9580E-02
+          20   3         1.4694E-20  7.8261E-03
+
+ MAXIMUM                5.9230E-20  0.1658                                                                                        
+ ELEMENT                       10           4                                                                                     
+
+ MINIMUM                1.5931E-24  7.8800E-04                                                                                    
+ ELEMENT                       17          18                                                                                     
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      4.5997E-06  8.0800E-04  4.6213E-02   8.118       464.3      8.1558E+04 
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   V2          VR3         A2          AR3      
+            NOTE
+  
+          1       0.000       12.39       0.000      1.2446E+05 
+          2      4.6213E-02   8.118       464.3      8.1558E+04 
+          3      0.1368      0.8768       1374.       8809.     
+          4      0.1370       3.256       1377.      3.2708E+04 
+          5       0.000       4.052       0.000      4.0709E+04 
+          6      1.5230E-02   1.294       153.0      1.3002E+04 
+          7      3.9705E-03   1.856       39.89      1.8651E+04 
+          8      1.0129E-02  0.6775       101.8       6807.     
+          9       0.000       1.362       0.000      1.3681E+04 
+         10      4.2545E-02   1.652       427.4      1.6594E+04 
+         11      5.5207E-02  2.4067E-02   554.7       241.8     
+         12      4.1759E-02   2.581       419.5      2.5930E+04 
+         13       0.000       3.592       0.000      3.6089E+04 
+         14      7.2500E-03   2.083       72.84      2.0932E+04 
+         15      2.4573E-02   1.195       246.9      1.2005E+04 
+         16      3.6959E-02  0.7505       371.3       7540.     
+         17       0.000       1.627       0.000      1.6341E+04 
+         18      5.3591E-02  0.9609       538.4       9654.     
+         19      4.1412E-02  0.5515       416.1       5541.     
+         20      1.0789E-02   2.624       108.4      2.6367E+04 
+         21       0.000       3.562       0.000      3.5785E+04 
+
+ MAXIMUM         0.1370       12.39       1377.      1.2446E+05
+ AT NODE                 4           1           4           1
+
+ MINIMUM          0.000      2.4067E-02   0.000       241.8    
+ AT NODE                 1          11           1          11
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   RU2         RUR3        RV2         RVR3        RA2         RAR3     
+            NOTE
+  
+          1       0.000      0.8666       0.000       19.44       0.000       869.3     
+          2      0.1820      0.5275       3.199       7.206       116.0       362.5     
+          3      0.2348      0.3863       2.736       16.24       64.50       703.2     
+          4      0.1655      0.5533       3.055       8.095       115.3       386.7     
+          5       0.000      0.6808       0.000       14.94       0.000       696.6     
+          6      0.1300      0.3616       2.406       6.584       96.84       378.5     
+          7      0.1589      0.3224       1.962       13.10       63.11       598.4     
+          8      0.1122      0.3833       2.328       6.767       95.53       402.7     
+          9       0.000      0.4911       0.000       13.37       0.000       711.3     
+         10      9.9716E-02  0.3028       2.298       6.532       102.5       419.4     
+         11      0.1244      0.3048       1.842       12.75       72.82       596.0     
+         12      9.3122E-02  0.3125       2.222       7.199       97.00       499.1     
+         13       0.000      0.4302       0.000       13.26       0.000       816.2     
+         14      9.5401E-02  0.3459       2.085       7.476       100.7       536.2     
+         15      0.1399      0.2872       1.902       11.17       90.13       517.5     
+         16      0.1187      0.3181       2.138       8.096       93.83       616.5     
+         17       0.000      0.6538       0.000       15.01       0.000       943.8     
+         18      0.1670      0.5910       2.789       10.07       114.1       649.3     
+         19      0.2478      0.3039       3.055       12.69       105.9       555.5     
+         20      0.1884      0.5607       2.951       9.738       111.6       671.3     
+         21       0.000      0.8813       0.000       18.84       0.000       1089.     
+
+ MAXIMUM         0.2478      0.8813       3.199       19.44       116.0       1089.    
+ AT NODE                19          21           2           1           2          21
+
+ MINIMUM          0.000      0.2872       0.000       6.532       0.000       362.5    
+ AT NODE                 1          15           1          10           1           2
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   7.8014E-11  6.4129E-10  6.1079E-11  2.3428E-10  9.6208E-11  2.2025E-09  5.6153E-09  2.3169E-08  1.2687E-07
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   8.5606E-08  1.0011E-07  2.7903E-06  7.3892E-06  8.5180E-09  1.2814E-10  9.7617E-28  5.7520E-15  5.0580E-13
+
+     GU19        GU20    
+
+   1.2770E-11  1.9358E-11
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   7.8380E-07  6.4429E-06  6.1365E-07  2.3538E-06  9.6658E-07  2.2129E-05  5.6416E-05  2.3277E-04  1.2746E-03
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   8.6007E-04  1.0058E-03  2.8034E-02  7.4237E-02  8.5578E-05  1.2874E-06  9.8074E-24  5.7789E-11  5.0817E-09
+
+     GV19        GV20    
+
+   1.2830E-07  1.9448E-07
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   7.8746E-03  6.4731E-02  6.1652E-03  2.3648E-02  9.7111E-03  0.2223      0.5668       2.339       12.81    
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+    8.641       10.10       281.7       745.8      0.8598      1.2935E-02  9.8533E-20  5.8059E-07  5.1055E-05
+
+     GA19        GA20    
+
+   1.2890E-03  1.9540E-03
+
+
+
+                              INCREMENT NUMBER   241
+                              FREQUENCY            16.0    
+
+
+
+                              INCREMENT NUMBER   242
+                              FREQUENCY            16.1    
+
+
+
+                              INCREMENT NUMBER   243
+                              FREQUENCY            16.1    
+
+
+
+                              INCREMENT NUMBER   244
+                              FREQUENCY            16.1    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.2254E-05  2.2420E-03  0.1260       23.06       1296.      2.3712E+05 
+
+
+                              INCREMENT NUMBER   245
+                              FREQUENCY            16.2    
+
+
+
+                              INCREMENT NUMBER   246
+                              FREQUENCY            16.2    
+
+
+
+                              INCREMENT NUMBER   247
+                              FREQUENCY            16.2    
+
+
+
+                              INCREMENT NUMBER   248
+                              FREQUENCY            16.2    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.8208E-05  3.3033E-03  0.1897       34.42       1977.      3.5867E+05 
+
+
+                              INCREMENT NUMBER   249
+                              FREQUENCY            16.3    
+
+
+
+                              INCREMENT NUMBER   250
+                              FREQUENCY            16.3    
+
+
+
+                              INCREMENT NUMBER   251
+                              FREQUENCY            16.3    
+
+
+
+                              INCREMENT NUMBER   252
+                              FREQUENCY            16.4    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.1742E-05  2.1602E-03  0.1243       22.86       1315.      2.4188E+05 
+
+
+                              INCREMENT NUMBER   253
+                              FREQUENCY            16.4    
+
+
+
+                              INCREMENT NUMBER   254
+                              FREQUENCY            16.5    
+
+
+
+                              INCREMENT NUMBER   255
+                              FREQUENCY            16.5    
+
+
+
+                              INCREMENT NUMBER   256
+                              FREQUENCY            16.6    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.9757E-06  6.3096E-04  3.2343E-02   6.858       351.5      7.4540E+04 
+
+
+                              INCREMENT NUMBER   257
+                              FREQUENCY            16.7    
+
+
+
+                              INCREMENT NUMBER   258
+                              FREQUENCY            17.3    
+
+
+
+                              INCREMENT NUMBER   259
+                              FREQUENCY            17.4    
+
+
+
+                              INCREMENT NUMBER   260
+                              FREQUENCY            17.5    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      5.0080E-07  1.5560E-04  6.0430E-03   1.878       72.92      2.2656E+04 
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   1.4350E-11  1.1775E-09  8.7723E-11  3.5040E-09  5.8392E-09  3.0823E-08  5.8472E-08  1.2928E-08  1.4044E-10
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   9.1925E-10  3.4643E-10  3.4906E-08  8.3560E-09  4.7943E-06  3.6996E-07  2.5485E-27  2.0328E-11  4.4549E-11
+
+     GU19        GU20    
+
+   9.3075E-13  6.2273E-12
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   1.7316E-07  1.4208E-05  1.0585E-06  4.2282E-05  7.0459E-05  3.7193E-04  7.0555E-04  1.5600E-04  1.6946E-06
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   1.1092E-05  4.1803E-06  4.2120E-04  1.0083E-04  5.7851E-02  4.4642E-03  3.0752E-23  2.4529E-07  5.3755E-07
+
+     GV19        GV20    
+
+   1.1231E-08  7.5142E-08
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   2.0894E-03  0.1714      1.2773E-02  0.5102      0.8502       4.488       8.514       1.882      2.0448E-02
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+   0.1338      5.0441E-02   5.082       1.217       698.1       53.87      3.7107E-19  2.9598E-03  6.4864E-03
+
+     GA19        GA20    
+
+   1.3552E-04  9.0670E-04
+
+
+
+                              INCREMENT NUMBER   261
+                              FREQUENCY            17.5    
+
+
+
+                              INCREMENT NUMBER   262
+                              FREQUENCY            17.6    
+
+
+
+                              INCREMENT NUMBER   263
+                              FREQUENCY            17.6    
+
+
+
+                              INCREMENT NUMBER   264
+                              FREQUENCY            17.7    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      6.4484E-07  2.1651E-04  7.9431E-03   2.667       97.84      3.2851E+04 
+
+
+                              INCREMENT NUMBER   265
+                              FREQUENCY            17.7    
+
+
+
+                              INCREMENT NUMBER   266
+                              FREQUENCY            17.7    
+
+
+
+                              INCREMENT NUMBER   267
+                              FREQUENCY            17.8    
+
+
+
+                              INCREMENT NUMBER   268
+                              FREQUENCY            17.8    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      3.0373E-07  1.3924E-04  3.7899E-03   1.737       47.29      2.1679E+04 
+
+
+                              INCREMENT NUMBER   269
+                              FREQUENCY            17.8    
+
+
+
+                              INCREMENT NUMBER   270
+                              FREQUENCY            17.8    
+
+
+
+                              INCREMENT NUMBER   271
+                              FREQUENCY            17.9    
+
+
+
+                              INCREMENT NUMBER   272
+                              FREQUENCY            17.9    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.2796E-08  2.4442E-05  2.8846E-04  0.3093       3.650       3914.     
+
+
+                              INCREMENT NUMBER   273
+                              FREQUENCY            17.9    
+
+
+
+                              INCREMENT NUMBER   274
+                              FREQUENCY            18.0    
+
+
+
+                              INCREMENT NUMBER   275
+                              FREQUENCY            18.1    
+
+
+
+                              INCREMENT NUMBER   276
+                              FREQUENCY            18.2    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.3523E-07  7.2656E-06  1.7641E-03  9.4780E-02   23.01       1236.     
+
+
+                              INCREMENT NUMBER   277
+                              FREQUENCY            18.7    
+
+
+
+                              INCREMENT NUMBER   278
+                              FREQUENCY            18.8    
+
+
+
+                              INCREMENT NUMBER   279
+                              FREQUENCY            18.9    
+
+
+
+                              INCREMENT NUMBER   280
+                              FREQUENCY            18.9    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      2.2133E-07  3.4696E-05  3.1275E-03  0.4903       44.19       6928.     
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   3.9962E-10  1.4641E-09  4.1449E-09  2.4724E-08  1.7533E-08  3.2635E-09  3.3732E-08  1.0923E-08  3.1721E-10
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   1.1641E-11  6.4172E-10  2.8351E-09  1.5386E-08  3.9974E-07  4.2634E-06  3.8910E-27  1.1618E-11  9.8223E-11
+
+     GU19        GU20    
+
+   1.7845E-11  3.2625E-12
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   5.6468E-06  2.0688E-05  5.8569E-05  3.4936E-04  2.4775E-04  4.6115E-05  4.7665E-04  1.5434E-04  4.4822E-06
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   1.6449E-07  9.0678E-06  4.0061E-05  2.1741E-04  5.6484E-03  6.0243E-02  5.4981E-23  1.6417E-07  1.3879E-06
+
+     GV19        GV20    
+
+   2.5215E-07  4.6101E-08
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   7.9791E-02  0.2923      0.8276       4.937       3.501      0.6516       6.735       2.181      6.3336E-02
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+   2.3242E-03  0.1281      0.5661       3.072       79.81       851.3      7.7690E-19  2.3197E-03  1.9612E-02
+
+     GA19        GA20    
+
+   3.5630E-03  6.5142E-04
+
+
+
+                              INCREMENT NUMBER   281
+                              FREQUENCY            19.0    
+
+
+
+                              INCREMENT NUMBER   282
+                              FREQUENCY            19.0    
+
+
+
+                              INCREMENT NUMBER   283
+                              FREQUENCY            19.0    
+
+
+
+                              INCREMENT NUMBER   284
+                              FREQUENCY            19.1    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.8618E-07  2.4392E-05  2.6701E-03  0.3498       38.29       5017.     
+
+
+                              INCREMENT NUMBER   285
+                              FREQUENCY            19.1    
+
+
+
+                              INCREMENT NUMBER   286
+                              FREQUENCY            19.1    
+
+
+
+                              INCREMENT NUMBER   287
+                              FREQUENCY            19.1    
+
+
+
+                              INCREMENT NUMBER   288
+                              FREQUENCY            19.1    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.1824E-07  1.1031E-05  1.7110E-03  0.1596       24.76       2310.     
+
+
+                              INCREMENT NUMBER   289
+                              FREQUENCY            19.2    
+
+
+
+                              INCREMENT NUMBER   290
+                              FREQUENCY            19.2    
+
+
+
+                              INCREMENT NUMBER   291
+                              FREQUENCY            19.2    
+
+
+
+                              INCREMENT NUMBER   292
+                              FREQUENCY            19.2    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      5.5463E-08  2.4618E-06  8.1028E-04  3.5965E-02   11.84       525.4     
+
+
+                              INCREMENT NUMBER   293
+                              FREQUENCY            19.3    
+
+
+
+                              INCREMENT NUMBER   294
+                              FREQUENCY            19.3    
+
+
+
+                              INCREMENT NUMBER   295
+                              FREQUENCY            19.4    
+
+
+
+                              INCREMENT NUMBER   296
+                              FREQUENCY            19.7    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.6161E-08  2.3858E-06  2.4816E-04  3.6635E-02   3.811       562.6     
+
+
+                              INCREMENT NUMBER   297
+                              FREQUENCY            19.8    
+
+
+
+                              INCREMENT NUMBER   298
+                              FREQUENCY            19.8    
+
+
+
+                              INCREMENT NUMBER   299
+                              FREQUENCY            19.9    
+
+
+
+                              INCREMENT NUMBER   300
+                              FREQUENCY            19.9    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.6722E-08  2.1024E-06  2.6149E-04  3.2875E-02   4.089       514.1     
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   1.7240E-10  1.8142E-08  2.3517E-08  4.6875E-09  6.9358E-11  1.3371E-09  3.9514E-10  1.0219E-08  1.8815E-08
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   4.9909E-09  3.2960E-11  6.9027E-09  2.4850E-08  1.4711E-08  1.2174E-09  3.5282E-27  4.8504E-14  2.1727E-11
+
+     GU19        GU20    
+
+   1.2475E-10  4.7571E-11
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   2.6959E-06  2.8368E-04  3.6774E-04  7.3298E-05  1.0845E-06  2.0908E-05  6.1788E-06  1.5980E-04  2.9420E-04
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   7.8042E-05  5.1540E-07  1.0794E-04  3.8858E-04  2.3004E-04  1.9036E-05  5.5171E-23  7.5846E-10  3.3974E-07
+
+     GV19        GV20    
+
+   1.9507E-06  7.4387E-07
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   4.2156E-02   4.436       5.750       1.146      1.6959E-02  0.3269      9.6619E-02   2.499       4.600    
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+    1.220      8.0594E-03   1.688       6.076       3.597      0.2977      8.6270E-19  1.1860E-05  5.3125E-03
+
+     GA19        GA20    
+
+   3.0503E-02  1.1632E-02
+
+
+
+                              INCREMENT NUMBER   301
+                              FREQUENCY            19.9    
+
+
+
+                              INCREMENT NUMBER   302
+                              FREQUENCY            19.9    
+
+
+
+                              INCREMENT NUMBER   303
+                              FREQUENCY            20.0    
+
+
+
+                              INCREMENT NUMBER   304
+                              FREQUENCY            20.0    
+
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.7196E-08  1.9169E-06  2.7112E-04  3.0222E-02   4.274       476.5     
+
+
+                              INCREMENT NUMBER   305
+                              FREQUENCY            20.0    
+
+
+
+
+                                                  E L E M E N T   O U T P U T
+
+
+
+
+
+   THE FOLLOWING TABLE IS PRINTED FOR ALL ELEMENTS WITH TYPE B23 AT THE INTEGRATION POINTS
+
+    ELEMENT  PT FOOT-       SF1         SM1         
+                NOTE 
+
+           1   1         1.8340E-20  4.5844E-05
+           1   2         4.5677E-21  4.6723E-05
+           1   3         7.4462E-22  4.9647E-05
+           2   1         9.3249E-20  7.2585E-05
+           2   2         1.8349E-20  1.4528E-04
+           2   3         7.8559E-21  2.5276E-04
+           3   1         2.8256E-20  2.5192E-05
+           3   2         3.7992E-20  7.2449E-05
+           3   3         2.0669E-20  3.3998E-04
+           4   1         1.5544E-19  2.1659E-04
+           4   2         1.0975E-19  9.3057E-06
+           4   3         1.8442E-20  2.6124E-04
+           5   1         2.1774E-20  2.1214E-04
+           5   2         3.8460E-20  3.2045E-05
+           5   3         2.1283E-19  3.0964E-04
+           6   1         5.5004E-20  3.0080E-04
+           6   2         1.5299E-21  1.3602E-04
+           6   3         2.9566E-20  3.2679E-04
+           7   1         4.3926E-21  3.7106E-04
+           7   2         4.9704E-20  1.5290E-04
+           7   3         8.4352E-20  2.3127E-04
+           8   1         9.2680E-21  2.7018E-04
+           8   2         1.1959E-20  6.1053E-05
+           8   3         6.1934E-21  9.7671E-05
+           9   1         1.5342E-20  2.3207E-04
+           9   2         5.4405E-21  5.0125E-05
+           9   3         5.8505E-20  5.1124E-05
+          10   1         3.4221E-19  2.8764E-04
+          10   2         7.4528E-20  1.7146E-04
+          10   3         2.1960E-20  1.1961E-04
+          11   1         1.5812E-20  1.4674E-04
+          11   2         1.5534E-19  1.7836E-04
+          11   3         2.5490E-19  2.5383E-04
+          12   1         1.7851E-19  3.7285E-05
+          12   2         1.5054E-19  5.4477E-05
+          12   3         3.9320E-20  1.9673E-04
+          13   1         3.6096E-20  7.3467E-05
+          13   2         1.9979E-20  6.6459E-05
+          13   3         1.7318E-19  2.2740E-04
+          14   1         7.1499E-20  1.7489E-04
+          14   2         1.0603E-19  1.6484E-04
+          14   3         6.4319E-20  3.8817E-04
+          15   1         5.4829E-21  2.4556E-04
+          15   2         5.1252E-20  1.2351E-04
+          15   3         8.3046E-20  3.4519E-04
+          16   1         3.0286E-23  2.8420E-04
+          16   2         2.0271E-21  2.3628E-05
+          16   3         6.0123E-21  2.2970E-04
+          17   1         2.1732E-21  2.5022E-04
+          17   2         8.1843E-22  8.3161E-06
+          17   3         7.1306E-25  2.2107E-04
+          18   1         1.9967E-21  3.3516E-04
+          18   2         8.9954E-21  7.2571E-05
+          18   3         1.1463E-20  3.9022E-05
+          19   1         6.2286E-20  2.7573E-04
+          19   2         1.5470E-20  1.5134E-04
+          19   3         2.5570E-21  7.6116E-05
+          20   1         2.4422E-19  6.8193E-05
+          20   2         1.6044E-20  5.7713E-05
+          20   3         8.4985E-20  5.1542E-05
+
+ MAXIMUM                3.4221E-19  3.8817E-04                                                                                    
+ ELEMENT                       10          14                                                                                     
+
+ MINIMUM                7.1306E-25  8.3161E-06                                                                                    
+ ELEMENT                       17          17                                                                                     
+  
+  
+  
+  
+                                       N O D E   O U T P U T
+  
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR NODES BELONGING TO NODE SET N2
+  
+       NODE FOOT-   U2          UR3         V2          VR3         A2          AR3      
+            NOTE
+  
+          2      1.7299E-08  1.8793E-06  2.7318E-04  2.9677E-02   4.314       468.6     
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   V2          VR3         A2          AR3      
+            NOTE
+  
+          1       0.000      1.9639E-03   0.000       31.01     
+          2      2.7318E-04  2.9677E-02   4.314       468.6     
+          3      6.3851E-04  5.0037E-02   10.08       790.2     
+          4      1.0568E-03  7.4917E-03   16.69       118.3     
+          5       0.000      3.3243E-04   0.000       5.249     
+          6      5.8359E-04  2.8303E-02   9.216       446.9     
+          7      1.2439E-03  5.9961E-02   19.64       946.9     
+          8      5.4194E-04  3.6228E-02   8.558       572.1     
+          9       0.000      3.7591E-03   0.000       59.36     
+         10      6.5915E-04  2.6056E-02   10.41       411.5     
+         11      6.3374E-04  7.5230E-02   10.01       1188.     
+         12      6.0729E-04  2.8381E-02   9.590       448.2     
+         13       0.000      4.0359E-03   0.000       63.73     
+         14      4.0989E-04  3.8674E-02   6.473       610.7     
+         15      1.1599E-03  6.0498E-02   18.32       955.4     
+         16      7.2676E-04  2.2988E-02   11.48       363.0     
+         17       0.000      8.9589E-05   0.000       1.415     
+         18      9.8564E-04  8.0292E-03   15.56       126.8     
+         19      7.2944E-04  5.0352E-02   11.52       795.1     
+         20      2.7271E-04  3.3293E-02   4.306       525.7     
+         21       0.000      3.8109E-03   0.000       60.18     
+
+ MAXIMUM         1.2439E-03  7.5230E-02   19.64       1188.    
+ AT NODE                 7          11           7          11
+
+ MINIMUM          0.000      8.9589E-05   0.000       1.415    
+ AT NODE                 1          17           1          17
+  
+  
+  
+   THE FOLLOWING TABLE IS PRINTED FOR ALL NODES
+  
+       NODE FOOT-   RU2         RUR3        RV2         RVR3        RA2         RAR3     
+            NOTE
+  
+          1       0.000      0.8679       0.000       20.05       0.000       1006.     
+          2      0.1820      0.5289       3.212       8.249       119.7       551.8     
+          3      0.2349      0.3867       2.779       16.33       81.66       725.2     
+          4      0.1656      0.5537       3.098       8.343       127.2       438.9     
+          5       0.000      0.6811       0.000       15.08       0.000       730.1     
+          6      0.1301      0.3619       2.434       6.800       104.7       423.3     
+          7      0.1589      0.3230       1.984       13.25       71.22       632.2     
+          8      0.1123      0.3840       2.345       7.239       100.7       485.6     
+          9       0.000      0.4921       0.000       13.76       0.000       788.3     
+         10      9.9798E-02  0.3044       2.338       7.268       112.2       538.0     
+         11      0.1245      0.3050       1.912       12.81       90.84       611.4     
+         12      9.3229E-02  0.3139       2.272       7.842       109.7       596.1     
+         13       0.000      0.4315       0.000       13.69       0.000       888.5     
+         14      9.5428E-02  0.3469       2.102       7.948       105.2       608.6     
+         15      0.1400      0.2877       1.933       11.30       98.23       547.2     
+         16      0.1188      0.3185       2.173       8.279       103.0       647.9     
+         17       0.000      0.6539       0.000       15.09       0.000       959.2     
+         18      0.1670      0.5911       2.815       10.17       120.8       665.0     
+         19      0.2478      0.3042       3.077       12.76       112.7       575.7     
+         20      0.1884      0.5615       2.961       10.24       114.3       751.3     
+         21       0.000      0.8821       0.000       19.24       0.000       1166.     
+
+ MAXIMUM         0.2478      0.8821       3.212       20.05       127.2       1166.    
+ AT NODE                19          21           2           1           4          21
+
+ MINIMUM          0.000      0.2877       0.000       6.800       0.000       423.3    
+ AT NODE                 1          15           1           6           1           6
+
+
+
+
+
+                                       M O D A L   O U T P U T
+
+     GU1         GU2         GU3         GU4         GU5         GU6         GU7         GU8         GU9     
+
+   7.4498E-10  2.1289E-08  2.0335E-08  2.7004E-09  2.0025E-10  9.6231E-10  1.2515E-09  6.7155E-09  1.9420E-08
+
+     GU10        GU11        GU12        GU13        GU14        GU15        GU16        GU17        GU18    
+
+   7.2932E-09  1.0939E-10  7.1090E-09  2.0413E-08  7.9316E-09  2.8702E-09  3.8343E-27  1.4962E-13  1.3577E-11
+
+     GU19        GU20    
+
+   1.1861E-10  6.1544E-11
+
+     GV1         GV2         GV3         GV4         GV5         GV6         GV7         GV8         GV9     
+
+   1.1764E-05  3.3618E-04  3.2112E-04  4.2644E-05  3.1622E-06  1.5196E-05  1.9763E-05  1.0605E-04  3.0667E-04
+
+     GV10        GV11        GV12        GV13        GV14        GV15        GV16        GV17        GV18    
+
+   1.1517E-04  1.7274E-06  1.1226E-04  3.2236E-04  1.2525E-04  4.5324E-05  6.0549E-23  2.3627E-09  2.1440E-07
+
+     GV19        GV20    
+
+   1.8729E-06  9.7187E-07
+
+     GA1         GA2         GA3         GA4         GA5         GA6         GA7         GA8         GA9     
+
+   0.1858       5.309       5.071      0.6734      4.9936E-02  0.2400      0.3121       1.675       4.843    
+
+     GA10        GA11        GA12        GA13        GA14        GA15        GA16        GA17        GA18    
+
+    1.819      2.7279E-02   1.773       5.090       1.978      0.7157      9.5615E-19  3.7311E-05  3.3856E-03
+
+     GA19        GA20    
+
+   2.9576E-02  1.5347E-02
+
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH      2 WARNING MESSAGES ON THE DAT FILE
+                              AND      51 WARNING MESSAGES ON THE MSG FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =   2.5000    
+       SYSTEM TIME (SEC)    =   1.1000    
+       TOTAL CPU TIME (SEC) =   3.6000    
+       WALLCLOCK TIME (SEC) =          8

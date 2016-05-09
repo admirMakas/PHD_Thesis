@@ -1,0 +1,417 @@
+SUBDMAP AESTAT $ SOL 144 - STATIC AEROELASTIC RESPONSE 
+$  PHASE 1 
+TYPE DB,KJJ,MJJ,BJJ,USET,GOA,GOT,KAA,DYNAMICS,DYNAMIC,KGG,PCDBS,AGG, 
+        GPLS,SILS,SLT,Dar,CASES,EQEXINS,MATPOOL,GM,LOO,KOO,gpsnts,pvt, 
+        DITS,BGPDTS,CSTMS,EST,MPTS,XYCDBS,LLL,KLL,ULL,ESTNL,ESTL,BTOPO, 
+        EMAP,MAPS,ETT,PVTS,KFS,KSS,KSF,EDT,KMG,GEOM2S,GEOM3S,ECTS, 
+        EPTS,INDTA,KELM,KDICT,pelsets,bgpdtvu,viewtb,GPECT,VELEM,edts,
+        scstm,GEOM4S,GPDTS,MELM,MDICT,GEOM1,GEOM2,matpools,ditid,
+        GEOM3,GEOM4,EPT,MPT,SLIST,orseq,lrseq,geom1s,pvtbc,vgfd,drg,
+        AEBGPDTS,AEBOXS,AEUSETS,pcompts,pkyg,pmyg,pbyg,belm,bdict,
+        mpjn2o,mpjsfn2o,aempcomp,aemonpt,saemprk,strucomp,monitor,saerg,
+        adbindx,adbuxv,adbwjv,adbfjv0,adbqkv0,aedbstdx,uxvst,pgvst,
+        pjvst,pavst,plvst,tr,mparv0,vgq,xsop2dir,KFF,dti,dtindx,dmi,
+        dmindx,dtis,dtindxs,dmis,dmindxs,k4elm,k4dict,geom1q,geom1exa,
+        geom2exa,geom4exa,cee,mee,gge,bec,mec,mjj1,kyl,vyl,compest,
+$     STATIC LOAD GENERATION 
+        PJ,PTELEM,PG,PA,YS,QR,UOO,PSS,PL,epsseo,YG,RVG,
+$     DYNAMICS ONLY (SEMR) 
+        BGG,K4GG,K4FF,MFF,MLR,MLL,MRR,CMLAMA,CMPHA,CMPHO,mphvz,bk4zz,
+        PLR,PAR,PGR,prba,ruxlv,iuxlr,urlr,kr1zv,gplk,gdkl,gpgk,gdgk,
+        MR,GOQ,MAA,MAR,MEA,BAA,K4AA,MGG,gpak,gdak,gpjk,gdjk,saera,
+        saerl,saerj,
+$  PHASE 2 
+        ACPT,CSTMA,SPLINE,AERO,MKLIST,AECOMP,gpksk,gdksk,
+        WKK,LAJJ,UAJJ,SKJ,CONTROL,TRX,
+        LSALL,USALL,WSKJ,aua,PAOS,AAS,AUXTAB,STBTAB,D1JK,
+        KALV,PLR,QKKS,QKX,M1RR,L2RR,U2RR,KZRR,MIRR,KAZR,
+        Z1ZX,ksazv,hpv,HP,QLL,KAAv,philz,
+        QKPRESS,casem,
+        AEQGDKA,AEQGDKL,PERGv,PERKSv,PIRGv,PRGv,UERKSv,UXAv,
+        WQKKS,WQKv,PRKSv,
+        mpaerv,mpserv,mpsirx,aedbuxv,prbdofs,aedbindx,hpv,
+        uxdifv,ueugv,uergv,aerrv,aeurv,
+$  PHASE 3 
+        AUG,AQG,AQmG,PCDB,XYCDB $ 
+$ QUALIFERS 
+TYPE PARM,NDDL,I,N,SEID,MTEMP,LOAD,TEMPLD,DEFORM,MPC,SPC,SUPORT, 
+                   PEID,METH,DYRD,MFLUID,IMACHNO,IQ,IKBAR,NLOOP,pvalid,
+                   SYMXY,SYMXZ,ncase,bsubcas $
+TYPE PARM,NDDL,I,N,BCSET,BGSET,BOLTPRE,RIGID $
+TYPE PARM,NDDL,CHAR8,N,A2GG,K2GG,M2GG,B2GG,P2G,K2PP,M2PP,B2PP,APRCH,
+                       AECONFIG,K42GG $
+$ SAVED PARAMETERS 
+TYPE PARM,NDDL,I,N,LUSETS,HNNLK $ 
+TYPE PARM,NDDL,LOGICAL,N,GOPH2,SKIPSE,SOLN,SOLNX,saverstl $ 
+$ USER PARAMETERS 
+TYPE PARM,NDDL,I,N,NK,NJ,NX $
+TYPE PARM,NDDL,RS,N,BOV $
+TYPE PARM,,CHAR8,Y,AUTOSPC='YES  ',extdr='no' $ 
+TYPE PARM,nddl,CHAR8,Y,FLEXINCR,aesmeth $
+TYPE PARM,NDDL,CHAR8,n,saverst,ftl,wrn $ scratch
+TYPE PARM,NDDL,I,Y,EXTRCV,AESRNDM $ Number of random vectors for adding
+TYPE PARM,NDDL,RS,Y,WTMASS,AUNITS $ 
+$ LOCAL PARAMETERS 
+TYPE PARM,,I,N,LPFLG,NSKIP,NOAMODL $
+TYPE PARM,,I,N,DMAPNO=144,PFILE=0,CARDNO=0,LASTSEID,dropt, 
+               NOUSET,NOASET,NOBSET,NOCSET,NOGSET,NOLSET,NOOSET,NOQSET, 
+               NORSET,NOSSET,NOTSET,NOVSET,NOA,NOSET,NORC,NOMSET, 
+               TRMFLG,DVGFLG,ompc,ospc,osprt,icase,nskip1,nloads $ 
+TYPE PARM,,I,N,UNUSED,NP $
+TYPE PARM,,CHAR8,N,SUBDMAP='AESTAT',APP='STATICS',SOLTYP='     ',
+                   aesmethx,runit  $ 
+TYPE PARM,,LOGICAL,N,RSONLY=FALSE,AERO=TRUE,NOPH2=FALSE,pexist=true,
+                     noph1=false,dospcf,dompcf,restart $ 
+TYPE PARM,,CS,N,cz $
+TYPE PARM,,RS,N,refspeed $
+$
+file augx=append/casem=append/aqgx=append/aqmgx=append/pgfx=append $
+file hp=save/hpv=save/iuxlr=save/kaav=save/kalv=save/
+     kazr=save/kr1zv=save/mpsrv=save/kzrr=save/l2rr=save/
+     lsall=save/mirr=save/philz=save/ruxlv=save/u2rr=save/
+     urlr=save/usall=save/z1zx=save/tr=save/
+     AEQGDKA=SAVE/AEQGDKL=SAVE/PERGv=SAVE/PERKSv=SAVE/PIRGv=SAVE/
+     PRGv=SAVE/UERKSv=SAVE/UXAv=SAVE/WQKKS=SAVE/
+     WQKv=SAVE/prksv=save/mpaerv=save/mpserv=save/mpsirx=save/
+     aedbuxv=save/prbdofs=save/aedbindx=save/uxdifv=save/ueugv=save/
+     uergv=save/aerrv=save/aeurv=save/rpf=ovrwrt $
+$
+$ ----------- PERFORM PHASE 0 AND I OPERATIONS 
+$ 
+$ 
+$  CHECK TO MAKE SURE MONITOR IS NOT TURNED ON
+$
+IF ( GETSYS(NP,442) <> 0 ) THEN $
+   PUTSYS(0,442) $
+   MESSAGE   //' USER INFORMATION MESSAGE 9320 (AESTAT)' $
+   MESSAGE   //' THE SOLUTION MONITOR IS NOT SUPPORTED BY THIS ' $
+   MESSAGE   //' SOLUTION SEQUENCE.  SYSTEM CELL (422) IS ' $
+   MESSAGE   //' BEING RESET TO 0.' $
+ENDIF $
+$
+CALL SUPER1 /CASECC  ,USET    ,GOT     ,KAA     ,DYNAMICS, 
+             DYNAMIC ,GPLS    ,SILS    ,SLT     ,Dar     , 
+             CASES   ,EQEXINS ,MATPOOL ,GM      ,DITS    , 
+             BGPDTS  ,CSTMS   ,EST     ,MPTS    ,XYCDBS  , 
+             LLL     ,KLL     ,ULL     ,        ,PCDB    , 
+             EMAP    ,XYCDB   ,MAPS    ,ETT     ,PVTS    , 
+             KFS     ,KSS     ,KSF     ,EDT     ,EDOM    , 
+             GEOM2S  ,GEOM3S  ,POSTCDB ,ECTS    ,EPTS    , 
+             INDTA   ,KELM    ,KDICT   ,GPECT   ,VELEM   , 
+             FORCE   ,        ,scstm   ,matpools,ditid   , 
+                     ,        ,PJ      ,PTELEM  ,PG      , 
+             PA      ,YS      ,QR      ,UOO     ,PSS     , 
+             PL      ,        ,gpsnts  ,gpgk    ,KJJ     , 
+             KGG     ,edts    ,LOO     ,BJJ     ,BGG     , 
+             K4GG    ,MJJ     ,MFF     ,MLR     ,MLL     , 
+             MRR     ,CMLAMA  ,CMPHA   ,CMPHO   ,gdgk     ,
+             MR      ,GOQ     ,gpak    ,gdak    ,MAA     , 
+             MAR     ,MEA     ,BAA     ,K4AA    ,MGG     , 
+                     ,        ,        ,        ,GEOM4S  , 
+                     ,PCDBS   ,ESTL    ,ESTNL   ,AGG     , 
+             DMI     ,DMINDX  ,DTI     ,DTINDX  ,CONTACT , 
+             BTOPO   ,GPDTS   ,MELM    ,MDICT   ,GEOM1   , 
+             GEOM2   ,GEOM3   ,GEOM4   ,EPT     ,MPT     , 
+             SLIST   ,KMG     ,        ,        ,        , 
+                     ,        ,        ,        ,PVT     , 
+             oint    ,deqatn  ,deqind  ,medge   ,gdntab  , 
+             pelsets ,viewtb  ,bgpdtvu ,orseq   ,lrseq   , 
+             vgfd    ,        ,geom1s  ,pvtbc   ,acpt    ,
+             aecomp  ,spline  ,aero    ,cstma   ,vgq     ,
+             trx     ,CONTROL ,unuzed  ,unuzed  ,aebgpdts,
+             aeusets ,aeboxs  ,gpjk    ,gdjk    ,axic    ,
+             gplk    ,gdkl    ,mklist  ,gpksk   ,gdksk   ,
+             epsseo  ,drg     ,mphvz   ,bk4zz   ,pcompts ,
+                     ,        ,pmyg    ,pbyg    ,pkyg    ,
+                     ,        ,        ,belm    ,bdict   ,
+                     ,mpjn2o  ,mpjsfn2o,aempcomp,aemonpt ,
+             saemprk ,strucomp,monitor ,saerj   ,saerg   ,
+             saera   ,saerl   ,aedbstdx,uxvst   ,pgvst   ,
+             pjvst   ,pavst   ,plvst   ,xsop2dir,
+                     ,        ,        ,        ,        ,                          
+                     ,        ,        ,        ,        ,                          
+                     ,        ,        ,        ,BFF     ,
+             KFF     ,K4FF    ,spcdpvg ,dtis    ,dtindxs ,
+             dmis    ,dmindxs ,geom1q  ,segrdso ,yg      ,
+             k4elm   ,k4dict  ,setmc   ,ag0     ,cee     ,
+             mee     ,gge     ,bec     ,mec     ,mjj1    ,
+             rvg     ,geom1exa,geom2exa,geom4exa,kyl     ,                                          
+             vyl     ,cmlamx  ,compest ,        ,        ,
+                     ,        ,        ,        ,        ,
+                     ,        / 
+             APP     /DMAPNO  /S,RSONLY/SOLTYP  /FALSE   /
+             FALSE   /AERO    /false   /APRCH   /S,SEID  /
+             S,PEID  /S,MTEMP /S,LOAD  /S,TEMPLD/S,DEFORM/
+             S,MPC   /S,SPC   /S,SUPORT/S,BCSET /S,BGSET /
+             S,RIGID /S,BOLTPRE/S,K2GG /S,K42GG /S,M2GG  / 
+             S,B2GG  /S,P2G   /S,DYRD  /S,METH  /S,MFLUID/ 
+             s,NLOOP /S,LASTSEID/S,PFILE/S,LUSETS/FALSE  / 
+             UNUSED  /AUTOSPC /S,NOPH2 /FALSE   /s,pvalid/ 
+             s,pexist/false   /false   /app     /s,nx    /
+             s,nk    /s,nj    /s,bov   /s,noph1 /0       /
+             s,restart/S,A2GG /s,bsubcas/s,refspeed/s,runit $ 
+$
+paraml  cases//'dti'/1/378//s,n,extseout $
+if ( extseout>0 ) then $
+   CALL PRTSUM /RSTJUNK $ 
+   EXIT $ 
+endif $ extseout>0
+$
+IF ( EXTRCV=0 and not(saverstl) ) THEN $ 
+$ 
+$ ----------- PERFORM PHASE II OPERATIONS 
+$ 
+PUTSYS(0,82) $ DISALLOWS DMAP TO FIELD NOGO FLAGS 
+IF ( NOT GOPH2 ) CALL ERRPH2  //'PHASE I'/0  $  ERROR IN PHASE I 
+PARAML   CASECC//'DTI'/1/208//S,N,MANUAL $ FLAG FOR MANUAL RESTARTS 
+IF ( MANUAL<>-1 AND LASTSEID<>0 )  THEN 
+   CALL PRTSUM /RSTJUNK $ 
+   EXIT $ 
+ENDIF $ 
+$       IN PHASE I BUT USER MADE NO PHASE I REQUESTS FOR R.S. 
+$       AND REQUESTED MANUAL ANALYSIS ONLY 
+$ 
+CALL PMLUSET  USET//S,NOASET/S,NOBSET/S,NOCSET/S,NOGSET/S,NOLSET/ 
+                    S,NOOSET/S,NOQSET/S,NORSET/S,NOSSET/S,NOTSET/ 
+                    S,NOVSET/S,NOA/S,NOSET/S,NORC/S,NOMSET/S,NOUSET $ 
+$ 
+IF ( NOUSET=-1 ) THEN $ 
+   MESSAGE   //' USER'/ftl/'MESSAGE 9015 (AESTAT)' $ 
+   message   //' THE USET TABLE IS NOT PRESENT.' $ 
+   IF ( RESTART ) THEN $
+      MESSAGE //' THIS IS PROBABLY DUE TO MISSING BULK DATA OR AN' $
+      MESSAGE //' INVALID BULK DATA REFERENCE IN THE CASE CONTROL.' $
+   ENDIF $ RESTART
+   CALL ERRPH2  //'PHASE II'/0  $  ERROR IN PHASE I 
+ENDIF $ 
+$ 
+if ( aesmeth='direct' or aesmeth='iter' or 
+     aesmeth='ritz'   or aesmeth='auto' ) then $
+   aesmethx=aesmeth $
+else if ( aesmeth='select' ) then $
+   if ( nolset<50000 ) then $
+      aesmethx='direct' $ iter overhead large on small models
+   else $
+      AESMETHX='auto' $ an economical method for moderate
+                      $ thru large size models
+   endif $ nolset<50000
+else $
+   message //' user'/wrn/'message 9070 (aestat)' $
+   message //' aesmeth = '/aesmeth/' is not supported.'/
+             ' aesmeth = auto will be used instead.' $
+   aesmethx = 'auto' $ 
+endif $ aesmeth='direct' or aesmeth='iter' or ...
+ENDIF $ EXTRCV=0 
+$
+DO WHILE ( NSKIP>=0 and EXTRCV=0 ) $ 
+   CASE     CASEs,/CASE1/'TRAN'/S,N,NSKIP $ 
+   PARAML   CASE1//'DTI'/1/2//S,N,MPC $ 
+   PARAML   CASE1//'DTI'/1/3//S,N,SPC $ 
+   PARAML   CASE1//'DTI'/1/255//S,N,SPRT $ 
+   if ( icase>0 and ( (spc=0 and mpc=0 and sprt=0) or 
+                      (ompc=mpc and ospc=spc and sprt=osprt)
+                    ) ) then $ 
+      $   same set of conditions as previous subcase 
+      ICASE=ICASE+1 $ record counter 
+      APPEND  CASE1,/CASEM/2 $ APPEND CURRENT RECORD TO PREVIOUS 
+      MODTRL  CASEM//ICASE/ICASE $ 
+   ELSE $ 
+      $   new set of conditions 
+      ICASE=1 $ 
+      NCASE=NCASE+1 $ qualifier on CASEM 
+      COPY     CASE1/CASEM $ 
+   ENDIF $ 
+   ospc=spc $ 
+   ompc=mpc $ 
+   osprt=sprt $ 
+ENDDO $ NSKIP>=0 and EXTRCV=0 
+$
+IF ( NOT NOPH2 AND EXTRCV=0 ) CALL PFAERO,
+                CASES   ,EDTS    ,ECTS    ,BGPDTS  ,DMI     ,
+                DMINDX  ,PCDBS   ,ACPT    ,AERO    ,matpool ,
+                mklist  ,aempcomp,aemonpt ,saemprk ,control ,
+                aecomp  ,cstma   ,aebgpdts,mpjsfn2o,mpjn2o  ,
+                aeusets /
+                        ,        ,        ,        ,D1JK    ,
+                        ,        ,        ,SKJ     ,WSKJ    ,
+                FAJE    ,QKKS    ,QKX     ,LAJJ    ,UAJJ    ,
+                QKPRESS ,WKK     ,adbindx ,adbuxv  ,adbwjv  ,
+                adbfjv0 ,adbqkv0 ,mparv0  /
+                APP     /IMACHNO /S,IKBAR /S,PFILE /0       $
+$
+nskip=0 $
+nloads=1 $
+ncase=1 $ CASEM qualifier 
+DBSTATUS CASEM//s,n,nocasem $ 
+DO WHILE ( nocasem>0 or 
+           ((EXTRCV<>0 or extdr='yes' or saverstl) and ncase=1) ) $
+   IF ( EXTRCV=0 and nocasem>0 ) then $
+      $ load subcase label and set qualifiers 
+      pvt      pvts,casem/pvtxx $
+      nskip1=nskip1+nloads-1 $
+      BCDR     CASEM//SEID/' '/0//true/ 
+               S,N,SPC/S,N,MPC/S,N,SUPORT/////S,N,LOAD///S,N,BC $ 
+      PARAML   CASEm//'DTI'/1/7//S,N,TEMPLD $ 
+      PARAML   CASEm//'DTI'/1/6//S,N,DEFORM $ 
+      paraml   casem//'trailer'/1/s,n,nloads $
+   endif $ FIXEDB>-1 AND EXTRCV=0 and nocasem>0 
+   CALL PMLUSET  USET//S,NOASET/S,NOBSET/S,NOCSET/S,NOGSET/S,NOLSET/ 
+                    S,NOOSET/S,NOQSET/S,NORSET/S,NOSSET/S,NOTSET/ 
+                    S,NOVSET/S,NOA/S,NOSET/S,NORC/S,NOMSET/S,NOUSET $ 
+   $ Check if there's any TRIM subcases 
+   PARAML   CASEm//'DTI'/-1/224//S,N,TRMFLG $ 
+   if ( not saverstl ) then $ 
+   $ 
+   $  Combine static and dynamic portion of the residual structure 
+   $ 
+   CALL SEGOA  uset,GOT,GOQ/GOA/NOOSET/NOQSET/NOTSET $ 
+   $ Input CASES instead of CASEM
+   CALL FDRMGEN  USET,,CASES,USET,,GM,GOA,,
+                 ,,,,,,,,,,,,,,,,,,,,
+                 ,    ,   ,    ,,
+                 ects,bgpdts,sils,xycdbs,matpool,pg,dynamics,
+                 cases,slist,emap,maps,/
+                 ,RGA,rpf,rgs,rgm,,,,,,,,,,,,,
+                 vspcg,vmpcg,v01p,v01dr,vpg,v01s/ 
+                 APP/APP/soltyp/true/FALSE/NOOSET/NOA/NOMSET/
+                 s,dompcf/s,dospcf/NOSSET/-1/FALSE/FALSE/FALSE/
+                 FALSE/rsonly/'          ' $
+   $
+   IF ( NOT NOPH2 AND EXTRCV=0 ) THEN $ 
+      dbstatus m1rr//s,n,nom1rr $
+      if ( nom1rr<0 and norset>0 ) call aemr,
+                 uset    ,dar     ,mgg     ,loo     ,bgpdts  ,
+                 cstms   ,rga     ,drg     /
+                 prba    ,par     ,plr     ,m1rr    ,pgr     /
+                 NOOSET  /aesmethx $
+      $
+      $ DAR is rigid body vectors for a-set
+      $ PAR is inertia loads due to unit acceleration of r-set dof
+      $ PLR is subset of PAR
+      $ MR is rigid body mass measured at r-set
+      $ PRBA is Ritz loads for random vector, inertia loads
+      $ 
+      IF ( TRMFLG=-1 ) CALL AESTATRS,
+                     EDTS    ,USET    ,CASEm   ,Dar     ,KAA     ,
+                     PA      ,AERO    ,ACPT    ,CSTMA   ,D1JK    ,
+                     SKJ     ,CONTROL ,TRX     ,LAJJ    ,UAJJ    ,
+                     QKKS    ,QKX     ,WSKJ    ,FAJE    ,GPAK    ,
+                     GDAk    ,GDKL    ,BGPDTS  ,DITS    ,kll     ,
+                     lll     ,aecomp  ,AEBGPDTS,AEUSETS ,QKPRESS ,
+                     WKK     ,plr     ,mr      ,m1rr    ,pgr     ,
+                     gpgk    ,gdksk   ,pg      ,mpjn2o  ,mpjsfn2o,
+                     aemonpt ,saemprk ,monitor ,saerg   ,saera   ,
+                     adbindx ,adbuxv  ,adbwjv  ,adbfjv0 ,adbqkv0 ,
+                     par     ,aedbstdx,uxvst   ,pgvst   ,pavst   ,
+                     pg      /
+                     aua     ,AAS     ,AUXTAB  ,PAOS    ,STBTAB  ,
+                     LSALL   ,USALL   ,KALv    ,L2RR    ,U2RR    ,
+                     KZRR    ,MIRR    ,KRZX    ,Z1ZX    ,ksazv   ,
+                     HP      ,KAAv    ,KAZR    ,TR      ,urlr    ,
+                     iuxlr   ,ruxlv   ,kr1zv   ,philz   ,AEQGDKA ,
+                     AEQGDKL ,PERGv   ,PERKSv  ,PIRGv   ,PRGv    ,
+                     UERKSv  ,UXAv    ,WQKKS   ,WQKv    ,prksv   ,
+                     pgfi    ,mpaerv  ,mpserv  ,mpsirx  ,aedbuxv ,
+                     prbdofs ,aedbindx,hpv     ,uxdifv  ,ueugv   ,
+                     uergv   ,aerrv   ,aeurv   /
+                     NORSET  /0       /aesmethx/false   /nskip1  /
+                     nloads  $
+   endIF $ NOT(NOPH2) AND EXTRCV=0 
+   if ( FLEXINCR<>'YES' ) then $
+      call disprs  , ,,,aua,pgfi,uset,,rga,
+                   ,,,,,,,,,,,,,
+                   uset,rgm,,,kmg,    ,
+                   rgs,,,ksf,    ,,,,,,,,,,,,,,,,,,,,,,
+                   ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,/
+                   ,,pg1,augi,qgi,qmgi,,,/
+                   app/app/soltyp/false/noa/-1/-1/dospcf/dompcf/
+                   false/s,nskip/true/dmapno/restart $
+      APPEND   augi,/augx/2 $ 
+      APPEND   qgi,/aqgx/2 $ 
+      APPEND   qmgi,/aqmgx/2 $ 
+      append   pgfi,/pgfx/2 $
+   ENDIF $ FLEXINCR<>'YES'
+   endif $ not saverstl
+   ncase=ncase+1 $ 
+   DBSTATUS CASEM//s,n,nocasem $ 
+endDO $ nocasem>0 or ...
+if ( FLEXINCR<>'YES' ) then $
+if ( not saverstl ) then $ 
+   copy     augx/aug $
+   copy     aqgx/aqg $
+   copy     aqmgx/aqmg $
+   copy     pgfx/pgf $
+   CALL SESUM //S,SOLN/SOLNX $ 
+endif $ not saverstl
+$ 
+   if ( saverst='sedr' ) dropt=3 $ recover AUG and AQG for all SE 
+$    Check if there's any TRIM subcases 
+   dbstatus aug//S,N,noaug $ 
+   PARAML   CASES//'DTI'/-1/224//S,N,TRMFLG $ 
+   IF ( TRMFLG=-1 and noaug>0 ) CALL SUPER3,
+                CASECC  ,        ,        ,        ,pgf     , 
+                        ,        ,        ,        ,        , 
+                        ,        ,        ,        ,        , 
+                        ,PCDB    ,XYCDB   ,POSTCDB ,FORCE   , 
+                EMAP    ,MAPS    ,EQEXINS ,PVTS    ,CASES   , 
+                SLT     ,ETT     ,GOT     ,GOQ     ,LOO     , 
+                        ,        ,UOO     ,        ,GPLS    , 
+                USET    ,SILS    ,PJ      ,EDTs    ,YS      , 
+                GM      ,PSS     ,KFS     ,KSS     ,QR      , 
+                        ,        ,        ,        ,        , 
+                DYNAMICS,BGPDTS  ,CSTMS   ,MPTS    ,DITS    , 
+                EST     ,GEOM2S  ,GEOM3S  ,ECTS    ,EPTS    , 
+                INDTA   ,KELM    ,KDICT   ,GPECT   ,VELEM   , 
+                        ,ditid   ,pvtbc   ,scstm   ,        , 
+                        ,GEOM4S  ,PG      ,        ,        , 
+                        ,EPT     ,MPT     ,GEOM1   ,GEOM2   , 
+                GEOM3   ,GEOM4   ,PTELEM  ,        ,        , 
+                        ,        ,MEDGE   ,VIEWTB  ,        , 
+                bgpdtVU ,gpsnts  ,pvt     ,DEQATN  ,DEQIND  , 
+                GDNTAB  ,OINT    ,PELSETS ,KSF     ,KMG     , 
+                        ,        ,        ,        ,        , 
+                        ,        ,        ,        ,        , 
+                        ,        ,        ,        ,        , 
+                geom1q  ,        ,        ,        ,        ,
+                        ,        ,matpool ,        ,        ,
+                        ,        ,        ,        ,pcompts ,
+                        ,        ,        ,        ,        ,
+                        ,        ,        ,        ,        ,
+                xsop2dir,        ,        ,        ,        ,
+                        ,        ,dtis    ,dtindxs ,dmis    ,
+                dmindxs ,matpools,        ,segrdso ,        ,
+                        ,        ,        ,        ,        ,
+                        ,        ,        ,dti     ,geom1s  ,
+                gpdts   ,        ,        ,        ,        ,
+                        ,        ,        ,        ,        ,
+                        ,        ,        ,        ,        ,
+                        ,        ,        ,        ,        ,
+                        ,        ,        ,        ,        ,
+                        ,        ,        ,EDT     ,edom    ,
+                        ,        ,geom1exa,geom2exa,geom4exa,
+                        /
+                AUG     ,AQG     ,aqmg    ,        ,        ,
+                        ,        ,        ,        ,        ,
+                        ,        ,        ,        ,        ,
+                        ,        ,        ,        ,        ,
+                        ,        ,        /
+                APP     /APP     /RSONLY  /FALSE   /FALSE   / 
+                AERO    /dropt   /FALSE   /S,PFILE /S,CARDNO/ 
+                0       /FALSE   /0       /pexist  /0       / 
+                false   /false   /false   /0       /false   /
+                '      '/false   /false   /false   /restart /
+                dospcf  /-1      /-1      /-1      /DMAPNO  /
+                0.0     /1       /'      '$ 
+$ 
+$  Check if there's any DIVERG subcases 
+   PARAML   CASES//'DTI'/-1/239//S,N,DVGFLG $ 
+   IF ( DVGFLG=-1 and not(saverstl) 
+      ) CALL DIVERGRS  CASES   ,EDTs    ,DYNAMICS,QKKS    ,GPLK    , 
+                       GDKL    ,KLL     ,EQEXINS ,USET    ,XYCDBS  / 
+                       DIVTAB  ,PHIDRL  ,PHIDLL  ,QLL     / 
+                       IMACHNO /S,PFILE /S,CARDNO/0       $ 
+$
+ENDIF $ FLEXINCR<>'YES'
+PUTSYS(1,109) $ FORCE EXECUTION 
+CALL PRTSUM /RSTJUNK $ 
+END $ AESTAT 

@@ -1,0 +1,78 @@
+1
+ MACHINE                          MODEL                 OPERATING SYSTEM       NX Nastran       BUILD DATE         RUN DATE
+ Intel64 Family 6 Mod                                   Windows 8               VERSION   10.0   OCT 30, 2014       FEB 20, 2016
+
+ 
+                               ===      N X  N a s t r a n            E X E C U T I O N   S U M M A R Y    ===
+
+ Day_Time  Elapsed     I/O_Mb      Del_Mb     CPU_Sec    Del_CPU    Subroutine
+ 
+ 16:22:44     0:00        0.0         0.0         0.0        0.0    SEMTRN   BGN
+ 16:22:44     0:00        0.0         0.0         0.0        0.0    SEMTRN   END
+ 16:22:44     0:00        0.0         0.0         0.0        0.0    DBINIT   BGN
+      ** CURRENT PROJECT ID = ' "BLANK" '  ** CURRENT VERSION ID =          1
+
+     S U M M A R Y   O F   F I L E   A S S I G N M E N T   F O R   T H E   P R I M A R Y   D A T A B A S E     ( DBSNO   1, NXN10.0 )
+
+    ASSIGNED PHYSICAL FILE NAME (/ORIGINAL)      LOGICAL NAME     DBSET        STATUS    BUFFSIZE     CLUSTER SIZE      TIME STAMP
+    ---------------------------------------      ------------     -----        ------    --------     ------------     ------------
+    ./aestat.MASTER                              MASTER           MASTER       NEW          32769           1          160220162244
+    ./aestat.DBALL                               DBALL            DBALL        NEW          32769           1          160220162245
+    c:/.../temp/aestat.T11900_44.OBJSCR          OBJSCR           OBJSCR       NEW           8193           1          160220162246
+               **** MEM FILE ****                * N/A *          SCRATCH 
+    c:/.../temp/aestat.T11900_44.SCRATCH         SCRATCH          SCRATCH      NEW          32769           1          160220162247
+    c:/.../temp/aestat.T11900_44.SCR300          SCR300           SCRATCH      NEW          32769           1          160220162248
+ 16:22:44     0:00        3.0         3.0         0.0        0.0    DBINIT   END
+ 16:22:44     0:00        3.0         0.0         0.0        0.0    XCSA     BGN
+
+
+ *** PARALLEL PROCESSES CPU INFORMATION (SECONDS) ***
+
+  MODULE     PROCESS-1     PROCESS-2     PROCESS-3     PROCESS-4     PROCESS-5     PROCESS-6     PROCESS-7     PROCESS-8
+  --------   -----------   -----------   -----------   -----------   -----------   -----------   -----------   -----------
+  ========   ===========   ===========   ===========   ===========   ===========   ===========   ===========   ===========
+  
+ *** SYSTEM WARNING MESSAGE 6299 (PARCPU)
+     NO PARALLEL PROCESS CREATED
+
+ *** TOTAL MEMORY AND DISK USAGE STATISTICS ***
+
+ +---------- SPARSE SOLUTION MODULES -----------+         +------------- MAXIMUM DISK USAGE -------------+
+      HIWATER               SUB_DMAP        DMAP               HIWATER               SUB_DMAP        DMAP
+      (WORDS)   DAY_TIME      NAME         MODULE                 (MB)   DAY_TIME      NAME         MODULE
+            0   16:22:44    PREFACE     0  PREFACE               1.625   16:22:44    PREFACE     0  PREFACE 
+
+
+ *** DATABASE USAGE STATISTICS ***
+ 
+ +------------------ LOGICAL DBSETS ------------------+   +------------------------- DBSET FILES -------------------------+
+  DBSET      ALLOCATED   BLOCKSIZE        USED    USED     FILE       ALLOCATED     HIWATER       HIWATER  I/O TRANSFERRED
+              (BLOCKS)     (WORDS)    (BLOCKS)       %                 (BLOCKS)    (BLOCKS)          (MB)             (GB)
+ 
+  MASTER          5000       32768           6    0.12     MASTER          5000           6         0.750            0.001
+  DBALL        2000000       32768           4    0.00     DBALL        2000000           4         0.500            0.001
+  OBJSCR          5000        8192           4    0.08     OBJSCR          5000           4         0.125            0.000
+  SCRATCH      4011702       32768           8    0.00    (MEMFILE        11702           6         0.750            0.000)
+                                                           SCRATCH      2000000           1         0.125            0.000
+                                                           SCR300       2000000           1         0.125            0.000
+                                                                                                            ==============
+                                                                                                     TOTAL:          0.003
+ 
+ *** BUFFER POOL AND SCRATCH 300 USAGE STATISTICS ***
+ 
+ +----------------- BUFFER POOL -----------------+      +-------------------------- SCRATCH 300 --------------------------+ 
+   OPTION        BLOCKS      BLOCKS      BLOCKS           OPTION    HIWATER               SUB_DMAP        DMAP     OPN/CLS
+  SELECTED     ALLOCATED     REUSED     RELEASED         SELECTED  (BLOCKS)   DAY_TIME      NAME         MODULE    COUNTER
+  GINO,EXEC       11697          10           0              2           1    16:22:44    PREFACE     0  PREFACE       0
+
+
+ *** SUMMARY OF PHYSICAL FILE I/O ACTIVITY ***
+
+ ASSIGNED PHYSICAL FILE NAME                                   RECL (BYTES)  READ/WRITE COUNTS   WSIZE  (WNUM)  MAP-I/O CNT
+ ------------------------------------------------------------  -----------  -------------------  -------------  -----------
+ c:/users/ado/appdata/local/temp/aestat.T11900_44.SCRATCH           131072          0/1            N/A            N/A          
+ c:/users/ado/appdata/local/temp/aestat.T11900_44.OBJSCR             32768          0/8            N/A            N/A          
+ ./aestat.MASTER                                                    131072          2/11           N/A            N/A          
+ ./aestat.DBALL                                                     131072          2/9            N/A            N/A          
+ c:/users/ado/appdata/local/temp/aestat.T11900_44.SCR300            131072          0/1            N/A            N/A          
+ 

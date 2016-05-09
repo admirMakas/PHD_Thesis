@@ -1,0 +1,16 @@
+Abaqus JOB jetnoise_eigen
+Abaqus 6.13-1
+Abaqus License Manager checked out the following licenses:
+Abaqus/Foundation checked out 3 tokens.
+<42 out of 50 licenses remain available>.
+Begin Analysis Input File Processor
+2/5/2016 11:47:37 AM
+Run pre.exe
+2/5/2016 11:47:50 AM
+End Analysis Input File Processor
+Begin Abaqus/Standard Analysis
+2/5/2016 11:47:50 AM
+Run standard.exe
+2/5/2016 11:48:02 AM
+End Abaqus/Standard Analysis
+Abaqus JOB jetnoise_eigen COMPLETED

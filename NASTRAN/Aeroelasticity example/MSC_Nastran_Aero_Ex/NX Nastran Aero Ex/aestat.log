@@ -1,0 +1,95 @@
+NX Nastran V10.0 (Intel64 Family 6 Model 94 Stepping 3 Windows 8  ) Control File:
+-------------------------------------------------------------------
+Nastran BUFFSIZE=32769 $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[1])
+Nastran BUFFPOOL=20.0X $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[4])
+Nastran DIAGA=128 DIAGB=0 $(c:/program files/siemens/nx 10.0/nxnastran/conf/nast10.rcf[8])
+Nastran REAL=2147483647 $(program default)
+JID='c:/users/ado/documents/aeroelasticity example/msc_nastran_aero_ex/nx nastran aero ex/aestat.dat'
+OUT='./aestat'
+MEM=1917163520
+MACH='Intel64 Family 6 Model 94 Stepping 3'
+OPER='Windows 8'
+OSV=' '
+MODEL='Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz (DESKTOP-5UE3P8V)'
+CONFIG=8666
+NPROC=8
+symbol=DELDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/del' $(program default)
+symbol=DEMODIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/demo' $(program default)
+symbol=SSSALTERDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/misc/sssalter' $(program default)
+symbol=TPLDIR='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/tpl' $(program default)
+SDIR='c:/users/ado/appdata/local/temp/aestat.T11900_44'
+DBS='./aestat'
+SCR=no
+SMEM=20.0X
+NEWDEL='c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/SSS'
+DEL='NXNDEF'
+AUTH='28000@desktop-5ue3p8v'
+AUTHQUE=0
+MSGCAT='c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/analysis.msg'
+MSGDEST='f06'
+NEWS='c:/program files/siemens/nx 10.0/nxnastran/nxn10/nast/news.txt'
+-------------------------------------------------------------------
+NXN_ISHELLPATH=C:\Program Files\Siemens\NX 10.0\NXNASTRAN\bin
+NXN_JIDPATH=
+PATH=c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt;c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/impi/bin;c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/monitor;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Microsoft HPC Pack 2008 R2\Bin\;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\IntelSGXPSW\bin\x64\Release\;C:\Program Files\Intel\IntelSGXPSW\bin\win32\Release\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;c:\Program Files\Intel\WiFi\bin\;c:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Hewlett-Packard\SimplePass\;C:\Program Files (x86)\Skype\Phone\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\MATLAB\R2015b\bin;C:\SIMULIA\Abaqus\Commands;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Users\ado\Anaconda3;C:\Users\ado\Anaconda3\Scripts;C:\Users\ado\Anaconda3\Library\bin;
+Command Line: JID=C:\Users\ado\Documents\Aeroelasticity example\MSC_Nastran_Aero_Ex\NX Nastran Aero Ex\aestat.dat
+Current Dir: C:\Users\ado\Documents\Aeroelasticity example\MSC_Nastran_Aero_Ex\NX Nastran Aero Ex
+Executable:  c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/analysis.exe
+NXN_MSG:     stderr
+FPE:         no
+-------------------------------------------------------------------
+Current resource limits:
+ Physical memory:                    16252 MB
+ Physical memory available:           9593 MB
+ Paging file size:                   18684 MB
+ Paging file size available:         11550 MB
+ Virtual memory:                 134217727 MB
+ Virtual memory available:       134217676 MB
+-------------------------------------------------------------------
+System configuration:
+ Hostname:         DESKTOP-5UE3P8V
+ Architecture:     em64tnt
+ Platform:         Intel64 Family 6 Model 94 Stepping 3 Windows 8  
+ Model:            Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz
+ Clock freq.:      2592 MHz
+ Number of CPUs:   8
+ Executable:       standard
+ Raw model ID:     8666
+ Config number:    8666
+ Physical memory:  16252 MB
+ Virtual memory:   18684 MB
+ Numeric format:   32-bit little-endian IEEE.
+ Bytes per word:   4
+ Disk block size:  512 bytes (128 words)
+ Remote shell cmd: "c:/program files/siemens/nx 10.0/nxnastran/nxn10/em64tnt/edsrmtcmd.exe" (Windows, UNIX)
+-------------------------------------------------------------------
+NX Nastran started  Sat Feb 20 16:22:44 EST 2016
+ 16:22:44  Beginning Analysis
+
+ 16:22:44  NX NASTRAN Authorization Information - System Attributes
+ 16:22:44  --------------------------------------------------------
+ 16:22:44  Model: Intel(R) Core(TM) i7-6700HQ CPU
+ 16:22:44  Machine: Intel64 Family 6 Model 94 Steppi
+ 16:22:44  OS: Windows 8
+ 16:22:44  Version:
+ 16:22:44  License File(s): 28000@desktop-5ue3p8v
+
+
+ 16:22:44  NX NASTRAN Licensing Information
+ 16:22:44  -------------------------------
+ 16:22:44  Sold To ID:            1002010 - *SolidSQUAD*
+ 16:22:44  Webkey Access Code:    5555555555
+ 16:22:44  License File Issuer:   UGS
+
+
+ 16:22:44  NX NASTRAN Authorization Information - Checkout Successful
+ 16:22:44  ----------------------------------------------------------
+ 16:22:44  License for module NX Nastran Basic checked out successfully
+
+ 16:22:44  NSEXIT: EXIT(20)
+ 16:22:44  Analysis complete  -20
+20
+Real:        0.148 seconds ( 0:00:00.148)
+User:        0.031 seconds ( 0:00:00.031)
+Sys:         0.078 seconds ( 0:00:00.078)
+NX Nastran finished Sat Feb 20 16:22:44 EST 2016

@@ -1,0 +1,70 @@
+*********************************************************************
+** Abaqus/fromNastran 6.13-1
+**
+** reading bulk data from: C:\Users\WSUadm\Desktop\ABAQUS_EX\test.dat
+**  creating Abaqus input: C:\Users\WSUadm\Desktop\ABAQUS_EX\test.inp
+** writing diagnostics to: C:\Users\WSUadm\Desktop\ABAQUS_EX\test.log
+**
+**  environment variables: fromnastran_wtmass_fixup <not present>
+**                       : fromnastran_distribution <not present>
+**                       : fromnastran_pbar_zero_reset <not present>
+**                       : fromnastran_loadcases <not present>
+**                       : fromnastran_surface_based_coupling <not present>
+**                       : fromnastran_cquad4 <not present>
+**                       : fromnastran_chexa <not present>
+**                       : fromnastran_ctetra <not present>
+**                       : fromnastran_cbar <not present>
+**                       : fromnastran_beam_offset_coupling <not present>
+**                       : fromnastran_beam_orientation_vector <not present>
+**                       : fromnastran_shell_general_section <not present>
+**                       : fromnastran_eigensolver <not present>
+**                       : fromnastran_plotel <not present>
+**                       : fromnastran_cdh_weld <not present>
+**                       : fromnastran_spoint_dof <not present>
+**
+** command line arguments: wtmass_fixup=ON
+**                       : distribution=preservePID
+**                       : pbar_zero_reset=1e-20
+**                       : loadcases=ON
+**                       : surface_based_coupling=ON
+**                       : cquad4=S4R
+**                       : chexa=C3D8I
+**                       : ctetra=C3D10M
+**                       : cbar=B31
+**                       : beam_offset_coupling=ON
+**                       : beam_orientation_vector=ON
+**                       : shell_general_section=OFF
+**                       : plotel <not present>
+**                       : cdh_weld <not present>
+**                       : eigensolver <not present>
+**                       : spoint_dof <not present, using default=9>
+**
+** --------------------------------
+** Nastran Case Control entities processed:
+**      keyword   number
+** ------------   ------
+**    FREQUENCY      306
+** --------------------------------
+** Nastran Case Control entities not processed:
+**      keyword   number
+** ------------   ------
+**     ANALYSIS        1
+**         LINE        1
+**
+** environment_variable / command_line_argument summary:
+** PARAM,WTMASS will be used to adjust structural mass/density
+** *DISTRIBUTION will be used for shell offsets, orientations, and thicknesses
+**  shell elements will be grouped by PSHELL ID
+** Zero PBAR/PBEAM cross sectional parameters will be reset to 1e-20
+** Rigid links will be modeled using surface-based *COUPLING constraints
+** Beam orientations will be modeled using vectors on beam sections
+** Beam offsets will be modeled using rigid couplings and extra nodes
+** PSHELL/PCOMP will default to *SHELL SECTION
+** PLOTELs will not be translated
+** "CDH welds" (isolated CHEXAs with 8 RBE3s) will not be translated to
+**  rigid fasteners
+** CWELDs will be translated to compliant fasteners
+** CQUAD4 elements will be translated to S4R
+** SPOINT DOF 0 will be reset to 9 in DMIG, MPC, CELAS2, and CMASS2 data
+**
+*SECTION CONTROLS, NAME=REDUCED_INTEGRATION_FROMNASTRAN

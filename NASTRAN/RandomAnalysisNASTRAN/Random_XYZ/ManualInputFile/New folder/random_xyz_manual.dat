@@ -1,0 +1,155 @@
+$THIS EXAMPLE IS FOR A CANTILEVEL PLATE SUBJECT TO RANDOM LOADING
+$
+SOL 111 $USED FOR RANDOM VIBRATION SIMULATIONS
+$
+CEND
+$
+TITLE = CANTILEVER BEAM WITH RANDOM LOADING, NASTRAN EXAMPLE
+$
+ECHO=BOTH
+LINE = 100
+$
+METHOD = 01
+SPC = 02
+RANDOM = 03
+FREQ = 04
+SDAMP = 05
+$
+$DEFINES SETS FOR OUTPUT GENERATION
+SET 01 = 05, 11
+$
+$DESIRED OUTPUTS
+ACCELERATION(PLOT, RPRINT, PSDF, CRMS)=01
+STRESS(PLOT, RPRINT, PSDF) = ALL
+DISPLACEMENT(PLOT, PUNCH) = ALL
+$
+$SUBCASES FOR THE X,Y,Z ENFORCED ACCELERATIONS
+SUBCASE   01 $X-DIR
+  DLOAD = 10
+SUBCASE   02 $Y-DIR
+  DLOAD = 11
+SUBCASE   03 $Z-DIR
+  DLOAD = 12
+$
+$
+BEGIN BULK
+$
+$
+PARAM, RMSINT, LOGLOG
+PARAM, AUTOSPC, YES                                                             
+PARAM, WTMASS, .00259   
+PARAM, POST, -1
+$
+$
+$DEFINE GRID POINT FOR THE BEAM
+$FIRST ROW
+GRID, 01, ,0. ,0. ,0.                                      
+GRID, 02, ,1. ,0. ,0.                                      
+GRID, 03, ,2. ,0. ,0.                                      
+GRID, 04, ,3. ,0. ,0.                                      
+GRID, 05, ,4. ,0. ,0.                                      
+GRID, 06, ,5. ,0. ,0.                                      
+GRID, 07, ,6. ,0. ,0.                                      
+GRID, 08, ,7. ,0. ,0.                                      
+GRID, 09, ,8. ,0. ,0.                                      
+GRID, 10, ,9. ,0. ,0.                                      
+GRID, 11, ,10. ,0. ,0. 
+$SECOND ROW
+GRID, 21, ,0. ,1. ,0.                                      
+GRID, 22, ,1. ,1. ,0.                                      
+GRID, 23, ,2. ,1. ,0.                                      
+GRID, 24, ,3. ,1. ,0.                                      
+GRID, 25, ,4. ,1. ,0.                                      
+GRID, 26, ,5. ,1. ,0.                                      
+GRID, 27, ,6. ,1. ,0.                                      
+GRID, 28, ,7. ,1. ,0.                                      
+GRID, 29, ,8. ,1. ,0.                                      
+GRID, 30, ,9. ,1. ,0.                                      
+GRID, 31, ,10. ,1. ,0.                                      
+$
+$DEFINE ELASTIC MATERIAL FOR BEAM
+$     MID, E, G, Nu, RHO, A ,TREF
+MAT1, 1, 10.E6,	, .25, 0.1, 1.E-6, 0.
+$
+$DEFINE SHELL PROPERTIES TO BE USED FOR CQUAD4 ELEMENTS
+$     PID, MID1, THICKNESS, MID2, I2I/T**3, MID3
+PSHELL,	1, 1, .10, 1, ,1
+$
+$
+$DEFINE CQUAD ELEMENTS FOR BEAM
+CQUAD4, 101 ,1 ,01 ,02 ,22 ,21                             
+CQUAD4, 102 ,1 ,02 ,03 ,23 ,22                             
+CQUAD4, 103 ,1 ,03 ,04 ,24 ,23                             
+CQUAD4, 104 ,1 ,04 ,05 ,25 ,24                             
+CQUAD4, 105 ,1 ,05 ,06 ,26 ,25                             
+CQUAD4, 106 ,1 ,06 ,07 ,27 ,26                             
+CQUAD4, 107 ,1 ,07 ,08 ,28 ,27                             
+CQUAD4, 108 ,1 ,08 ,09 ,29 ,28                             
+CQUAD4, 109 ,1 ,09 ,10 ,30 ,29                             
+CQUAD4, 110 ,1 ,10 ,11 ,31 ,30       
+$
+$
+$SINGLE POINT CONTRAINT APPLIED TO NODES 101 AND 102
+$ALL DOF'S FIXED
+SPC1, 02, 123456, 01, 21
+$
+$EIGENVALUE EXTRACTION USING LANCZOS METHOD
+$BY DEFINITION OF THE EXECUTIVE CASE PARAMATER 'METHOD'
+$BOTH STRUCTURAL AND FLUID MODES ARE EXTRACTED
+$NATURAL FREQUENCIES UP TO 2000 HZ WILL BE EXTRACTED
+EIGRL, 01 ,-.1, 2500. 
+$
+$TABLE BELOW DEFINES CRITICAL MODAL DAMPING FOR FREQUENCIES
+$O-2500. DAMPING IS CONSTANT THROUGHOUT THE DOMAIN
+TABDMP1, 05, CRIT
++, 0., .04, 2500., 0.04, ENDT
+$
+$TABLE USED TO DEFINE ENFORCED ACCELERATION FOR THE BASE NODES
+$SAME TABLE USED FOR X,Y,Z DIRECTIONS
+TABLED1, 100
++, 0.0, 1.0, 2000.0, 1.0, ENDT
+$
+$DEFINE ENFORED ACCELERATION IN X-DIR
+SPCD, 20, 01, 1, 386.4
+SPCD, 20, 21, 1, 386.4
+RLOAD1, 10, 20, , , 100, , ACCE
+$
+$
+$DEFINE ENFORED ACCELERATION IN Y-DIR
+SPCD, 21, 01, 2, 386.4
+SPCD, 21, 21, 2, 386.4
+RLOAD1, 11, 21, , , 100, , ACCE
+$
+$
+$DEFINE ENFORED ACCELERATION IN Z-DIR
+SPCD, 22, 01, 3, 386.4
+SPCD, 22, 21, 3, 386.4
+RLOAD1, 12, 22, , , 100, , ACCE
+$
+$
+$DEFINE DOMAIN FOR OUTPUT FREQUENCIES
+FREQ2, 04, 10., 1000., 70
+$
+$
+$DEFINE RANDOM INPUTS FROM THE EXAMPLE USING TABLES
+TABRND1, 01, Log, Log
++, 10.0, 0.18, 15.0,  0.18, 15.1,  0.12, 25.0,   0.12
++, 25.1, 0.22, 110.0, 0.22, 110.1, 0.12, 1000.0, 0.12
++, ENDT
+$
+$
+TABRND1, 02, Log, Log
++, 10.0, 0.15, 34.9,  0.15, 35.0,  0.25, 55.0,   0.25
++, 55.1, 0.15, 310.0, 0.15, 310.1, .075, 1000.0, .075
++, ENDT
+$
+$
+$DEFINE RANDOM INPUT. SAME ID USED TO TO ENSURE ALL LOADCASES ARE
+$ADDED TOGETHER
+RANDPS, 03, 01, 01, 1.0, 0.0, 01
+RANDPS, 03, 02, 02, 1.0, 0.0, 01
+RANDPS, 03, 03, 03, 1.0, 0.0, 02
+$
+$
+ENDDATA
+

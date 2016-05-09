@@ -1,0 +1,286 @@
+$MANUAL INPUT FILE FOR EXAMPLE HA144C
+$
+$
+TIME 5 $ CPU TIME IN MINUTES
+SOL 144  $ STATIC AERO
+CEND
+TITLE = EXAMPLE HA144C: HALF SPAN 15-DEG SWEPT UNTAPERED WING  HA144C
+SUBT  = CANTILEVERED WIND TUNNEL MOUNT, DOUBLET-LATTICE AERO
+LABEL = 0.041 IN PLATE W/BEVELLED LEADING AND TRAILING EDGES
+  ECHO   = BOTH
+  SPC    = 1
+  LOAD   = 30 $ REACTION FORCE MINUS GRAVITY LOAD
+  DISP   = ALL
+  STRESS = ALL
+  FORCE  = ALL
+  AEROF  = ALL
+  APRES  = ALL
+  TRIM = 1
+$
+OUTPUT(PLOT)
+  CSCALE 2.0
+  PLOTTER NASTRAN
+  SET 1  = AERO1
+  SET 2  = QUAD4
+  PTITLE = AERODYNAMIC ELEMENTS
+  FIND SCALE, ORIGIN 1 ,SET 1
+  PLOT ORIGIN 1, SET 1, LABEL ELEMENTS
+$
+  PTITLE = STRUCTURAL ELEMENTS
+  FIND SCALE, ORIGIN 1, SET 2
+  PLOT ORIGIN 1, SET 2, LABEL ELEMENTS
+$
+$--------------------------------------------------------------------------------------------------
+BEGIN BULK
+$
+$
+$PARAMATER SECTION
+$--------------------------------------------------------------------------------------------------
+$
+$AUNITS IS USED IN SOL 144 TO CONVERT ACCELERATIONS SPECIFIED IN UNITS OF GRAVITY
+PARAM   AUNITS  .0025901
+$
+$
+$THE PARAMETER WTMASS CONVERTS THE STRUCTURAL WEIGHT TO MASS
+$UNITS; ITS VALUE IS 1/G.
+PARAM   WTMASS  .0025901
+$
+$
+$COUPMASS (=1), CAUSES THE GENERATION OF CONSISTENT MASS MATRICES
+PARAM   COUPMASS  1
+$
+$END PARAMATER SECTION
+$
+$--------------------------------------------------------------------------------------------------
+$
+$
+$TRIM CONDITION DEFINITION
+$--------------------------------------------------------------------------------------------------
+$
+TRIM    1       0.45    2.0     ANGLEA  0.0     PITCH   0.0
+$
+$END TRIM SECTION
+$--------------------------------------------------------------------------------------------------
+$
+$
+$DEFINE TRIM VARIABLES
+$--------------------------------------------------------------------------------------------------
+$
+AESTAT  501     ANGLEA
+AESTAT  502     PITCH
+AESTAT  503     URDD3
+AESTAT  504     URDD5
+$
+$END TRIM VARIABLE SECTION
+$--------------------------------------------------------------------------------------------------
+$
+$DEFINE ALUMINUM MATERIAL PROPERTIES, ISOTROPIC.
+$       MID     E       G       NU      RHO     A       TREF    GE
+MAT1    1       10.3+6  3.9+6           .100
+$
+$
+$DEFINE PSHELL PROPERTIES FOR CQUAD4 ELEMENTS. DEFAULT WING THICKNESS IS 0.041
+$UNLESS OTHERWISE SPECIFIED IN THE CQUAD4 DEFINITION.
+$       PID     MID1    T      MID2 12.*I/T**3  MID3    TS/T    NSM     $
+PSHELL  1       1       .041    1               1
+$
+$
+$START BY DEFINING THE REQUIRED NODES FOR THE WING DEFINITION
+GRID    1                0.0     0.0     0.0
+GRID    2                .211491 .7893   0.0
+GRID    3                .422983 1.5786  0.0
+GRID    4                .634474 2.3679  0.0
+GRID    5                .845966 3.1572  0.0
+GRID    6                1.05746 3.9465  0.0
+GRID    7                1.26895 4.7358  0.0
+GRID    8                1.48044 5.5251  0.0
+GRID    9                .258819 0.0     0.0
+GRID    10               .47031  .7893   0.0
+GRID    11               .681802 1.5786  0.0
+GRID    12               .893293 2.3679  0.0
+GRID    13               1.10478 3.1572  0.0
+GRID    14               1.31628 3.9465  0.0
+GRID    15               1.52777 4.7358  0.0
+GRID    16               1.73926 5.5251  0.0
+GRID    17              1.035275 0.0     0.0
+GRID    18               1.24677 .7893   0.0
+GRID    19               1.45826 1.5786  0.0
+GRID    20               1.66975 2.3679  0.0
+GRID    21               1.88124 3.1572  0.0
+GRID    22               2.09273 3.9465  0.0
+GRID    23               2.30422 4.7358  0.0
+GRID    24               2.51572 5.5251  0.0
+GRID    25               1.81173 0.0     0.0
+GRID    26               2.02322 .7893   0.0
+GRID    27               2.23471 1.5786  0.0
+GRID    28               2.44621 2.3679  0.0
+GRID    29               2.6577  3.1572  0.0
+GRID    30               2.86919 3.9465  0.0
+GRID    31               3.08068 4.7358  0.0
+GRID    32               3.29217 5.5251  0.0
+GRID    33               2.07055 0.0     0.0
+GRID    34               2.28204 .7893   0.0
+GRID    35               2.49353 1.5786  0.0
+GRID    36               2.70502 2.3679  0.0
+GRID    37               2.91652 3.1572  0.0
+GRID    38               3.12801 3.9465  0.0
+GRID    39               3.3395  4.7358  0.0
+GRID    40               3.55099 5.5251  0.0
+$
+$
+$NEXT DEFINE THE CQUAD ELEMENTS FOR THE WING.
+$TO USE CONTINUATION CALLOUTS NEED TO BE BEYOUND COLUMN 74
+$       EID     PID     G1      G2      G3      G4                      $
+CQUAD4  1       1       1       2       10      9                       +C0000
+$                       T1      T2      T3      T4
++C0000                  0.0     0.0     .041    .041
+CQUAD4  2       1       2       3       11      10                      +C0001
++C0001                  0.0     0.0     .041    .041
+CQUAD4  3       1       3       4       12      11                      +C0002
++C0002                  0.0     0.0     .041    .041
+CQUAD4  4       1       4       5       13      12                      +C0003
++C0003                  0.0     0.0     .041    .041
+CQUAD4  5       1       5       6       14      13                      +C0004
++C0004                  0.0     0.0     .041    .041
+CQUAD4  6       1       6       7       15      14                      +C0005
++C0005                  0.0     0.0     .041    .041
+CQUAD4  7       1       7       8       16      15                      +C0006
++C0006                  0.0     0.0     .041    .041
+CQUAD4  8       1       9       10      18      17
+CQUAD4  9       1       10      11      19      18
+CQUAD4  10      1       11      12      20      19
+CQUAD4  11      1       12      13      21      20
+CQUAD4  12      1       13      14      22      21
+CQUAD4  13      1       14      15      23      22
+CQUAD4  14      1       15      16      24      23
+CQUAD4  15      1       17      18      26      25
+CQUAD4  16      1       18      19      27      26
+CQUAD4  17      1       19      20      28      27
+CQUAD4  18      1       20      21      29      28
+CQUAD4  19      1       21      22      30      29
+CQUAD4  20      1       22      23      31      30
+CQUAD4  21      1       23      24      32      31
+CQUAD4  22      1       25      26      34      33                      +C0007
++C0007                  .041    .041    0.0     0.0
+CQUAD4  23      1       26      27      35      34                      +C0008
++C0008                  .041    .041    0.0     0.0
+CQUAD4  24      1       27      28      36      35                      +C0009
++C0009                  .041    .041    0.0     0.0
+CQUAD4  25      1       28      29      37      36                      +C0010
++C0010                  .041    .041    0.0     0.0
+CQUAD4  26      1       29      30      38      37                      +C0011
++C0011                  .041    .041    0.0     0.0
+CQUAD4  27      1       30      31      39      38                      +C0012
++C0012                  .041    .041    0.0     0.0
+CQUAD4  28      1       31      32      40      39                      +C0013
++C0013                  .041    .041    0.0     0.0
+$
+$
+$RIGID BARS USED TO CONNECT WING ROOT NODES 17 TO 9 AND 17 TO 25
+$       EID     GA      GB      CNA     CNB     CMA     CMB
+RBAR    101     17      9       123456
+RBAR    102     17      25      123456
+$
+$DEFINES CONCENTRATED MASS AT NODE 17. THIS IS AN ARBITRARILY CHOSEN
+$VALUE BASED ON DIRECTIONS FROM THE EXAMPLE OVERVIEW NOTES.
+$MASS IS USED FOR THE 'LARGE MASS METHOD', WHICH IS USED IN PLACE OF
+$CONTROL SURFACE DEFINITION TO TRIM THE MODEL VIA THE INERTIA OF THE
+$ADDED MASS
+$       EID     G       CID     M       X1      X2      X3
+CONM2   201     17      0       1.0+5                                   +CM2
+$       I11     I21     I22     I31     I32     I33
++CM2                    1.0+5
+$
+$
+$THE 'LARGE MASS METHOD' REQUIRED AN EQUALLY LARGE FORCE TO COUNTERACT
+$THE ADDED MASS ON NODE 17.
+$       ID      G       CID     F       N1      N2      N3
+FORCE   10      17              1.0+5   0.0     0.0     1.0
+$
+$
+$CARD 'GRAV' INCLUDES WING MASS IN THE SIMULATION. GRAVITY IS SPECIFIED
+$IN 'IN/SEC'
+$       SID     CID     G       N1      N2      N3
+GRAV    20              386.088 0.0     0.0     -1.0
+$
+$
+$
+$       SID     S       S1      L1      S2      L2      ETC
+LOAD    30      1.0     1.0     10      1.0     20
+$
+$REACTIONS CALCULATED AT NODE 17
+$       ID      C
+SUPORT  17      35
+$
+$
+$CONSTRAINS PLACED ON NODE 17 FIXING ALL OTHER DOFS EXCEPT 3 AND 5.
+$ALL OTHER NODES HAVE ROTATION ABOUT Z FIXED BECAUSE CQUAD4 ELEMENTS
+$DO NOT HAVE IN PLANE STIFFNESS.
+$       SID     C       G1      G2      ETC.
+SPC1    1       1246    17
+$SPC1    1       6       1       THRU    8
+$SPC1    1       6       10      THRU    16
+$SPC1    1       6       18      THRU    24
+$SPC1    1       6       26      THRU    40
+$
+$
+$        THE ASET1 ENTRY DEFINES DOFS THAT THE USER DESIRES TO BE       $
+$        INDEPENDENT.  IT LISTS THE DOF COMPONENT NUMBERS AND THE       $
+$        GRID ID NO.S.                                                  $
+$                                                                       $
+$       V       ID1     THRU    ID2
+$ASET1   3        1      THRU     8
+$ASET1   3       10      THRU    16
+$ASET1   3       18      THRU    24
+$ASET1   3       26      THRU    40
+$
+$
+$AERODYNAMIC DEFINITIONS
+$--------------------------------------------------------------------------------------------------
+$
+$DEFINES THE COORDINATE SYSTEM LOCATED AT NODE 17 FOR TRIM CALCULATIONS
+$       CID     RID     A1      A2      A3      B1      B2      B3
+CORD2R  11              1.035275 0.0    0.0     1.035275 0.0    1.0     +CORD1
+$       C1      C2      C3
++CORD1  2.0     0.0     0.0
+$
+$
+$SET OF NODES USED FOR SPLINE INTERPOLATION
+$       SID     G1      G2      G3      G4      G5      G6
+SET1    100     2       4       6       8       9       11      13      +S1
++S1     15      18      20      22      24      25      27      29      +S2
++S2     31      34      36      38      40
+$
+$
+$       ACSID   RCSID   REFC    REFB    REFS    SYMXZ   SYMXY
+AEROS   0       11      2.07055 11.0502 11.4400 1
+$
+$
+$REQUIRED BY CAERO1 INPUT CARD
+$       PID     B1      B2      B3      B4      B5      B6
+PAERO1  1
+$
+$
+$CAERO1 DEFINITION USED FOR SPLINING
+$       EID     PID     CP      NSPAN   NCHORD  LSPAN   LCHORD  IGID
+CAERO1  101     1       0       6       4                       1       +CA101
+$      ( FWD LEFT POINT  )   ROOTCHORD ( FWD RIGHT POINT  )  TIP CHORD
+$       X1      Y1      Z1      X12     X4        Y4    Z4      X14
++CA101  .0      .0      .0      2.07055 1.48044 5.52510 0.0     2.07055
+$
+$
+$SPLINE DEFINITION
+$       EID     CAERO   BOX1    BOX2    SETG    DZ
+SPLINE1 100     101     101     124     100     .0
+$
+$
+$------------------------------------------------------------------------------------------------  
+$END OF AERODYNAMIC DATA
+$
+$
+$DEFINITION OF DOWN WASHES BASED ON THE ANGLE OF ATTACH OF 10 DEGREES
+DMI     W2GJ    0       2       1       0               24      2
+DMI     W2GJ    1       1       0.17453 THRU    24
+DMI     W2GJ    2       1       0.17453 THRU    24
+$
+END DATA
