@@ -1,0 +1,92 @@
+\documentclass[a4paper,10pt]{article}
+
+
+% Title Page
+\title{GEK (beta)}
+\author{Jouke de Baar, TU Delft, 2012}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This is the beta release of GEK, a Matlab code for Gradient-Enhanced Kriging. Please do not hesitate to contact me for any questions: \\ \\ \texttt{j.h.s.debaar@tudelft.nl}. \\ \\
+
+If you use this code, please refer to:
+
+\begin{itemize}
+\item J.H.S. de Baar, R.P. Dwight, H. Bijl: Improvements to Gradient-Enhanced Kriging using a Bayesian perspective, submitted (2012)
+\item Jouke H.S. de Baar, Thomas P. Scholcz, Clemens V. Verhoosel, Richard P. Dwight, Alexander H. van Zuijlen, and Hester Bijl: Efficient Uncertainty Quantification with Gradient-Enhanced Kriging: Applications in FSI, Eccomas (2012), Vienna
+\end{itemize}
+
+\end{abstract}
+
+\section{Introduction}
+In Uncertainty Quantification and in Optimization we often use surrogate models (a.k.a. emulators, response surfaces, etc.), which are in fact interpolations (a.k.a. regression, reconstruction) of the output of an expensive computer code, conditional on a limited number of sample runs of the code.
+
+The general objective is to be efficient, i.e. to obtain a highly accurate surrogate model from only a small number of samples.
+
+A promising option is to use Gradient-Enhanced Kriging (GEK) for codes where gradient information is available at relatively low cost (such as from an adjoint solve). We find that it is vital to incorperate error information in the GEK analysis. The present code builds a GEK surrogate conditional on the output (values and gradients of the QoI), while incorperating error information. 
+
+\section{Quick start}
+If you run \texttt{example1d.m}, you will see how GEK constructs a surrogate, either without or with use of the gradient information. Please change the number of samples \texttt{N}, the 'black box solver' function \texttt{func}, the noise level \texttt{erry} of the QoI, or the noise level of the gradients \texttt{errgr}. All these settings change the input data, and give different surrogates.
+
+Please have a look at \texttt{example1d.m}, where you will find that GEK has been set up to work for any number of dimensions.
+
+\section{Files included}
+The main function is \texttt{gek.m}, this is called in the above examples. The file is also available in two parts, where the more expensive \texttt{gekPart1.m} can be run as soon as the data is available, while the cheaper \texttt{gekPart1.m} provides the actual surrogate as soon as the output locations are available.
+
+The remaining files are in the folder \texttt{/functions/}.
+
+Each function comes with help information within matlab, for example type: \texttt{>> help gek} to get help on the function \texttt{gek.m}.
+
+\section{Under construction: hyperparameters}
+Special care should be taken with respect to the hyperparameters. The user has the option to interact with \texttt{ndim + 2} hyperparameters. The first two hyperparameters are multiplication factors for the QoI errors and the gradient errors, respectively. The remaining \texttt{ndim} hyperparameters are the correlation ranges in each of the \texttt{ndim} dimensions.
+
+By default, GEK optimizes for the \texttt{ndim} ranges only, using default initial guesses. However, by adjusting the following options, the user can interact with the optimization (example for 2-d):
+
+\begin{itemize}
+\item options.hyperest = 'brute'; either set to 'fmin' for fminsearch (default) or 'brute' for brute force
+\item options.brutesize = 1e3; number of samples in case of 'brute'
+\item options.hyperinit = [1 1 0.1 0.3]; initial guesses for the hyperparameters
+\item options.hyperspace = [0 1 1 0]; which hyperparameters to optimize for - in this case only for the second (errgrad factor) and theird (correlation range in dimension 1), such that for example the correlation range in dimension 2 remains the initial guess of 0.3
+\end{itemize}
+
+The hyperparameter estimation is still under construction. Please contact me with any questions.
+
+\section{Expected improvements}
+The improvements you can expect in the next version are mainly in: hyperparameter estimation, processing time, and documentation.
+
+\section{Some references}
+Many references are available, for example:
+
+\subsection{Uncertainty Quantification in general}
+\begin{itemize}
+\item Tinsley Oden, Robert Moser, Omar Ghattas: Computer Predictions with Quantified Uncertainty, Part 1, SIAM News, 43-9 (2010)
+\item Tinsley Oden, Robert Moser, Omar Ghattas: Computer Predictions with Quantified Uncertainty, Part 2, SIAM News, 43-10 (2010)
+\end{itemize}
+
+\subsection{Kriging}
+\begin{itemize}
+\item Christopher K.Wikle, L.Mark Berliner: A Bayesian tutorial for data assimilation, Physica D: Nonlinear Phenomena, 230 1-2 (2007)
+\item Marc C. Kennedy, Anthony O’Hagan: Bayesian calibration of computer models, Journal of the Royal Statistical Society: Series B, 63 (2000)
+\item Michael L. Stein: Interpolation of spatial data, some theory for Kriging, Springer, (1999)
+\item Noel Cressie: Statistics for spatial data, Wiley, (1993)
+\item Noel Cressie: The origins of kriging, Mathematical Geology, 22–3 (1990)
+\item L.S. Gandin: Objective analysis of meteorological fields: Gidrometeorologicheskoe Izdatel’stvo (GIMIZ), Leningrad, Translated by Israel Program for Scientific Translations, Jerusalem, (1965)
+\item G. Matheron: Principles of Geostatistics, Economic Geology, 58 (1963)
+\end{itemize}
+
+\subsection{Gradient-Enhanced Kriging}
+\begin{itemize}
+\item J.H.S. de Baar, R.P. Dwight, H. Bijl: Improvements to Gradient-Enhanced Kriging usinga Bayesian perspective, submitted (2012)
+\item Jouke H.S. de Baar, Thomas P. Scholcz, Clemens V. Verhoosel, Richard P. Dwight, Alexander H. van Zuijlen, and Hester Bijl: Efficient Uncertainty Quantification with Gradient-Enhanced Kriging: Applications in FSI, Eccomas (2012), Vienna
+\item Richard P. Dwight, Zhong-Hua Han: Efficient Uncertainty Quantification using Gradient-Enhanced Kriging, 11th AIAA Non-Deterministic Approaches Conference, (2009)
+\item J. Laurenceau, P. Sagaut: Building efficient response surfaces of aerodynamic functions with Kriging and Cokriging, AIAA Journal, 46-2 (2008)
+\item Hyoung-Seog Chung, Juan J. Alonso: Using Gradients to Construct Cokriging Approximation Models for High-Dimensional Design Optimization Problems, AIAA 40th Aerospace Sciences Meeting and Exhibit, (2002)
+\item M.D. Morris, T.J. Mitchell, D. Ylvisaker: Bayesian Design and Analysis of Computer Experiments: Use of Derivatives in Surface Prediction, Technometrics, 35-3 (1993)
+\end{itemize}
+
+
+
+
+\end{document}          
