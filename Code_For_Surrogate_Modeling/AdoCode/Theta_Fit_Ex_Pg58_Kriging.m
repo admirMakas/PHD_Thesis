@@ -17,9 +17,15 @@ end
 UpperTheta=ones(1,k).*2;
 LowerTheta=ones(1,k).*-3;
 
-% Run GA search of likelihood
+%Run GA search of likelihood
 [ModelInfo.Theta,MinNegLnLikelihood]=...
 ga(@likelihood,k,[],[],[],[], LowerTheta,UpperTheta);
+
+% x0=[0, 0];
+% options = optimoptions('fmincon','Display','iter','Algorithm','sqp',...
+%     'PlotFcn', @optimplotfval);
+% [ModelInfo.Theta, Fval, Flag] = fmincon(@likelihood,x0,[],[],[],[], ...
+%     LowerTheta,UpperTheta,[],options)
 
 % Put Cholesky factorization of Psi, into ModelInfo
 [NegLnLike,ModelInfo.Psi,ModelInfo.U]=likelihood(ModelInfo.Theta);
