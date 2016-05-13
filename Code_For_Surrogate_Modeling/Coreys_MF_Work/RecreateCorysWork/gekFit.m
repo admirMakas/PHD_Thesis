@@ -16,6 +16,8 @@ thetas = 10.^thetas;
 
 MLEs = zeros(length(thetas),1);
 
+% USES THE PREDEFINED VECTOR OF THETA VALUES ABOVE RANGING FROM 1-10
+% AND CALCULATES ESTIMATES FOR THE MEAN (beta) AND VARIANCE (var)
 for Q = 1:length(thetas)
     theta = thetas(Q);
     R  = createCovMatrix(theta,S,n,nprime);
@@ -32,6 +34,8 @@ end
 
 %figure(10)
 %plot(thetas,MLEs)
+% BASED ON THE ABOVE LOOP CALCULATIONS BELOW CODE EXTACTS THE THETA
+% THAT GIVES MIN MLE ESTIMATE
 model.theta = thetas(find( MLEs == min(MLEs)));
 if length(model.theta)>1
     model.theta = model.theta(1);
