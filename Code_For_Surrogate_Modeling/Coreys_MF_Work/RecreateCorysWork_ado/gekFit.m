@@ -1,5 +1,7 @@
 function [ model ] = gekFit( xi,xigrads, y, grad)
 
+k = size(xi);
+k = k(2);
 n = length(xi);
 nprime = length(xigrads);
 
@@ -11,29 +13,49 @@ model.INPUTS.xigrads = xigrads;
 model.INPUTS.y = y;
 model.INPUTS.grad = grad;
 
+model.F = [ones(n,1);zeros(nprime,1)];
+    F=model.F;
+
 UTheta=ones(1,1).*2;
 LTheta=ones(1,1).*-3;
 
 [thetas,NegLnLikelihood]=...
-ga(@MLE,1,[],[],[],[], LTheta,UTheta);
+ga(@(x) MLE(x, n, nprime, S, Y, F),1,[],[],[],[], LTheta,UTheta);
 
 model.theta = 10.^thetas;
+
 model.R  = createCovMatrix(model.theta,S,n,nprime);
-    R=model.R
-model.F = [ones(n,1);zeros(nprime,1)];
-    F=model.F
-model.beta = ((F'*(R\F))\F')*(R\Y);
-    beta=model.beta
-model.Var = (1/(n+nprime)) * (Y-beta*F)'*(R\(Y-beta*F));
-    Var=model.Var
-model.MLE = (n+nprime)*log(Var) + log( det(R) );
+    R=model.R;
+
+%Cholesky factorization (not stable)
+%[Uc,p]=chol(R)
+%If p>0 then use LU decomposition for R
+%if p>0
+
+%Go with LU decomposition for now
+[L,U]=lu(R);
+model.beta = ((F'*(U\(L\F)))\F')*(U\(L\Y));
+    beta=model.beta;
+model.Var = (1/(n+nprime)) * (Y-beta*F)'*(U\(L\(Y-beta*F)));
+    Var=model.Var;
+model.MLE = (n+nprime)*log(Var) + log( det(L)*det(U) );
+
+% else
+%     model.beta = ((F'*(Uc\(Uc'\F)))\F')*(Uc\(Uc'\Y));
+%         beta=model.beta;
+%     model.Var = (1/(n+nprime)) * (Y-beta*F)' * (Uc\(Uc'\(Y-beta*F)));
+%         Var=model.Var;
+%     model.MLE = (n+nprime)*log(Var) + log( det(R) );
+% end
+
 model.n = n;
 model.nprime = nprime;
 model.S = S;
 model.Y = Y;
 model.ymin = min(y);
-%model.MLEs = MLEs;
 
+%CODE COMMENTED OUT========================================================
+%model.MLEs = MLEs;
 
 % thetas = linspace(1,10,6000)';
 % thetas = 10.^thetas;
@@ -77,29 +99,28 @@ model.ymin = min(y);
 % model.ymin = min(y);
 % model.thetas = log10(thetas);
 % model.MLEs = MLEs;
+%==========================================================================
 end
-
-
 
 %CREATE FUNCTION TO GET LIKELIHOOD
-function [MLE_val] = MLE(x)
+function [MLE_val] = MLE(x, n, nprime, S, Y, F)
 
-global n
-global nprime
-global S
-global Y
+thetas=10.^x;
 
-theta=10.^x;
+R  = createCovMatrix(thetas,S,n,nprime);
 
-R  = createCovMatrix(theta,S,n,nprime);
-F = [ones(n,1);zeros(nprime,1)];
-beta = ((F'*(R\F))\F')*(R\Y);
-Var = (1/(n+nprime)) * (Y-beta*F)'*(R\(Y-beta*F));
-MLE_val = real(-(n+nprime)*log(Var) - log( det(R) ));
+[L,U]=lu(R);
+beta = ((F'*(U\(L\F)))\F')*(U\(L\Y));
+Var = (1/(n+nprime)) * (Y-beta*F)'*(U\(L\(Y-beta*F)));
+MLE_val = real(-(n+nprime)*log(Var) - log( det(L)*det(U) ));
 
+%Old Code==================================================================
+%F = [ones(n,1);zeros(nprime,1)];
+% beta = ((F'*(R\F))\F')*(R\Y);
+% Var = (1/(n+nprime)) * (Y-beta*F)'*(R\(Y-beta*F));
+% MLE_val = real(-(n+nprime)*log(Var) - log( det(R) ));
+%==========================================================================
 end
-
-
 
 % CREATE CORREATION MATRIX
 function [ R ] = createCovMatrix(theta,S,n,nprime)
@@ -146,6 +167,5 @@ else
     %R1 = [TopLeft,TopRight; bottomLeft, bottomRight];
     R = [TopLeft,TopRight; TopRight, bottomRight]; 
 end
-
 
 end
