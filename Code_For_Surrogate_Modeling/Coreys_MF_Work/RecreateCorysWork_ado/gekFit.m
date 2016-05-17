@@ -1,5 +1,5 @@
 function [ model ] = gekFit( xi,xigrads, y, grad)
-
+tic
 k = size(xi);
 k = k(2);
 n = length(xi);
@@ -26,12 +26,7 @@ model.theta = 10.^thetas;
 
 model.R  = createCovMatrix(model.theta,S,n,nprime);
     R=model.R;
-
-%Cholesky factorization (not stable)
-%[Uc,p]=chol(R)
-%If p>0 then use LU decomposition for R
-%if p>0
-
+    
 %Go with LU decomposition for now
 [L,U]=lu(R);
 model.beta = ((F'*(U\(L\F)))\F')*(U\(L\Y));
@@ -39,14 +34,6 @@ model.beta = ((F'*(U\(L\F)))\F')*(U\(L\Y));
 model.Var = (1/(n+nprime)) * (Y-beta*F)'*(U\(L\(Y-beta*F)));
     Var=model.Var;
 model.MLE = (n+nprime)*log(Var) + log( det(L)*det(U) );
-
-% else
-%     model.beta = ((F'*(Uc\(Uc'\F)))\F')*(Uc\(Uc'\Y));
-%         beta=model.beta;
-%     model.Var = (1/(n+nprime)) * (Y-beta*F)' * (Uc\(Uc'\(Y-beta*F)));
-%         Var=model.Var;
-%     model.MLE = (n+nprime)*log(Var) + log( det(R) );
-% end
 
 model.n = n;
 model.nprime = nprime;
@@ -100,6 +87,7 @@ model.ymin = min(y);
 % model.thetas = log10(thetas);
 % model.MLEs = MLEs;
 %==========================================================================
+toc
 end
 
 %CREATE FUNCTION TO GET LIKELIHOOD

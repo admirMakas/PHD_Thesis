@@ -1,5 +1,5 @@
 function [ model ] = gekFit( xi,xigrads, y, grad)
-
+tic
 n = length(xi);
 nprime = length(xigrads);
 
@@ -54,6 +54,8 @@ model.Y = Y;
 model.ymin = min(y);
 model.thetas = log10(thetas);
 model.MLEs = MLEs;
+
+toc
 end
 
 function [ R ] = createCovMatrix(theta,S,n,nprime)
