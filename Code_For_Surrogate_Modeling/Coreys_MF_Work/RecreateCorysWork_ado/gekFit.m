@@ -1,5 +1,11 @@
 function [ model ] = gekFit( xi,xigrads, y, grad)
 tic
+
+[xi,index] = sort(xi);
+y = y(index);
+[xigrads,index] = sort(xigrads);
+grad = grad(index);
+
 k = size(xi);
 k = k(2);
 n = length(xi);
