@@ -6,7 +6,7 @@ X=[1 2 3; 3 4 5];
 % Determine data dimensions
 [n, k] = size(X);
 
-theta=[0.5 0.5 0.5];
+theta=[1 0.75 0.5];
 
 % Pre–allocate memory
 R=zeros(n,n);
@@ -68,5 +68,5 @@ for l=1:k
     end
 end
 % Add upper and lower halves to Psi
-RDot=[R zeros(n,k*n); zeros(k*n,(k+1)*n)] + RDot + RDot';
+RDot=[R zeros(n,k*n); zeros(k*n,(k+1)*n)] + RDot + RDot'
 toc
