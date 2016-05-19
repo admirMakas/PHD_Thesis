@@ -1,12 +1,12 @@
 clear all
 clc
 tic
-X=[1 2 3; 3 4 5];
+X=[1 2 3 4 5; 3 4 5 6 7; 6 7 8 9 10];
 
 % Determine data dimensions
 [n, k] = size(X);
 
-theta=[1 0.75 0.5];
+theta=[1 0.75 0.5 0.4 0.3];
 
 % Pre–allocate memory
 R=zeros(n,n);
