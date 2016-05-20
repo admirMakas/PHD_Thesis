@@ -32,9 +32,6 @@ y = model.INPUTS.y;
 % testpoints = (testpoints - repmat(model.par.Ssc(1,:),mx,1)) ./ repmat(model.par.Ssc(2,:),mx,1);
 % 
 
-
-
-
 Corrgauss = @(xi,xj) exp(-model.theta*(xi - xj)^2);
 Corrgauss_xi = @(xi,xj) exp(-model.theta*(xi-xj)^2)*(-2*model.theta*(xi-xj));
 
@@ -63,7 +60,5 @@ end
 
 % Y_hat = repmat(model.par.Ysc(1,:),mx,1) + repmat(model.par.Ysc(2,:),mx,1) .* Y_hat;
 % %MSE = repmat(model.par.Ysc(1,:),mx,1) + repmat(model.par.Ysc(2,:),mx,1) .* MSE;
-
-
 
 end
