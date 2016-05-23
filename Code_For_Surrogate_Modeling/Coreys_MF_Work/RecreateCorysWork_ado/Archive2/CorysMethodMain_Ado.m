@@ -31,7 +31,7 @@ TRS_array = [TRS_array; TRS];
 
 % CENTER IS APPROXIATELY AT THE MID POINT
 % NEXT LINE APPENDS REVISED CENTER VALUES AS ITERATIONS CONTINUE
-center = 1.0;
+center = 0.6;
 x_array = [x_array; center];
 
 % Step 2===================================================================

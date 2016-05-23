@@ -1,126 +1,167 @@
 function [ model ] = gekFit( xi,xigrads, y, grad)
 
-[xi,index] = sort(xi);
-y = y(index);
-[xigrads,index] = sort(xigrads);
-grad = grad(index);
+[n,dim] = size(xi);
+[nprime,dimprime] = size(xigrads);
+
+if dim == 1;
+    [xi,index] = sort(xi);
+    y = y(index);
+    [xigrads,index] = sort(xigrads);
+    grad = grad(index);
+end
+
+[Norm] = NORM( xi, y, grad);
 
 S = [xi;xigrads];
-Y = [y;grad];
+Y = [y;reshape(grad,[nprime*dimprime,1])];
 
-[n, k] = size(xi);
-nprime = k*n;
-
+% Input section
 model.INPUTS.xi = xi;
 model.INPUTS.xigrads = xigrads;
 model.INPUTS.y = y;
 model.INPUTS.grad = grad;
+model.Norm = Norm;
 
-model.F = [ones(n,1);zeros(nprime,1)];
-    F=model.F;
-
-UTheta=ones(1,1).*1.5;
-LTheta=ones(1,1).*-1;
-
-[thetas,NegLnLikelihood]=...
-ga(@(x) MLE(x, n, k, nprime, S, Y, F),k,[],[],[],[], LTheta,UTheta);
-
-model.theta = 10.^thetas;
-
-model.R  = createCovMatrix(model.theta,S,n,k);
-    R=model.R;
-    
-%Go with LU decomposition for now
-[L,U]=lu(R);
-model.beta = ((F'*(U\(L\F)))\F')*(U\(L\Y));
-    beta=model.beta;
-model.Var = (1/(n+nprime)) * (Y-beta*F)'*(U\(L\(Y-beta*F)));
-    Var=model.Var;
-model.MLE = (n+nprime)*log(Var) + log( det(L)*det(U) );
-
+% Other information
 model.n = n;
-model.k = k;
 model.nprime = nprime;
 model.S = S;
 model.Y = Y;
 model.ymin = min(y);
 
+
+% regression F
+model.F = [ones(n,1);zeros(nprime*dimprime,1)];
+F = model.F;
+
+% Theta bounds for optimization
+UTheta=ones(1,dim).*2;%1.3010;
+LTheta=ones(1,dim).*-3;
+
+% Genetic Alg.
+[thetas,~]=gaF(@(x) MLE(x, n, nprime, Norm.xi, Norm.Y, F),1,[],[],[],[], LTheta,UTheta);
+% was S now xi 
+
+model.theta = 10.^thetas;
+
+[model.MLE,model.R,model.beta,model.Var] = MLE(thetas, n, nprime, Norm.xi, Norm.Y, F);
+
+
 end
 
 %CREATE FUNCTION TO GET LIKELIHOOD
-function [MLE_val] = MLE(x, n, k, nprime, xi, Y, F)
+function [MLE_val,R,beta,Var] = MLE(x, n, nprime, S, Y, F)
 
 thetas=10.^x;
 
-R  = createCovMatrix(thetas,xi,n,k);
+% R  = createCovMatrix(thetas,S,n,nprime);
+[ R ] = BuildRdot( S,thetas );
 
-[L,U]=lu(R);
-beta = ((F'*(U\(L\F)))\F')*(U\(L\Y));
-Var = (1/(n+nprime)) * (Y-beta*F)'*(U\(L\(Y-beta*F)));
-MLE_val = (real(-(n+nprime)*log(Var) - log( det(L)*det(U) )))*-1;
-
+% [L,U]=lu(R);
+% beta = ((F'*(U\(L\F)))\F')*(U\(L\Y));
+% Var = (1/(n+nprime)) * (Y-beta*F)'*(U\(L\(Y-beta*F)));
+% MLE_val = real(-(n+nprime)*log(Var) - log( det(L)*det(U) ));
+% MLE_val = -1*MLE_val;
 %Old Code==================================================================
 %F = [ones(n,1);zeros(nprime,1)];
-% beta = ((F'*(R\F))\F')*(R\Y);
-% Var = (1/(n+nprime)) * (Y-beta*F)'*(R\(Y-beta*F));
-% MLE_val = real(-(n+nprime)*log(Var) - log( det(R) ));
+beta = ((F'*(R\F))\F')*(R\Y);
+Var = (1/(n+nprime)) * (Y-beta*F)'*(R\(Y-beta*F));
+MLE_val = real(-(n+nprime)*log(Var) - log( det(R) ));
+MLE_val = -1*MLE_val;
 %==========================================================================
 end
 
-% CREATE CORREATION MATRIX
-function [ R ] = createCovMatrix(theta,xi,n,k)
+function [Norm] = NORM( xi, y, grad)
 
-% Pre–allocate memory
-R1 = zeros(n,n);
-% Build upper half of correlation matrix
-for i=1:n
-    for j=i+1:n
-        R1(i,j)=exp(-sum(theta.*(xi(i,:)-xi(j,:)).^2));
-    end
-end
-% Add upper and lower halves and diagonal of ones plus
-% small number to reduce ill conditioning
-R1=R1+eye(n)+eye(n).*eps;
+NormX = [mean(xi);std(xi)];
+NormY = [mean(y);std(y)];
 
-% Pre–allocate memory
-RDot=zeros((k+1)*n, (k+1)*n);
-RDot(1:n, 1:n)=R1(1:end, 1:end);
-for l=1:k
-    % Get first order derivatives
-    RDoti = zeros(n, n);
-    for i=1:n
-        for j=i+1:n
-            RDoti(i, j) = 2*theta(l)*(xi(i,l) - xi(j, l))*R1(i,j);
-        end
-    end
-    RDoti=RDoti-RDoti'+zeros(n);
-    RDot(1:n, (n*l)+1:(n*l)+n) = RDoti(1:end, 1:end);
-    
-    % Get second order derivatives
-    for m=1:k
-    RDoti = zeros(n, n);
-        if l==m
-            for i=1:n
-                for j=i+1:n
-                    RDoti(i, j) = (2*theta(l) - 4*theta(l)^2*...
-                        (xi(i,l)-xi(j,l))^2)*R1(i,j);
-                end
-            end
-            RDoti=RDoti+(2*theta(l)*eye(n));
-            RDot((n*l)+1:(n*l)+n, (n*l)+1:(n*l)+n) = RDoti(1:end, 1:end);
-        elseif m>l
-            for i=1:n
-                for j=i+1:n
-                    RDoti(i, j) = -4*theta(l)*theta(m)*(xi(i,l) - xi(j,l))*...
-                        (xi(i,m) - xi(j,m))*R1(i,j);
-                end
-            end
-            RDoti=RDoti+RDoti'+zeros(n);
-            RDot((n*l)+1:(n*l)+n, (n*m)+1:(n*m)+n) = RDoti(1:end, 1:end);
-        end
-    end
+xi = ( xi-NormX(1,:) ) ./ NormX(2,:);
+y= ( y-NormY(1,:) ) ./ NormY(2,:);
+grad = grad.*NormX(2,:)./NormY(2,:);
+
+
+[nprime,dimprime] = size(grad);
+
+S = [xi;xi];
+Y = [y;reshape(grad,[nprime*dimprime,1])];
+
+
+Norm = struct('NormX',NormX, 'NormY',NormY, 'xi',xi, ...
+    'y',y, 'grad',grad, 'S',S,'Y',Y);
+
 end
-%Assemble RDot matrix
-RDot=RDot+(triu(RDot,1))';
-R=RDot;
-end
+
+
+
+
+
+% function [ R ] = createCovMatrix(theta,S,n,nprime)
+% 
+% Corrgauss = @(xi,xj) exp(-theta*(xi - xj)^2);
+% Corrgauss_xi = @(xi,xj) exp(-theta*(xi-xj)^2)*(-2*theta*(xi-xj));
+% Corrgauss_xj = @(xi,xj) exp(-theta*(xi-xj)^2)*(2*theta*(xi-xj));
+% Corrgauss_xi_xj_ieqj = @(xi,xj) exp(-theta*(xi-xj)^2)*(-2*theta*(xi-xj))*(2*theta*(xi-xj)) + ...
+%     exp(-theta*(xi-xj)^2)*2*theta;
+% %Corrgauss_xi_xj_iNOTeqj = @(xi,xj) -4*theta
+% 
+% 
+% TopLeft = zeros(n,n);
+% 
+% for i = 1:n
+%     for j = 1:n
+%         TopLeft(i,j) =  Corrgauss( S(i) , S(j) );
+%     end
+% end
+% 
+% if nprime == 0
+%     
+%     R = TopLeft;
+% else
+%     
+%     TopRight = zeros(n,nprime);
+%     for i = 1:n
+%         for j = 1:nprime
+%             TopRight(i,j) =  Corrgauss_xj( S(i) , S(n+j) );
+%         end
+%     end
+%     
+%     bottomLeft = zeros(nprime,n);
+%     for i = 1:n
+%         for j = 1:nprime
+%             bottomLeft(j,i) = Corrgauss_xi( S(n+j) , S(i) );
+%         end
+%     end
+%     
+%     bottomRight = zeros(nprime,nprime);
+%     for i = 1:nprime
+%         for j = 1:nprime
+% %             if i == j
+%                 bottomRight(j,i) = Corrgauss_xi_xj_ieqj( S(n+j) , S(n+i) );
+% %             elseif
+% %                 
+% %             end
+%         end
+%     end
+%      R = [TopLeft,TopRight; bottomLeft, bottomRight];
+%     %R = [TopLeft,TopRight; TopRight, bottomRight];
+% end
+% 
+% 
+% end
+
+
+
+
+
+% % Plots of theta 
+% thetas = linspace(-3, 2,1000)';
+% likhoods = thetas;
+% F = [ones(n,1);zeros(nprime*dimprime,1)];
+% 
+% for i =1:length(thetas)
+%    likhoods(i) =  MLE(thetas(i), n, nprime, xi, Y, F);
+% end
+% 
+% figure
+% plot(thetas,likhoods)

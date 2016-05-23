@@ -1,15 +1,10 @@
-clear all
-clc
-tic
-X=[1 2 3; 3 4 5; 6 7 8; 9 10 11];
-
-% Determine data dimensions
+function [ RDot ] = BuildRdot( X,theta )
 [n, k] = size(X);
 
-theta=[1 0.75 0.5];
+%theta = 5;
 
 % Pre–allocate memory
-R = zeros(n,n);
+R=zeros(n,n);
 % Build upper half of correlation matrix
 for i=1:n
     for j=i+1:n
@@ -18,6 +13,7 @@ for i=1:n
 end
 % Add upper and lower halves and diagonal of ones plus
 % small number to reduce ill conditioning
+%R=R+R'+eye(n)+eye(n).*eps;
 R=R+eye(n)+eye(n).*eps;
 
 % Pre–allocate memory
@@ -59,5 +55,5 @@ for l=1:k
     end
 end
 %Assemble RDot matrix
-RDot=RDot+(triu(RDot,1))'
-toc
+RDot=RDot+(triu(RDot,1))';
+end
