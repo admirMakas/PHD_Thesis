@@ -1,13 +1,14 @@
 %function [ Y_hat,MSE ] = gekPred( model,testpoints )
 clear all
 clc
+tic
 
-X=[1 2; 3 4];
+X=[1; 2; 3; 4; 5];
 S=[X;X];
 
-testpoints=[5 6];
+testpoints=[5];
 
-theta=[1 0.5];
+theta=[0.5];
 
 [n, k] = size(X);
 
@@ -67,9 +68,9 @@ for i = 1:length(testpoints(:,1))
             r(j,1) = Corrgauss( S(j,:),testpoints(i,:) )';
         elseif j>n
             for l=1:k
-                r1(l) = Corrgauss_xi( S(j-n,:),testpoints(i,:),l);
+                r1(l,1) = Corrgauss_xi( S(j-n,:),testpoints(i,:),l);
             end
-            r=[r;r1'];
+            r=[r;r1];
         end
     end
     % Y_hat(i) = beta + r'*inv(R)*(Y-beta*F);
@@ -86,3 +87,4 @@ end
 % %MSE = repmat(model.par.Ysc(1,:),mx,1) + repmat(model.par.Ysc(2,:),mx,1) .* MSE;
 
 %end
+toc

@@ -111,6 +111,7 @@ else
     
     % FUNCTION CALL TO CREATE ADDITIVE SURROGATE MODEL
     [ modelAdd ] = gekFit(xi, xigrads, y, grad);
+    %[ modelAdd ] = gekFit(xi, xigrads, yFh_array, dFh_array);
     % [ modelAdd ] = gekFit( xi,[], y, []);
 
     % Multiplicitive Model=================================================
@@ -121,6 +122,7 @@ else
     
     % FUNCTION CALL TO CREATE MULTIPLICATIVE SURROGATE MODEL
     [ modelMult ] = gekFit(xi, xigrads, y, grad);
+    %[ modelMult ] = gekFit(xi, xigrads, yFh_array, dFh_array);
     %[ modelMult ] = gekFit( xi,[], y, []);
     
     % Prediction of each model
@@ -219,9 +221,9 @@ dFh_array = [dFh_array; dFh_dx]; dFl_array = [dFl_array; dFl_dx];
 rho = ( yFh_array(ii) - yFh_array(ii+1) ) / ( yFh_array(ii) - objectiveValue );
 
 if rho > 0.8
-    TRS = 1.1*TRS; % was 2*TRS This creates errors  .7
+    TRS = 1.05*TRS; % was 2*TRS This creates errors  .7
 elseif rho > 0.5
-    
+    TRS = TRS;
 else
     TRS = 0.5*TRS;
 end
