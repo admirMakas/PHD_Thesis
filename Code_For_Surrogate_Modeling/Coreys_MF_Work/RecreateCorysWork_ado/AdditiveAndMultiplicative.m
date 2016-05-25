@@ -2,10 +2,10 @@ function [ Hist ] = AdditiveAndMultiplicative...
     ( Itr, Hist )
 
 Add = Hist.yFh(Itr) - Hist.yFl(Itr);
-dAdd_dx = Hist.dFh_dx(Itr) - Hist.dFl_dx(Itr);
+dAdd_dx = Hist.dFh_dx(Itr,:) - Hist.dFl_dx(Itr,:);
 Mult = Hist.yFh(Itr)/Hist.yFl(Itr);
-dMult_dx = (Hist.yFl(Itr).*Hist.dFh_dx(Itr) - ...
-    Hist.yFh(Itr).*Hist.dFl_dx(Itr))./Hist.yFl(Itr).^2;
+dMult_dx = (Hist.yFl(Itr).*Hist.dFh_dx(Itr,:) - ...
+    Hist.yFh(Itr).*Hist.dFl_dx(Itr,:))./Hist.yFl(Itr).^2;
 
 
 Hist.yAdd = [Hist.yAdd; Add]; Hist.yMult = [Hist.yMult; Mult]; 

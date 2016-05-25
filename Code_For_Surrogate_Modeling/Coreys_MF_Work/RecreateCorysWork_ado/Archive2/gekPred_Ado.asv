@@ -52,14 +52,14 @@ theta=[0.5];
 
 Corrgauss = @(xi,xj) exp(-sum(theta.*(xi - xj).^2));
 Corrgauss_xi = @(xi,xj,l) exp(-sum(theta.*(xi - xj).^2)).*(-2*theta(l)...
-    .*(xi(1,l) - xj(1,l)));
+    *(xi(1,l) - xj(1,l)));
 %==========================================================================
 % Corrgauss_xi2 = @(xi,xj,l) exp(-sum(theta.*(xi - xj).^2)).*((2*theta(l))...
 %     *(-2*theta(l)*(xi(1,l) - xj(1,l)).^2 + 1));
 Corrgauss_xi2 = @(xi,xj,l) exp(-sum(theta.*(xi - xj).^2)).*...
-    (2*theta(l) - 4*theta(l).*(xi(1,l) - xj(1,l)).^2);
+    (2*theta(l) - 4*theta(l)*(xi(1,l) - xj(1,l)).^2);
 Corrgauss_xi_xj = @(xi,xj,l,m) exp(-sum(theta.*(xi - xj).^2)).*...
-    ((-4*theta(l).*theta(m)).*((xi(1,l) - xj(1,l)) .* (xi(1,m) - xj(1,m))));
+    ((-4*theta(l)*theta(m))*((xi(1,l) - xj(1,l)) * (xi(1,m) - xj(1,m))));
 
 %==========================================================================
 % Y_hat = zeros(length(testpoints),1);

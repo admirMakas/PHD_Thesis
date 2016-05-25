@@ -28,15 +28,15 @@ model.nprime = nprime;
 model.S = S;
 model.Y = Y;
 model.ymin = min(y);
-
+model.k = dim;
 
 % regression F
 model.F = [ones(n,1);zeros(nprime*dimprime,1)];
 F = model.F;
 
 % Theta bounds for optimization
-UTheta=ones(1,dim).*2;%1.3010;
-LTheta=ones(1,dim).*-3;
+UTheta=ones(1,dim).*1.3010;%1.3010; was 2
+LTheta=ones(1,dim).*-1; % was -3
 
 % Genetic Alg.
 [thetas,~]=gaF(@(x) MLE(x, n, nprime, Norm.xi, Norm.Y, F),1,[],[],[],[], LTheta,UTheta);
@@ -76,9 +76,14 @@ function [Norm] = NORM( xi, y, grad)
 NormX = [mean(xi);std(xi)];
 NormY = [mean(y);std(y)];
 
-xi = ( xi-NormX(1,:) ) ./ NormX(2,:);
+%ones(2,2)*NormX(1,:)
+[rows, col] = size(xi);
+xi = ( xi- kron(NormX(1,:),ones(rows,1) ) ) ./ kron(NormX(2,:),ones(rows,1));
+
+
+
 y= ( y-NormY(1,:) ) ./ NormY(2,:);
-grad = grad.*NormX(2,:)./NormY(2,:);
+grad = grad.*kron(NormX(2,:),ones(rows,1))./( NormY(2,:).*ones(rows,col));
 
 
 [nprime,dimprime] = size(grad);

@@ -50,14 +50,14 @@ end
 % = Population size =
 if isfield(GAOptions,'PopulationSize')==0
 	% Default value
-    GAOptions.PopulationSize = 50; % was 50
+    GAOptions.PopulationSize = 25; % was 50
 end
 Popsize = GAOptions.PopulationSize;
 
 % = Number of generations =
 if isfield(GAOptions,'Generations')==0
     % Default value
-	GAOptions.Generations = 100; % was 100
+	GAOptions.Generations = 50; % was 100
 end
 Gens = GAOptions.Generations;
 

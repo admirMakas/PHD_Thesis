@@ -17,15 +17,15 @@ else
     
     if avgDist < tol
         display('hit')
-        TRS = .25*Hist.TRS(itr);
+        TRS = .25*Hist.TRS(itr,:);
     else
 
         if rho > 0.8
-            TRS = 2*Hist.TRS(itr); % was 2*TRS This creates errors  .7
+            TRS = 2*Hist.TRS(itr,:); % was 2*TRS This creates errors  .7
         elseif rho > 0.5
-            TRS = Hist.TRS(end);
+            TRS = Hist.TRS(end,:);
         else
-            TRS = 0.5*Hist.TRS(itr);
+            TRS = 0.5*Hist.TRS(itr,:);
         end
         
     end

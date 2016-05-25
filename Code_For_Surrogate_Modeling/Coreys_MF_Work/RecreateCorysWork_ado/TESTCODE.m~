@@ -1,0 +1,22 @@
+clear all
+close all
+clc
+
+thetas = [1,1]
+x = [0, 0; 2 , 2]
+S = [1,1]
+
+
+xC = [x;x];
+
+
+
+r = zeros(6,2);
+
+rlit = zeros(6,1);
+break
+for i = 1:6
+    rlit(i) = exp(-sum(theta*( x(1,:) - S(
+    
+    
+
