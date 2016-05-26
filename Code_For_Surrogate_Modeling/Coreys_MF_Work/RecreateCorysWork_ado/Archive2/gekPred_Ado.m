@@ -3,12 +3,17 @@ clear all
 clc
 tic
 
-X=[1; 2];
+X=[-0.16298 0.519863;
+    -0.73433 -1.0113;
+    1.695957 -0.03165;
+    -1.50543 1.552218;
+    1.049683 -1.59302];
+
 S=[X;X];
 
-testpoints=[3];
+testpoints=[0.620689655172414 1.31034482758621];
 
-theta=[0.5];
+theta=[0.523558 0.1];
 
 [n, k] = size(X);
 
@@ -57,9 +62,9 @@ Corrgauss_xi = @(xi,xj,l) exp(-sum(theta.*(xi - xj).^2)).*(-2*theta(l)...
 % Corrgauss_xi2 = @(xi,xj,l) exp(-sum(theta.*(xi - xj).^2)).*((2*theta(l))...
 %     *(-2*theta(l)*(xi(1,l) - xj(1,l)).^2 + 1));
 Corrgauss_xi2 = @(xi,xj,l) exp(-sum(theta.*(xi - xj).^2)).*...
-    (2*theta(l) - 4*theta(l).*(xi(1,l) - xj(1,l)).^2);
+    (2*theta(l) - 4*theta(l).^2*(xi(1,l) - xj(1,l)).^2);
 Corrgauss_xi_xj = @(xi,xj,l,m) exp(-sum(theta.*(xi - xj).^2)).*...
-    ((-4*theta(l).*theta(m)).*((xi(1,l) - xj(1,l)) .* (xi(1,m) - xj(1,m))));
+    (-4*theta(l).*theta(m).*(xi(1,l) - xj(1,l)) .* (xi(1,m) - xj(1,m)));
 
 %==========================================================================
 % Y_hat = zeros(length(testpoints),1);
@@ -72,15 +77,16 @@ for i = 1:length(testpoints(:,1))
     r = [];
     dr = [];
     %======================================================================
-    for j = 1:2*n %1:length(S)
-        if j<=n
-            r(j,1) = Corrgauss( S(j,:),testpoints(i,:) )';
-        elseif j>n
-            for l=1:k
-                r1(l,1) = Corrgauss_xi( S(j-n,:),testpoints(i,:),l);
-            end
-            r=[r;r1];
+    
+    for j = 1:n %1:length(S)
+        r(j,1) = Corrgauss( S(j,:),testpoints(i,:) )';
+    end
+    
+    for l=1:k
+        for j=1:n
+            r1(j,1) = Corrgauss_xi( S(j,:),testpoints(i,:),l);
         end
+        r=[r;r1];
     end
     %======================================================================
     for l=1:k
@@ -107,6 +113,7 @@ for i = 1:length(testpoints(:,1))
         end
     dr=[dr;dr1];
     end
+    r
     dr = reshape(dr,[(k+1)*n,k])
     % Y_hat(i) = beta + r'*inv(R)*(Y-beta*F);
     % ======================================================================

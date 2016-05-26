@@ -39,12 +39,14 @@ UTheta=ones(1,dim).*1.3010;%1.3010; was 2
 LTheta=ones(1,dim).*-1; % was -3
 
 % Genetic Alg.
-[thetas,~]=gaF(@(x) MLE(x, n, nprime, Norm.xi, Norm.Y, F),1,[],[],[],[], LTheta,UTheta);
+[thetas,~]=gaF(@(x) MLE(x, n, nprime, Norm.xi, Norm.Y, F),1,[],[],[],...
+    [], LTheta,UTheta);
 % was S now xi 
 
 model.theta = 10.^thetas;
 
-[model.MLE,model.R,model.beta,model.Var] = MLE(thetas, n, nprime, Norm.xi, Norm.Y, F);
+[model.MLE,model.R,model.beta,model.Var] = MLE(thetas, n, nprime,...
+    Norm.xi, Norm.Y, F);
 
 
 end

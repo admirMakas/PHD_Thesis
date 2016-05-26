@@ -23,7 +23,7 @@ if strcmp(PLOT,'YES')
     
 end
 
-while ConvergenceCheck > 0.00001
+while ConvergenceCheck > 0.0000001
     [ Hist ] = AdditiveAndMultiplicative( ind, Hist );
     [ pointsCaped ] = ptsCaptured2( Hist.centers(ind,:), Hist.centers,Hist.TRS(ind,:)./2 );
     

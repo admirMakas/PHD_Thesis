@@ -58,11 +58,7 @@ dY_hat_dx = dY_hat_dx.*kron(model.Norm.NormX(1,:),ones(row,1))./kron(model.Norm.
 % Y_hat = repmat(model.par.Ysc(1,:),mx,1) + repmat(model.par.Ysc(2,:),mx,1) .* Y_hat;
 % %MSE = repmat(model.par.Ysc(1,:),mx,1) + repmat(model.par.Ysc(2,:),mx,1) .* MSE;
 
-
-
 end
-
-
 
 function [r,dr] = findRs(theta, S, testpoints,n, k) 
 
@@ -70,12 +66,10 @@ Corrgauss = @(xi,xj) exp(-sum(theta.*(xi - xj).^2));
 Corrgauss_xi = @(xi,xj,l) exp(-sum(theta.*(xi - xj).^2)).*(-2*theta(l)...
     .*(xi(1,l) - xj(1,l)));
 %==========================================================================
-% Corrgauss_xi2 = @(xi,xj,l) exp(-sum(theta.*(xi - xj).^2)).*((2*theta(l))...
-%     *(-2*theta(l)*(xi(1,l) - xj(1,l)).^2 + 1));
 Corrgauss_xi2 = @(xi,xj,l) exp(-sum(theta.*(xi - xj).^2)).*...
-    (2*theta(l) - 4*theta(l).*(xi(1,l) - xj(1,l)).^2);
+    (2*theta(l) - 4*theta(l).^2*(xi(1,l) - xj(1,l)).^2);
 Corrgauss_xi_xj = @(xi,xj,l,m) exp(-sum(theta.*(xi - xj).^2)).*...
-    ((-4*theta(l).*theta(m)).*((xi(1,l) - xj(1,l)) .* (xi(1,m) - xj(1,m))));
+    (-4*theta(l).*theta(m).*(xi(1,l) - xj(1,l)) .* (xi(1,m) - xj(1,m)));
 
 %==========================================================================
 % Y_hat = zeros(length(testpoints),1);
@@ -88,15 +82,15 @@ i = 1;
     r = [];
     dr = [];
     %======================================================================
-    for j = 1:2*n %1:length(S)
-        if j<=n
-            r(j,1) = Corrgauss( S(j,:),testpoints(i,:) )';
-        elseif j>n
-            for l=1:k
-                r1(l,1) = Corrgauss_xi( S(j-n,:),testpoints(i,:),l);
-            end
-            r=[r;r1];
+    for j = 1:n %1:length(S)
+        r(j,1) = Corrgauss( S(j,:),testpoints(i,:) )';
+    end
+    
+    for l=1:k
+        for j=1:n
+            r1(j,1) = Corrgauss_xi( S(j,:),testpoints(i,:),l);
         end
+        r=[r;r1];
     end
     %======================================================================
     for l=1:k
